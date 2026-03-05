@@ -1,212 +1,663 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>GRIH Business Solutions</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GRIH Business Solutions</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+:root {
+  --blue: #5f72e7;
+  --purple: #a157d8;
+  --deep: #203046;
+  --text: #263238;
+  --muted: #607080;
+}
+
+body {
+  color: var(--text);
+  background: #f2f4f8;
+  line-height: 1.5;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.container {
+  width: min(1120px, 92%);
+  margin: 0 auto;
+}
+
+.top-strip {
+  background: #0a4abf;
+  color: #dbe8ff;
+  text-align: center;
+  font-size: 0.8rem;
+  padding: 0.45rem 0.7rem;
+}
+
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(10, 22, 58, 0.95);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(7px);
+}
+
+.nav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.7rem;
+  padding: 0.78rem 0;
+  color: #fff;
+}
+
+.brand {
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+}
+
+.nav-links {
+  display: none;
+  gap: 1.25rem;
+  font-size: 0.95rem;
+}
+
+.nav-cta {
+  display: none;
+  background: linear-gradient(90deg, #ffb347, #ff7f50);
+  color: #1b1f2a;
+  padding: 0.5rem 0.9rem;
+  border-radius: 999px;
+  font-size: 0.83rem;
+  font-weight: 700;
+}
+
+.menu-toggle {
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 8px;
+  background: transparent;
+  color: #fff;
+  padding: 0.35rem 0.55rem;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.mobile-menu {
+  display: none;
+  padding: 0.25rem 0 0.9rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.mobile-menu.open {
+  display: grid;
+  gap: 0.6rem;
+}
+
+.mobile-menu a {
+  color: #e7efff;
+  font-size: 0.95rem;
+}
+
+.hero {
+  background: linear-gradient(130deg, var(--blue), var(--purple));
+  color: #fff;
+  padding: 3.3rem 0 2.7rem;
+}
+
+.hero-content {
+  text-align: center;
+}
+
+.hero h1 {
+  font-size: clamp(1.65rem, 5.5vw, 3rem);
+  line-height: 1.25;
+  margin-bottom: 0.85rem;
+}
+
+.hero p {
+  color: #f5edff;
+  max-width: 700px;
+  margin: 0 auto 1.25rem;
+  font-size: 0.96rem;
+}
+
+.quick-badges {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.65rem;
+  margin: 1rem auto 1.35rem;
+  max-width: 760px;
+}
+
+.badge {
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  border-radius: 12px;
+  padding: 0.72rem;
+  font-weight: 500;
+  font-size: 0.85rem;
+}
+
+.hero-actions {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.68rem;
+  max-width: 420px;
+  margin: 0 auto;
+}
+
+.btn {
+  border: none;
+  cursor: pointer;
+  border-radius: 999px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  padding: 0.72rem 1.2rem;
+  text-align: center;
+}
+
+.btn-primary {
+  background: #ffd34e;
+  color: #2a2752;
+}
+
+.btn-light {
+  background: #fff;
+  color: #1f3264;
+}
+
+.section {
+  padding: 2.6rem 0;
+}
+
+.section-title {
+  text-align: center;
+  font-size: clamp(1.35rem, 4.2vw, 2.05rem);
+  margin-bottom: 0.55rem;
+  color: #273153;
+}
+
+.section-subtitle {
+  text-align: center;
+  color: var(--muted);
+  margin-bottom: 1.5rem;
+  font-size: 0.95rem;
+}
+
+.packages-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.95rem;
+}
+
+.package-card {
+  background: #fff;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 10px 22px rgba(40, 57, 90, 0.12);
+  border: 1px solid #e8ecff;
+}
+
+.package-head {
+  padding: 0.95rem;
+  color: #fff;
+}
+
+.package-head h3 {
+  font-size: 0.96rem;
+  margin-bottom: 0.15rem;
+}
+
+.package-price {
+  font-size: 1.42rem;
+  font-weight: 700;
+}
+
+.package-body {
+  padding: 0.95rem;
+}
+
+.package-body ul {
+  list-style: none;
+  margin-bottom: 0.92rem;
+}
+
+.package-body li {
+  margin-bottom: 0.42rem;
+  font-size: 0.9rem;
+  color: #4b5e74;
+}
+
+.package-body li::before {
+  content: "✔";
+  color: #21b789;
+  margin-right: 0.55rem;
+}
+
+.package-body .btn {
+  width: 100%;
+}
+
+.card-1 .package-head { background: linear-gradient(120deg, #5d7af5, #3a53ca); }
+.card-2 .package-head { background: linear-gradient(120deg, #667eea, #764ba2); }
+.card-3 .package-head { background: linear-gradient(120deg, #ec6ead, #3494e6); }
+.card-4 .package-head { background: linear-gradient(120deg, #6c8aff, #8f6de8); }
+.card-5 .package-head { background: linear-gradient(120deg, #ef6fb0, #f8926b); }
+.card-6 .package-head { background: linear-gradient(120deg, #2ac782, #159c7b); }
+
+.testimonials {
+  background: #eef2fb;
+}
+
+.testimonial-grid {
+  display: grid;
+  gap: 0.9rem;
+  grid-template-columns: 1fr;
+}
+
+.testimonial {
+  background: #e8ecf9;
+  border-left: 4px solid #6482ff;
+  border-radius: 14px;
+  padding: 1.1rem;
+}
+
+.testimonial p {
+  color: #3f4f66;
+  font-style: italic;
+  font-size: 0.94rem;
+}
+
+.author {
+  margin-top: 0.8rem;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.cta {
+  padding: 2.9rem 0;
+  color: #fff;
+  background: linear-gradient(130deg, #5d72e8, #8b54d5);
+  text-align: center;
+}
+
+.cta p {
+  max-width: 760px;
+  margin: 0.7rem auto 1.1rem;
+  color: #f7edff;
+  font-size: 0.95rem;
+}
+
+.cta-actions {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.62rem;
+  max-width: 430px;
+  margin: 0 auto 1rem;
+}
+
+.contact-box {
+  margin: 1.1rem auto 0;
+  max-width: 840px;
+  padding: 0.95rem;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.14);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  font-size: 0.9rem;
+}
+
+footer {
+  background: var(--deep);
+  color: #bfd0e0;
+  padding: 2.4rem 0 0.9rem;
+}
+
+.footer-grid {
+  display: grid;
+  gap: 1.2rem;
+  grid-template-columns: 1fr;
+}
+
+footer h4 {
+  color: #5ec0ff;
+  margin-bottom: 0.6rem;
+}
+
+footer p,
+footer li {
+  font-size: 0.9rem;
+  margin-bottom: 0.4rem;
+}
+
+footer ul {
+  list-style: none;
+}
+
+.copyright {
+  text-align: center;
+  font-size: 0.82rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  margin-top: 1.2rem;
+  padding-top: 0.95rem;
+}
+
+@media (max-width: 359px) {
+  .brand {
+    font-size: 0.82rem;
+  }
+
+  .quick-badges {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (min-width: 620px) {
+  .top-strip {
+    font-size: 0.85rem;
+  }
+
+  .hero {
+    padding: 4.4rem 0 3rem;
+  }
+
+  .hero-actions,
+  .cta-actions {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    max-width: 620px;
+  }
+
+  .quick-badges {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .packages-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .testimonial-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 900px) {
+  .menu-toggle,
+  .mobile-menu {
+    display: none !important;
+  }
+
+  .nav-links {
+    display: flex;
+  }
+
+  .nav-cta {
+    display: inline-flex;
+  }
+
+  .brand {
+    font-size: 1.05rem;
+  }
+
+  .section {
+    padding: 3.4rem 0;
+  }
+
+  .packages-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .footer-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.6rem;
+  }
+}
+</style>
 </head>
 <body>
-  <div class="top-strip">Trusted by 50,000+ entrepreneurs across India for business registration & compliance.</div>
+<div class="top-strip">Trusted by 50,000+ entrepreneurs across India for company registration & compliance.</div>
 
-  <nav>
-    <div class="container nav-inner">
-      <a href="#home" class="brand-wrap" aria-label="GRIH Business Solutions Home">
-        <span class="brand-logo">GB</span>
-        <span class="brand-text-wrap">
-          <span class="brand-text">GRIH Business Solutions</span>
-          <span class="brand-sub">Business Registration Experts</span>
-        </span>
-      </a>
-
-      <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation menu">☰</button>
-
-      <div class="nav-links">
-        <a href="#home">Home</a>
-        <a href="#about">About Us</a>
-        <a href="#contact">Contact</a>
-        <a href="#gem">GeM Registration</a>
-        <a href="#blog">Blog</a>
-      </div>
-
-      <a class="nav-cta" href="tel:+918076818682">Call Now</a>
-    </div>
-
-    <div class="container mobile-menu" id="mobileMenu">
-      <a href="#home">Home</a>
-      <a href="#about">About Us</a>
+<nav>
+  <div class="container nav-inner">
+    <div class="brand">GRIH Business Solutions</div>
+    <div class="nav-links">
+      <a href="#packages">Pricing</a>
+      <a href="#reviews">Reviews</a>
       <a href="#contact">Contact</a>
-      <a href="#gem">GeM Registration</a>
-      <a href="#blog">Blog</a>
     </div>
-  </nav>
+    <a class="nav-cta" href="#contact">Call Now</a>
+    <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation menu">☰</button>
+  </div>
+  <div class="container mobile-menu" id="mobileMenu">
+    <a href="#packages">Pricing</a>
+    <a href="#reviews">Reviews</a>
+    <a href="#contact">Contact</a>
+    <a href="tel:+918076818682">Call +91-8076-818-682</a>
+  </div>
+</nav>
 
-  <section class="hero" id="home">
-    <div class="container hero-content">
-      <h1>Register Your Business <br> in Just 7 Days!</h1>
-      <p>Get expert assistance for company formation, GST, GeM onboarding, trademark filing, and annual compliance with transparent pricing.</p>
-      <div class="quick-badges">
-        <div class="badge">✅ 100% Online Process</div>
-        <div class="badge">⚡ Fast Approvals</div>
-        <div class="badge">🛡️ End-to-End Support</div>
-        <div class="badge">📞 Dedicated Advisor</div>
-      </div>
-      <div class="hero-actions">
-        <button class="btn btn-primary" onclick="scrollToSection('packages')">View Plans</button>
-        <button class="btn btn-light" onclick="scrollToSection('contact')">Talk to Expert</button>
-      </div>
+<section class="hero">
+  <div class="container hero-content">
+    <h1>Register Your Business <br> in Just 7 Days!</h1>
+    <p>Get end-to-end support for company setup, Udyam registration, GST, trademark, and annual compliance with transparent pricing and expert help.</p>
+    <div class="quick-badges">
+      <div class="badge">✅ 100% Online Process</div>
+      <div class="badge">⚡ Fast Approval</div>
+      <div class="badge">🛡️ Expert Documentation</div>
+      <div class="badge">📞 Dedicated Support</div>
     </div>
-  </section>
-
-  <section class="section" id="about">
-    <div class="container about-grid">
-      <div>
-        <h2 class="section-title left">Why Choose GRIH?</h2>
-        <p class="about-text">We combine legal expertise, startup-first guidance, and fast documentation support to help founders launch confidently. From business registration to compliance, we simplify every step.</p>
-      </div>
-      <div class="about-points">
-        <div class="point">50,000+ successful registrations</div>
-        <div class="point">Transparent pricing, no hidden fees</div>
-        <div class="point">Pan-India filing & support team</div>
-      </div>
+    <div class="hero-actions">
+      <button class="btn btn-primary" onclick="scrollToPackages()">View Registration Plans</button>
+      <button class="btn btn-light" onclick="scrollToContact()">Talk to an Advisor</button>
     </div>
-  </section>
+  </div>
+</section>
 
-  <section class="section" id="packages">
-    <div class="container">
-      <h2 class="section-title">Choose Your Perfect Package</h2>
-      <p class="section-subtitle">Simple and affordable plans for startups, consultants, and growing businesses.</p>
-      <div class="packages-grid">
-        <article class="package-card card-1">
-          <div class="package-head">
-            <h3>Private Limited Company</h3>
-            <div class="package-price">₹15,000</div>
-          </div>
-          <div class="package-body">
-            <ul>
-              <li>DSC + DIN for 2 Directors</li>
-              <li>Name reservation and incorporation</li>
-              <li>PAN/TAN + MOA/AOA support</li>
-              <li>Dedicated relationship manager</li>
-            </ul>
-            <button class="btn btn-primary">Get Started</button>
-          </div>
-        </article>
+<section class="section" id="packages">
+  <div class="container">
+    <h2 class="section-title">Choose Your Perfect Package</h2>
+    <p class="section-subtitle">Simple and affordable plans for startups, consultants, and growing businesses.</p>
+    <div class="packages-grid">
+      <article class="package-card card-1">
+        <div class="package-head">
+          <h3>Private Limited Company</h3>
+          <div class="package-price">₹15,000</div>
+        </div>
+        <div class="package-body">
+          <ul>
+            <li>DSC + DIN for 2 Directors</li>
+            <li>Name Reservation & Incorporation</li>
+            <li>PAN, TAN & MOA/AOA Drafting</li>
+            <li>Startup consultation call</li>
+          </ul>
+          <button class="btn btn-primary">Get Started</button>
+        </div>
+      </article>
 
-        <article class="package-card card-2">
-          <div class="package-head">
-            <h3>LLP Registration</h3>
-            <div class="package-price">₹16,000</div>
-          </div>
-          <div class="package-body">
-            <ul>
-              <li>DIN + DSC for partners</li>
-              <li>LLP name approval</li>
-              <li>Incorporation filing support</li>
-              <li>PAN/TAN and agreement guidance</li>
-            </ul>
-            <button class="btn btn-primary">Get Started</button>
-          </div>
-        </article>
+      <article class="package-card card-2">
+        <div class="package-head">
+          <h3>LLP Registration</h3>
+          <div class="package-price">₹16,000</div>
+        </div>
+        <div class="package-body">
+          <ul>
+            <li>DIN + DSC for Partners</li>
+            <li>LLP Name Approval</li>
+            <li>Incorporation Filing</li>
+            <li>PAN, TAN & LLP Agreement Guide</li>
+          </ul>
+          <button class="btn btn-primary">Get Started</button>
+        </div>
+      </article>
 
-        <article class="package-card card-3">
-          <div class="package-head">
-            <h3>Proprietorship + Udyam</h3>
-            <div class="package-price">₹10,000</div>
-          </div>
-          <div class="package-body">
-            <ul>
-              <li>Business setup consultation</li>
-              <li>Udyam registration filing</li>
-              <li>Business profile guidance</li>
-              <li>Quick support turnaround</li>
-            </ul>
-            <button class="btn btn-primary">Get Started</button>
-          </div>
-        </article>
-      </div>
+      <article class="package-card card-3">
+        <div class="package-head">
+          <h3>Proprietorship + Udyam</h3>
+          <div class="package-price">₹10,000</div>
+        </div>
+        <div class="package-body">
+          <ul>
+            <li>Business setup consultation</li>
+            <li>Udyam Registration</li>
+            <li>Business profile draft</li>
+            <li>Dedicated filing executive</li>
+          </ul>
+          <button class="btn btn-primary">Get Started</button>
+        </div>
+      </article>
+
+      <article class="package-card card-4">
+        <div class="package-head">
+          <h3>One Person Company</h3>
+          <div class="package-price">₹16,000</div>
+        </div>
+        <div class="package-body">
+          <ul>
+            <li>DIN + DSC + Name Approval</li>
+            <li>OPC Incorporation Filing</li>
+            <li>PAN/TAN + COI</li>
+            <li>Post-incorporation checklist</li>
+          </ul>
+          <button class="btn btn-primary">Get Started</button>
+        </div>
+      </article>
+
+      <article class="package-card card-5">
+        <div class="package-head">
+          <h3>Complete Business Bundle</h3>
+          <div class="package-price">₹23,000</div>
+        </div>
+        <div class="package-body">
+          <ul>
+            <li>Company registration</li>
+            <li>GST + Udyam + MSME profile</li>
+            <li>1-year basic compliance support</li>
+            <li>Priority advisory assistance</li>
+          </ul>
+          <button class="btn btn-primary">Get Started</button>
+        </div>
+      </article>
+
+      <article class="package-card card-6">
+        <div class="package-head">
+          <h3>GST Registration</h3>
+          <div class="package-price">₹2,500</div>
+        </div>
+        <div class="package-body">
+          <ul>
+            <li>GST application filing</li>
+            <li>Document drafting support</li>
+            <li>ARN tracking till approval</li>
+            <li>Initial return filing guidance</li>
+          </ul>
+          <button class="btn btn-primary">Get Started</button>
+        </div>
+      </article>
     </div>
-  </section>
+  </div>
+</section>
 
-  <section class="section gem" id="gem">
-    <div class="container gem-content">
-      <h2 class="section-title">GeM Registration Support</h2>
-      <p class="section-subtitle">Onboard your business on Government e-Marketplace with complete documentation and profile setup.</p>
-      <button class="btn btn-light">Apply for GeM Registration</button>
+<section class="section testimonials" id="reviews">
+  <div class="container">
+    <h2 class="section-title">What Clients Say</h2>
+    <p class="section-subtitle">Real feedback from founders and consultants who launched with us.</p>
+    <div class="testimonial-grid">
+      <article class="testimonial">
+        <p>“The private limited package was smooth and transparent. My business was incorporated in under a week and their team handled every step.”</p>
+        <div class="author">Rajesh Sharma · Tech Startup Founder, Mumbai</div>
+      </article>
+      <article class="testimonial">
+        <p>“We got LLP registration and GeM profile support quickly. Very professional and genuinely helpful guidance for first-time founders.”</p>
+        <div class="author">Priya Kapoor · Consulting Partner, Delhi</div>
+      </article>
+      <article class="testimonial">
+        <p>“As a freelancer, the proprietorship package was perfect. Minimal paperwork and excellent support throughout the process.”</p>
+        <div class="author">Amit Mehta · Digital Consultant, Bangalore</div>
+      </article>
     </div>
-  </section>
+  </div>
+</section>
 
-  <section class="section testimonials" id="reviews">
-    <div class="container">
-      <h2 class="section-title">Client Reviews</h2>
-      <div class="testimonial-grid">
-        <article class="testimonial">
-          <p>“Fast, professional and very transparent. Our company was registered quickly with complete support.”</p>
-          <div class="author">Rajesh Sharma · Mumbai</div>
-        </article>
-        <article class="testimonial">
-          <p>“They helped us with LLP plus GeM registration smoothly. Excellent team and response time.”</p>
-          <div class="author">Priya Kapoor · Delhi</div>
-        </article>
-      </div>
+<section class="cta" id="contact">
+  <div class="container">
+    <h2 class="section-title" style="color:#fff; margin-bottom:0;">Ready to Start Your Business Journey?</h2>
+    <p>Join thousands of successful entrepreneurs who chose GRIH for expert guidance, guaranteed support, and transparent pricing.</p>
+    <div class="cta-actions">
+      <a class="btn btn-light" href="tel:+918076818682">📞 Call +91-8076-818-682</a>
+      <a class="btn" style="background:#26d367; color:#fff;" href="#">💬 WhatsApp Now</a>
+      <a class="btn btn-light" href="mailto:info@grih.in">✉️ Email Us</a>
     </div>
-  </section>
-
-  <section class="section" id="blog">
-    <div class="container">
-      <h2 class="section-title">Latest from Our Blog</h2>
-      <div class="blog-grid">
-        <article class="blog-card">
-          <h3>How to Choose the Right Business Structure in India</h3>
-          <p>Compare Pvt Ltd, LLP, OPC and Proprietorship models with practical guidance.</p>
-        </article>
-        <article class="blog-card">
-          <h3>GeM Registration Checklist for New Sellers</h3>
-          <p>Understand mandatory docs and avoid common profile mistakes.</p>
-        </article>
-      </div>
+    <div class="contact-box">
+      <strong>Business Hours:</strong> Monday to Saturday, 9:00 AM - 8:00 PM<br>
+      <strong>Office:</strong> Delhi NCR · <strong>Website:</strong> registration.grih.in
     </div>
-  </section>
+  </div>
+</section>
 
-  <section class="cta" id="contact">
-    <div class="container">
-      <h2 class="section-title cta-title">Ready to Start Your Business Journey?</h2>
-      <p>Call, WhatsApp, or email us for a quick consultation with our experts.</p>
-      <div class="cta-actions">
-        <a class="btn btn-light" href="tel:+918076818682">📞 Call +91-8076-818-682</a>
-        <a class="btn btn-success" href="#">💬 WhatsApp Now</a>
-        <a class="btn btn-light" href="mailto:info@grih.in">✉️ Email Us</a>
-      </div>
+<footer>
+  <div class="container footer-grid">
+    <div>
+      <h4>GRIH Business Solutions</h4>
+      <p>India's trusted registration and compliance partner with 50,000+ successful registrations and transparent service delivery.</p>
+      <p><strong>CIN:</strong> U74999DL2018PTC359876</p>
+      <p><strong>GSTIN:</strong> 07AABCU9605R1ZK</p>
     </div>
-  </section>
-
-  <footer>
-    <div class="container footer-grid">
-      <div>
-        <h4>GRIH Business Solutions</h4>
-        <p>India’s trusted registration partner with transparent pricing and expert support.</p>
-      </div>
-      <div>
-        <h4>Quick Links</h4>
-        <ul>
-          <li>Pricing Packages</li>
-          <li>GeM Registration</li>
-          <li>Client Reviews</li>
-        </ul>
-      </div>
-      <div>
-        <h4>Contact</h4>
-        <p>📞 +91-8076-818-682</p>
-        <p>📧 info@grih.in</p>
-        <p>📍 Connaught Place, New Delhi</p>
-      </div>
+    <div>
+      <h4>Our Services</h4>
+      <ul>
+        <li>Company Registration</li>
+        <li>Udyam Registration</li>
+        <li>GST Registration</li>
+        <li>Trademark Filing</li>
+        <li>Annual Compliances</li>
+      </ul>
     </div>
-    <div class="container copyright">© 2026 GRIH Business Solutions Pvt Ltd. All rights reserved.</div>
-  </footer>
+    <div>
+      <h4>Contact Information</h4>
+      <p>📞 +91-8076 818 682</p>
+      <p>📧 info@grih.in</p>
+      <p>🌐 www.grih.in</p>
+      <p>📍 Connaught Place, New Delhi</p>
+      <p>🕘 Mon-Sat: 9:00 AM - 8:00 PM</p>
+    </div>
+  </div>
+  <div class="container copyright">© 2026 GRIH Business Solutions Pvt Ltd. All rights reserved.</div>
+</footer>
 
-  <script src="script.js"></script>
+<script>
+function scrollToContact() {
+  document.getElementById("contact").scrollIntoView({ behavior: "smooth" });
+}
+
+function scrollToPackages() {
+  document.getElementById("packages").scrollIntoView({ behavior: "smooth" });
+}
+
+const menuToggle = document.getElementById("menuToggle");
+const mobileMenu = document.getElementById("mobileMenu");
+
+menuToggle.addEventListener("click", () => {
+  mobileMenu.classList.toggle("open");
+});
+
+mobileMenu.querySelectorAll("a").forEach((item) => {
+  item.addEventListener("click", () => {
+    mobileMenu.classList.remove("open");
+  });
+});
+</script>
 </body>
 </html>

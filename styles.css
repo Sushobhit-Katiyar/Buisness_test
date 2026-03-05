@@ -49,81 +49,45 @@ nav {
   align-items: center;
   gap: 0.8rem;
   justify-content: space-between;
-  padding: 0.72rem 0;
+  padding: 0.75rem 0;
   color: #fff;
 }
 
 .brand-wrap {
   display: inline-flex;
   align-items: center;
-  gap: 0.55rem;
-  min-width: 0;
+  gap: 0.5rem;
 }
 
 .brand-logo {
-  width: 34px;
-  height: 34px;
-  border-radius: 10px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
   display: inline-grid;
   place-items: center;
   background: linear-gradient(135deg, #5ca3ff, #8d61ec);
   font-weight: 700;
-  font-size: 0.74rem;
-  letter-spacing: 0.3px;
-}
-
-.brand-text-wrap {
-  display: grid;
-  line-height: 1.05;
 }
 
 .brand-text {
   font-size: 0.9rem;
   font-weight: 700;
-  white-space: nowrap;
-}
-
-.brand-sub {
-  font-size: 0.64rem;
-  color: #9ab0d2;
 }
 
 .nav-links {
   display: none;
-  gap: 1.05rem;
+  gap: 1rem;
   color: #eaf0ff;
   font-size: 0.92rem;
 }
 
-.nav-links a {
-  position: relative;
-  font-weight: 500;
-}
-
-.nav-links a::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: -0.2rem;
-  width: 0;
-  height: 2px;
-  background: #72b7ff;
-  transition: width 0.2s ease;
-}
-
-.nav-links a:hover {
-  color: #9ad1ff;
-}
-
-.nav-links a:hover::after {
-  width: 100%;
-}
+.nav-links a:hover { color: #8ec7ff; }
 
 .nav-cta {
   display: none;
   background: linear-gradient(90deg, #ffc64d, #ff8b55);
   color: #172033;
-  padding: 0.5rem 0.95rem;
+  padding: 0.48rem 0.88rem;
   border-radius: 999px;
   font-size: 0.82rem;
   font-weight: 700;
@@ -137,7 +101,6 @@ nav {
   font-size: 1rem;
   padding: 0.3rem 0.56rem;
   cursor: pointer;
-  margin-left: auto;
 }
 
 .mobile-menu {
@@ -343,9 +306,8 @@ footer li, footer p { margin-bottom: 0.35rem; font-size: 0.9rem; }
   padding-top: 0.85rem;
 }
 
-@media (max-width: 420px) {
-  .brand-sub { display: none; }
-  .brand-text { font-size: 0.78rem; }
+@media (max-width: 359px) {
+  .brand-text { font-size: 0.76rem; }
   .quick-badges { grid-template-columns: 1fr; }
 }
 
@@ -362,13 +324,11 @@ footer li, footer p { margin-bottom: 0.35rem; font-size: 0.9rem; }
   .about-grid { grid-template-columns: 1.3fr 1fr; align-items: center; }
 }
 
-@media (min-width: 920px) {
+@media (min-width: 980px) {
   .menu-toggle,
   .mobile-menu { display: none !important; }
 
-  .brand-text { font-size: 1rem; }
-
-  .brand-sub { display: block; }
+  .brand-text { font-size: 0.98rem; }
 
   .nav-links { display: flex; }
 
