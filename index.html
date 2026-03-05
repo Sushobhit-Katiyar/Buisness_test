@@ -1,298 +1,209 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Business Website</title>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-<style>
-
-/* ===== GLOBAL ===== */
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  font-family: 'Poppins', sans-serif;
-}
-
-body{
-  background:#f5f7fa;
-  color:#333;
-}
-
-a{
-  text-decoration:none;
-  color:inherit;
-}
-
-/* ===== NAVBAR ===== */
-nav{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  padding:20px 10%;
-  background:white;
-  box-shadow:0 2px 10px rgba(0,0,0,0.1);
-  position:fixed;
-  width:100%;
-  top:0;
-  z-index:1000;
-}
-
-nav h2{
-  color:#2b7cff;
-}
-
-nav ul{
-  display:flex;
-  list-style:none;
-}
-
-nav ul li{
-  margin-left:20px;
-}
-
-nav ul li a{
-  font-weight:500;
-}
-
-nav ul li a:hover{
-  color:#2b7cff;
-}
-
-/* ===== HERO ===== */
-.hero{
-  height:100vh;
-  background:url('https://images.unsplash.com/photo-1504384308090-c894fdcc538d') no-repeat center center/cover;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  text-align:center;
-  color:white;
-  padding:0 20px;
-}
-
-.hero-content{
-  background:rgba(0,0,0,0.5);
-  padding:40px;
-  border-radius:10px;
-}
-
-.hero h1{
-  font-size:48px;
-  margin-bottom:20px;
-}
-
-.hero p{
-  font-size:18px;
-  margin-bottom:30px;
-}
-
-.hero button{
-  padding:12px 25px;
-  background:#2b7cff;
-  border:none;
-  color:white;
-  border-radius:5px;
-  cursor:pointer;
-  font-size:16px;
-}
-
-/* ===== SERVICES ===== */
-.services{
-  padding:100px 10%;
-  text-align:center;
-  background:white;
-}
-
-.services h2{
-  font-size:36px;
-  margin-bottom:50px;
-}
-
-.service-boxes{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-  gap:30px;
-}
-
-.service{
-  padding:30px;
-  background:#f5f7fa;
-  border-radius:10px;
-  transition:0.3s;
-}
-
-.service:hover{
-  transform:translateY(-5px);
-  box-shadow:0 10px 20px rgba(0,0,0,0.1);
-}
-
-.service i{
-  font-size:40px;
-  margin-bottom:15px;
-  color:#2b7cff;
-}
-
-/* ===== CONTACT ===== */
-.contact{
-  padding:100px 10%;
-  background:#f5f7fa;
-}
-
-.contact h2{
-  text-align:center;
-  margin-bottom:40px;
-}
-
-.contact form{
-  max-width:600px;
-  margin:auto;
-  display:flex;
-  flex-direction:column;
-}
-
-.contact input,
-.contact textarea{
-  margin-bottom:15px;
-  padding:12px;
-  border:1px solid #ccc;
-  border-radius:5px;
-}
-
-.contact button{
-  padding:12px;
-  background:#2b7cff;
-  color:white;
-  border:none;
-  border-radius:5px;
-  cursor:pointer;
-}
-
-/* ===== FOOTER ===== */
-footer{
-  background:#222;
-  color:white;
-  text-align:center;
-  padding:30px 10%;
-}
-
-footer .social a{
-  margin:0 10px;
-  color:white;
-  font-size:18px;
-}
-
-@media(max-width:768px){
-  nav{
-    padding:20px 5%;
-  }
-  .hero h1{
-    font-size:32px;
-  }
-}
-
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GRIH Business Solutions</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+  <div class="top-strip">Trusted by 50,000+ entrepreneurs across India for business registration & compliance.</div>
 
-<!-- NAVBAR -->
-<nav>
-  <h2>YourLogo</h2>
-  <ul>
-    <li><a href="#home">Home</a></li>
-    <li><a href="#services">Services</a></li>
-    <li><a href="#contact">Contact</a></li>
-  </ul>
-</nav>
+  <nav>
+    <div class="container nav-inner">
+      <a href="#home" class="brand-wrap">
+        <span class="brand-logo">G</span>
+        <span class="brand-text">GRIH Business Solutions</span>
+      </a>
 
-<!-- HERO -->
-<section class="hero" id="home">
-  <div class="hero-content">
-    <h1>Your Business Tagline</h1>
-    <p>We provide reliable and professional services for your business growth.</p>
-    <button onclick="scrollToContact()">Get In Touch</button>
-  </div>
-</section>
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation menu">☰</button>
 
-<!-- SERVICES -->
-<section class="services" id="services">
-  <h2>Our Services</h2>
-  <div class="service-boxes">
-    <div class="service">
-      <i>⚙</i>
-      <h3>Service One</h3>
-      <p>Short description of your service.</p>
+      <div class="nav-links">
+        <a href="#home">Home</a>
+        <a href="#about">About Us</a>
+        <a href="#contact">Contact</a>
+        <a href="#gem">GeM Registration</a>
+        <a href="#blog">Blog</a>
+      </div>
+
+      <a class="nav-cta" href="tel:+918076818682">Call Now</a>
     </div>
-    <div class="service">
-      <i>💼</i>
-      <h3>Service Two</h3>
-      <p>Short description of your service.</p>
+
+    <div class="container mobile-menu" id="mobileMenu">
+      <a href="#home">Home</a>
+      <a href="#about">About Us</a>
+      <a href="#contact">Contact</a>
+      <a href="#gem">GeM Registration</a>
+      <a href="#blog">Blog</a>
     </div>
-    <div class="service">
-      <i>📈</i>
-      <h3>Service Three</h3>
-      <p>Short description of your service.</p>
+  </nav>
+
+  <section class="hero" id="home">
+    <div class="container hero-content">
+      <h1>Register Your Business <br> in Just 7 Days!</h1>
+      <p>Get expert assistance for company formation, GST, GeM onboarding, trademark filing, and annual compliance with transparent pricing.</p>
+      <div class="quick-badges">
+        <div class="badge">✅ 100% Online Process</div>
+        <div class="badge">⚡ Fast Approvals</div>
+        <div class="badge">🛡️ End-to-End Support</div>
+        <div class="badge">📞 Dedicated Advisor</div>
+      </div>
+      <div class="hero-actions">
+        <button class="btn btn-primary" onclick="scrollToSection('packages')">View Plans</button>
+        <button class="btn btn-light" onclick="scrollToSection('contact')">Talk to Expert</button>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- CONTACT -->
-<section class="contact" id="contact">
-  <h2>Contact Us</h2>
-  <form id="contactForm">
-    <input type="text" id="name" placeholder="Your Name" required>
-    <input type="email" id="email" placeholder="Your Email" required>
-    <textarea id="message" rows="5" placeholder="Your Message" required></textarea>
-    <button type="submit">Send Message</button>
-  </form>
-</section>
+  <section class="section" id="about">
+    <div class="container about-grid">
+      <div>
+        <h2 class="section-title left">Why Choose GRIH?</h2>
+        <p class="about-text">We combine legal expertise, startup-first guidance, and fast documentation support to help founders launch confidently. From business registration to compliance, we simplify every step.</p>
+      </div>
+      <div class="about-points">
+        <div class="point">50,000+ successful registrations</div>
+        <div class="point">Transparent pricing, no hidden fees</div>
+        <div class="point">Pan-India filing & support team</div>
+      </div>
+    </div>
+  </section>
 
-<!-- FOOTER -->
-<footer>
-  <p>© 2026 Your Business Name. All Rights Reserved.</p>
-  <div class="social">
-    <a href="#">Facebook</a>
-    <a href="#">Instagram</a>
-    <a href="#">LinkedIn</a>
-  </div>
-</footer>
+  <section class="section" id="packages">
+    <div class="container">
+      <h2 class="section-title">Choose Your Perfect Package</h2>
+      <p class="section-subtitle">Simple and affordable plans for startups, consultants, and growing businesses.</p>
+      <div class="packages-grid">
+        <article class="package-card card-1">
+          <div class="package-head">
+            <h3>Private Limited Company</h3>
+            <div class="package-price">₹15,000</div>
+          </div>
+          <div class="package-body">
+            <ul>
+              <li>DSC + DIN for 2 Directors</li>
+              <li>Name reservation and incorporation</li>
+              <li>PAN/TAN + MOA/AOA support</li>
+              <li>Dedicated relationship manager</li>
+            </ul>
+            <button class="btn btn-primary">Get Started</button>
+          </div>
+        </article>
 
-<script>
+        <article class="package-card card-2">
+          <div class="package-head">
+            <h3>LLP Registration</h3>
+            <div class="package-price">₹16,000</div>
+          </div>
+          <div class="package-body">
+            <ul>
+              <li>DIN + DSC for partners</li>
+              <li>LLP name approval</li>
+              <li>Incorporation filing support</li>
+              <li>PAN/TAN and agreement guidance</li>
+            </ul>
+            <button class="btn btn-primary">Get Started</button>
+          </div>
+        </article>
 
-/* Smooth Scroll */
-function scrollToContact(){
-  document.getElementById("contact").scrollIntoView({behavior:"smooth"});
-}
+        <article class="package-card card-3">
+          <div class="package-head">
+            <h3>Proprietorship + Udyam</h3>
+            <div class="package-price">₹10,000</div>
+          </div>
+          <div class="package-body">
+            <ul>
+              <li>Business setup consultation</li>
+              <li>Udyam registration filing</li>
+              <li>Business profile guidance</li>
+              <li>Quick support turnaround</li>
+            </ul>
+            <button class="btn btn-primary">Get Started</button>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
 
-/* Connect Contact Form to Backend */
-document.getElementById("contactForm").addEventListener("submit", async function(e){
-  e.preventDefault();
+  <section class="section gem" id="gem">
+    <div class="container gem-content">
+      <h2 class="section-title">GeM Registration Support</h2>
+      <p class="section-subtitle">Onboard your business on Government e-Marketplace with complete documentation and profile setup.</p>
+      <button class="btn btn-light">Apply for GeM Registration</button>
+    </div>
+  </section>
 
-  const name = document.getElementById("name").value;
-  const email = document.getElementById("email").value;
-  const message = document.getElementById("message").value;
+  <section class="section testimonials" id="reviews">
+    <div class="container">
+      <h2 class="section-title">Client Reviews</h2>
+      <div class="testimonial-grid">
+        <article class="testimonial">
+          <p>“Fast, professional and very transparent. Our company was registered quickly with complete support.”</p>
+          <div class="author">Rajesh Sharma · Mumbai</div>
+        </article>
+        <article class="testimonial">
+          <p>“They helped us with LLP plus GeM registration smoothly. Excellent team and response time.”</p>
+          <div class="author">Priya Kapoor · Delhi</div>
+        </article>
+      </div>
+    </div>
+  </section>
 
-  const response = await fetch("http://localhost:5000/send", {
-    method:"POST",
-    headers:{
-      "Content-Type":"application/json"
-    },
-    body: JSON.stringify({name, email, message})
-  });
+  <section class="section" id="blog">
+    <div class="container">
+      <h2 class="section-title">Latest from Our Blog</h2>
+      <div class="blog-grid">
+        <article class="blog-card">
+          <h3>How to Choose the Right Business Structure in India</h3>
+          <p>Compare Pvt Ltd, LLP, OPC and Proprietorship models with practical guidance.</p>
+        </article>
+        <article class="blog-card">
+          <h3>GeM Registration Checklist for New Sellers</h3>
+          <p>Understand mandatory docs and avoid common profile mistakes.</p>
+        </article>
+      </div>
+    </div>
+  </section>
 
-  const data = await response.json();
+  <section class="cta" id="contact">
+    <div class="container">
+      <h2 class="section-title cta-title">Ready to Start Your Business Journey?</h2>
+      <p>Call, WhatsApp, or email us for a quick consultation with our experts.</p>
+      <div class="cta-actions">
+        <a class="btn btn-light" href="tel:+918076818682">📞 Call +91-8076-818-682</a>
+        <a class="btn btn-success" href="#">💬 WhatsApp Now</a>
+        <a class="btn btn-light" href="mailto:info@grih.in">✉️ Email Us</a>
+      </div>
+    </div>
+  </section>
 
-  if(data.success){
-    alert("Message sent successfully!");
-    this.reset();
-  } else {
-    alert("Something went wrong!");
-  }
+  <footer>
+    <div class="container footer-grid">
+      <div>
+        <h4>GRIH Business Solutions</h4>
+        <p>India’s trusted registration partner with transparent pricing and expert support.</p>
+      </div>
+      <div>
+        <h4>Quick Links</h4>
+        <ul>
+          <li>Pricing Packages</li>
+          <li>GeM Registration</li>
+          <li>Client Reviews</li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <p>📞 +91-8076-818-682</p>
+        <p>📧 info@grih.in</p>
+        <p>📍 Connaught Place, New Delhi</p>
+      </div>
+    </div>
+    <div class="container copyright">© 2026 GRIH Business Solutions Pvt Ltd. All rights reserved.</div>
+  </footer>
 
-});
-
-</script>
-
+  <script src="script.js"></script>
 </body>
 </html>
