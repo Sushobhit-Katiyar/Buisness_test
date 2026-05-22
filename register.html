@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Registration Details | Sarkari Kagaz</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
+    }
+
+    :root {
+      --blue: #355cfd;
+      --purple: #7f53d4;
+      --text: #1f2d44;
+      --muted: #5d7085;
+      --bg: #f3f6fb;
+      --card: #ffffff;
+      --border: #e2e8f0;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(1140px, 92%);
+      margin: 0 auto;
+    }
+
+    .top-strip {
+      background: #1438b2;
+      color: #dbe8ff;
+      font-size: 0.82rem;
+      text-align: center;
+      padding: 0.5rem 0.85rem;
+    }
+
+    nav {
+      background: #10225a;
+      padding: 0.9rem 0;
+    }
+
+    .nav-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .brand {
+      color: #fff;
+      font-weight: 700;
+      letter-spacing: 0.2px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      font-size: 0.92rem;
+    }
+
+    .nav-links a {
+      color: #e9efff;
+    }
+
+    .nav-links a:hover {
+      color: #fff;
+    }
+
+    .btn-outline {
+      display: inline-flex;
+      padding: 0.55rem 1rem;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: #fff;
+      background: transparent;
+      transition: background 0.2s ease;
+    }
+
+    .btn-outline:hover {
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    main {
+      padding: 2.5rem 0 3rem;
+    }
+
+    .form-panel {
+      background: var(--card);
+      border-radius: 24px;
+      box-shadow: 0 16px 40px rgba(59, 72, 103, 0.12);
+      padding: 2rem;
+    }
+
+    .headline {
+      display: grid;
+      gap: 0.65rem;
+      max-width: 760px;
+      margin-bottom: 1.5rem;
+    }
+
+    .headline h1 {
+      font-size: clamp(1.8rem, 3vw, 2.7rem);
+      color: #16223b;
+    }
+
+    .headline p {
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .form-grid {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .field-group {
+      display: grid;
+      gap: 0.45rem;
+    }
+
+    label {
+      font-size: 0.92rem;
+      color: #42516f;
+      font-weight: 600;
+    }
+
+    input,
+    select,
+    textarea {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      background: #f9fafb;
+      color: var(--text);
+      padding: 0.9rem 1rem;
+      font-size: 0.95rem;
+      outline: none;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+      border-color: var(--blue);
+      box-shadow: 0 0 0 4px rgba(53, 92, 253, 0.12);
+    }
+
+    textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    .button-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      align-items: center;
+      margin-top: 1rem;
+    }
+
+    .btn-primary {
+      background: linear-gradient(90deg, #5f72e7, #8d61ec);
+      color: #fff;
+      border: none;
+      border-radius: 999px;
+      padding: 0.95rem 1.4rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: transform 0.2s ease, opacity 0.2s ease;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      opacity: 0.95;
+    }
+
+    .form-help {
+      color: var(--muted);
+      font-size: 0.92rem;
+      line-height: 1.6;
+      margin-top: 1rem;
+    }
+
+    .form-status {
+      margin-top: 1rem;
+      font-size: 0.95rem;
+      color: #176f45;
+      font-weight: 600;
+    }
+
+    .registration-details {
+      display: grid;
+      gap: 1rem;
+      margin-top: 0.75rem;
+      padding: 1.15rem 1rem;
+      border-radius: 18px;
+      background: #f6f7ff;
+      border: 1px solid #dbe2ff;
+      color: #32426f;
+      font-size: 0.95rem;
+    }
+
+    @media (min-width: 720px) {
+      .form-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 720px) {
+      .nav-inner {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.75rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="top-strip">Complete the form below and our expert will contact you to start your registration.</div>
+  <nav>
+    <div class="container nav-inner">
+      <div class="brand">Sarkari Kagaz</div>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="index.html#packages">Pricing</a>
+        <a href="index.html#contact">Contact</a>
+      </div>
+      <a class="btn-outline" href="index.html">Back to Home</a>
+    </div>
+  </nav>
+
+  <main class="container">
+    <section class="form-panel">
+      <div class="headline">
+        <h1 id="pageTitle">Registration Details</h1>
+        <p id="pageSubtitle">Enter your business information below so we can begin the required registration process for your selected service.</p>
+      </div>
+
+      <form id="registrationForm">
+        <input type="hidden" name="registrationType" id="registrationType" value="" />
+
+        <div class="form-grid">
+          <div class="field-group">
+            <label for="fullName">Full Name</label>
+            <input id="fullName" name="fullName" type="text" placeholder="Your full name" required />
+          </div>
+
+          <div class="field-group">
+            <label for="email">Email Address</label>
+            <input id="email" name="email" type="email" placeholder="you@example.com" required />
+          </div>
+
+          <div class="field-group">
+            <label for="phone">Mobile Number</label>
+            <input id="phone" name="phone" type="tel" placeholder="+91 98765 43210" required />
+          </div>
+
+          <div class="field-group">
+            <label for="businessName">Business / Company Name</label>
+            <input id="businessName" name="businessName" type="text" placeholder="Your business name" required />
+          </div>
+
+          <div class="field-group">
+            <label for="panNumber">PAN Number</label>
+            <input id="panNumber" name="panNumber" type="text" placeholder="ABCDE1234F" required />
+          </div>
+
+          <div class="field-group">
+            <label for="businessAddress">Registered Business Address</label>
+            <textarea id="businessAddress" name="businessAddress" placeholder="Business address, city, state and PIN code" required></textarea>
+          </div>
+        </div>
+
+        <div class="registration-details" id="registrationNote">
+          <strong>Service Notes:</strong>
+          <div id="serviceDetails">Please choose your registration type above.</div>
+        </div>
+
+        <div class="form-grid" id="gemFields" style="display:none;">
+          <div class="field-group">
+            <label for="gemCategory">Product / Service Category</label>
+            <input id="gemCategory" name="gemCategory" type="text" placeholder="Example: Office Supplies, Electronics" />
+          </div>
+
+          <div class="field-group">
+            <label for="gemWebsite">Business Website / Catalog</label>
+            <input id="gemWebsite" name="gemWebsite" type="url" placeholder="https://yourbusiness.com" />
+          </div>
+
+          <div class="field-group">
+            <label for="gemCompanyType">Company Type</label>
+            <select id="gemCompanyType" name="gemCompanyType">
+              <option value="">Select type</option>
+              <option>Proprietorship</option>
+              <option>Partnership</option>
+              <option>Private Limited</option>
+              <option>LLP</option>
+              <option>Others</option>
+            </select>
+          </div>
+
+          <div class="field-group">
+            <label for="gemProductCount">Approximate Product Count</label>
+            <input id="gemProductCount" name="gemProductCount" type="text" placeholder="Number of products/services" />
+          </div>
+        </div>
+
+        <div class="form-grid" id="udyamFields" style="display:none;">
+          <div class="field-group">
+            <label for="udyamAadhaar">Aadhaar Number</label>
+            <input id="udyamAadhaar" name="udyamAadhaar" type="text" placeholder="1234 5678 9012" />
+          </div>
+
+          <div class="field-group">
+            <label for="udyamMajorActivity">Major Activity</label>
+            <select id="udyamMajorActivity" name="udyamMajorActivity">
+              <option value="">Select activity</option>
+              <option>Manufacturing</option>
+              <option>Services</option>
+              <option>Trading</option>
+              <option>Agriculture</option>
+            </select>
+          </div>
+
+          <div class="field-group">
+            <label for="udyamInvestment">Investment in Plant & Machinery</label>
+            <input id="udyamInvestment" name="udyamInvestment" type="text" placeholder="Example: ₹20 Lakhs" />
+          </div>
+
+          <div class="field-group">
+            <label for="udyamEmployment">Number of Employees</label>
+            <input id="udyamEmployment" name="udyamEmployment" type="number" placeholder="Total employees" />
+          </div>
+        </div>
+
+        <div class="button-row">
+          <button class="btn-primary" type="submit">Submit Details</button>
+          <span class="form-help">We will review your details and contact you within 1 business day to proceed.</span>
+        </div>
+
+        <div class="form-status" id="formStatus"></div>
+      </form>
+    </section>
+  </main>
+
+  <script>
+    function getQueryParameter(name) {
+      const params = new URLSearchParams(window.location.search);
+      return params.get(name);
+    }
+
+    function setRegistrationMode(type) {
+      const pageTitle = document.getElementById('pageTitle');
+      const pageSubtitle = document.getElementById('pageSubtitle');
+      const serviceDetails = document.getElementById('serviceDetails');
+      const regTypeInput = document.getElementById('registrationType');
+      const gemFields = document.getElementById('gemFields');
+      const udyamFields = document.getElementById('udyamFields');
+
+      if (type === 'udyam') {
+        pageTitle.textContent = 'Udyam Registration Details';
+        pageSubtitle.textContent = 'Share your MSME and business information so we can prepare your Udyam registration correctly.';
+        serviceDetails.textContent = 'Udyam registration typically requires Aadhaar, PAN, business activity, business address and employee count. Complete the details below so our team can process your registration.';
+        regTypeInput.value = 'udyam';
+        gemFields.style.display = 'none';
+        udyamFields.style.display = 'grid';
+      } else {
+        pageTitle.textContent = 'GeM Registration Details';
+        pageSubtitle.textContent = 'Provide company and product details so we can begin the GeM seller registration process.';
+        serviceDetails.textContent = 'GeM registration requires business details, product categories, company type and contact information. Fill the form so our experts can set up your seller profile.';
+        regTypeInput.value = 'gem';
+        gemFields.style.display = 'grid';
+        udyamFields.style.display = 'none';
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const type = getQueryParameter('type')?.toLowerCase() || 'gem';
+      setRegistrationMode(type);
+
+      const form = document.getElementById('registrationForm');
+      const status = document.getElementById('formStatus');
+
+      form.addEventListener('submit', (event) => {
+        event.preventDefault();
+        status.textContent = 'Thank you! Your details are submitted. Our expert team will contact you shortly.';
+        status.style.color = '#176f45';
+        form.reset();
+        setRegistrationMode(type);
+      });
+    });
+  </script>
+</body>
+</html>
