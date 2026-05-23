@@ -320,6 +320,56 @@
           </div>
         </div>
 
+        <div class="form-grid" id="gemUpdateFields" style="display:none; margin-top:0.8rem;">
+          <div class="field-group">
+            <label for="gemSellerId">GeM Seller ID</label>
+            <input id="gemSellerId" name="gemSellerId" type="text" placeholder="Your GeM Seller ID (if known)" />
+          </div>
+
+          <div class="field-group">
+            <label for="gemUpdateFieldsList">Fields to Update (select or describe)</label>
+            <input id="gemUpdateFieldsList" name="gemUpdateFieldsList" type="text" placeholder="e.g., Contact, Bank details, Product categories" />
+          </div>
+
+          <div class="field-group">
+            <label for="gemNewContact">New Contact / Email (if updating)</label>
+            <input id="gemNewContact" name="gemNewContact" type="text" placeholder="New mobile or email" />
+          </div>
+
+          <div class="field-group">
+            <label for="gemBankDetails">New Bank Details (Account / IFSC)</label>
+            <input id="gemBankDetails" name="gemBankDetails" type="text" placeholder="Account no. - IFSC" />
+          </div>
+
+          <div class="field-group">
+            <label for="gemUpdateDocs">Attach supporting documents</label>
+            <input id="gemUpdateDocs" name="gemUpdateDocs" type="file" accept=".pdf,.jpg,.jpeg,.png" multiple />
+          </div>
+        </div>
+
+        <div class="form-grid" id="gemCancelFields" style="display:none; margin-top:0.8rem;">
+          <div class="field-group">
+            <label for="gemSellerIdCancel">GeM Seller ID</label>
+            <input id="gemSellerIdCancel" name="gemSellerIdCancel" type="text" placeholder="Your GeM Seller ID" />
+          </div>
+
+          <div class="field-group">
+            <label for="gemCancelReason">Reason for Cancellation</label>
+            <textarea id="gemCancelReason" name="gemCancelReason" placeholder="Brief reason for requesting account cancellation"></textarea>
+          </div>
+
+          <div class="field-group">
+            <label for="gemCancelLetter">Upload cancellation request / authorization</label>
+            <input id="gemCancelLetter" name="gemCancelLetter" type="file" accept=".pdf,.jpg,.jpeg,.png" />
+          </div>
+
+          <div class="field-group">
+            <label>
+              <input id="gemCancelConfirm" name="gemCancelConfirm" type="checkbox" /> I confirm I want to request cancellation of my GeM seller account and that I have cleared/closed any active orders.
+            </label>
+          </div>
+        </div>
+
         <div class="form-grid" id="udyamFields" style="display:none;">
           <div class="field-group">
             <label for="udyamAadhaar">Aadhaar Number</label>
@@ -364,13 +414,15 @@
       return params.get(name);
     }
 
-    function setRegistrationMode(type) {
+    function setRegistrationMode(type, action) {
       const pageTitle = document.getElementById('pageTitle');
       const pageSubtitle = document.getElementById('pageSubtitle');
       const serviceDetails = document.getElementById('serviceDetails');
       const regTypeInput = document.getElementById('registrationType');
       const gemFields = document.getElementById('gemFields');
       const udyamFields = document.getElementById('udyamFields');
+      const gemUpdateFields = document.getElementById('gemUpdateFields');
+      const gemCancelFields = document.getElementById('gemCancelFields');
 
       if (type === 'udyam') {
         pageTitle.textContent = 'Udyam Registration Details';
@@ -379,29 +431,64 @@
         regTypeInput.value = 'udyam';
         gemFields.style.display = 'none';
         udyamFields.style.display = 'grid';
+        gemUpdateFields.style.display = 'none';
+        gemCancelFields.style.display = 'none';
       } else {
-        pageTitle.textContent = 'GeM Registration Details';
-        pageSubtitle.textContent = 'Provide company and product details so we can begin the GeM seller registration process.';
-        serviceDetails.textContent = 'GeM registration requires business details, product categories, company type and contact information. Fill the form so our experts can set up your seller profile.';
         regTypeInput.value = 'gem';
-        gemFields.style.display = 'grid';
         udyamFields.style.display = 'none';
+
+        // Action-specific views: default (register), update, cancel
+        if (action === 'update') {
+          pageTitle.textContent = 'GeM — Update Seller Details';
+          pageSubtitle.textContent = 'Update your existing GeM seller profile. Provide fields you want to change and attach supporting documents.';
+          serviceDetails.textContent = 'Provide GeM Seller ID, the fields to update (contact, bank, product categories etc.) and attach any required documents.';
+          gemFields.style.display = 'grid';
+          gemUpdateFields.style.display = 'grid';
+          gemCancelFields.style.display = 'none';
+        } else if (action === 'cancel') {
+          pageTitle.textContent = 'GeM — Request Account Cancellation';
+          pageSubtitle.textContent = 'Request cancellation of your GeM seller account. Please ensure all active orders/contracts are cleared before requesting cancellation.';
+          serviceDetails.textContent = 'Provide GeM Seller ID, reason for cancellation and upload an authorization or request letter. Confirm you have cleared active orders.';
+          gemFields.style.display = 'none';
+          gemUpdateFields.style.display = 'none';
+          gemCancelFields.style.display = 'grid';
+        } else {
+          pageTitle.textContent = 'GeM Registration Details';
+          pageSubtitle.textContent = 'Provide company and product details so we can begin the GeM seller registration process.';
+          serviceDetails.textContent = 'GeM registration requires business details, product categories, company type and contact information. Fill the form so our experts can set up your seller profile.';
+          gemFields.style.display = 'grid';
+          gemUpdateFields.style.display = 'none';
+          gemCancelFields.style.display = 'none';
+        }
       }
     }
 
     document.addEventListener('DOMContentLoaded', () => {
       const type = getQueryParameter('type')?.toLowerCase() || 'gem';
-      setRegistrationMode(type);
+      const action = getQueryParameter('action')?.toLowerCase() || '';
+      setRegistrationMode(type, action);
 
       const form = document.getElementById('registrationForm');
       const status = document.getElementById('formStatus');
 
       form.addEventListener('submit', (event) => {
         event.preventDefault();
-        status.textContent = 'Thank you! Your details are submitted. Our expert team will contact you shortly.';
+
+        // Basic client-side validations for cancel action
+        if (action === 'cancel') {
+          const confirmBox = document.getElementById('gemCancelConfirm');
+          if (confirmBox && !confirmBox.checked) {
+            status.textContent = 'Please confirm cancellation by checking the confirmation box.';
+            status.style.color = '#b22828';
+            return;
+          }
+        }
+
+        // Simulate submission (no backend). In a real app, send form data via fetch.
+        status.textContent = action === 'cancel' ? 'Cancellation request submitted. We will contact you with next steps.' : 'Thank you! Your details are submitted. Our expert team will contact you shortly.';
         status.style.color = '#176f45';
         form.reset();
-        setRegistrationMode(type);
+        setRegistrationMode(type, action);
       });
     });
   </script>
