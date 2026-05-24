@@ -215,8 +215,215 @@
       font-size: 0.95rem;
     }
 
+    .gem-form-container {
+      display: grid;
+      gap: 2rem;
+      grid-template-columns: 1fr;
+    }
+
+    .gem-form-section {
+      background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+      color: #fff;
+      padding: 2rem;
+      border-radius: 20px;
+      box-shadow: 0 8px 32px rgba(30, 60, 114, 0.2);
+    }
+
+    .gem-form-section h2 {
+      font-size: 1.4rem;
+      margin-bottom: 0.3rem;
+      font-weight: 700;
+    }
+
+    .gem-form-section .subtitle {
+      font-size: 0.9rem;
+      color: #e0e8ff;
+      margin-bottom: 1.5rem;
+      font-weight: 500;
+    }
+
+    .gem-form-grid {
+      display: grid;
+      gap: 1rem;
+      grid-template-columns: 1fr;
+    }
+
+    .gem-field-group {
+      display: grid;
+      gap: 0.4rem;
+    }
+
+    .gem-field-group label {
+      color: #f5f7ff;
+      font-size: 0.95rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .gem-field-group label .required {
+      color: #ff6b6b;
+      font-weight: 700;
+      font-size: 1.1rem;
+    }
+
+    .gem-field-group input,
+    .gem-field-group select,
+    .gem-field-group textarea {
+      width: 100%;
+      background: #f9fafb;
+      border: 1.5px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 0.9rem 1rem;
+      font-size: 0.95rem;
+      color: #1f2d44;
+      font-family: "Poppins", sans-serif;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .gem-field-group input:focus,
+    .gem-field-group select:focus,
+    .gem-field-group textarea:focus {
+      border-color: #4a7cc7;
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(74, 124, 199, 0.1);
+    }
+
+    .gem-field-group input::placeholder {
+      color: #9ca3af;
+    }
+
+    .gem-guidelines {
+      background: #f5f9fd;
+      padding: 2rem;
+      border-radius: 20px;
+      border: 2px solid #dfe8f6;
+    }
+
+    .gem-guidelines h2 {
+      background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-size: 1.4rem;
+      margin-bottom: 0.3rem;
+      font-weight: 700;
+    }
+
+    .gem-guidelines .subtitle {
+      color: #6b7280;
+      font-size: 0.9rem;
+      margin-bottom: 1.5rem;
+      font-weight: 500;
+    }
+
+    .guideline-item {
+      margin-bottom: 1.4rem;
+      padding-bottom: 1.4rem;
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    .guideline-item:last-child {
+      margin-bottom: 0;
+      padding-bottom: 0;
+      border-bottom: none;
+    }
+
+    .guideline-item h4 {
+      color: #1e3c72;
+      font-size: 0.95rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .guideline-item p {
+      color: #4b5563;
+      font-size: 0.9rem;
+      line-height: 1.6;
+    }
+
+    .guideline-item p span {
+      display: block;
+      margin-top: 0.4rem;
+      color: #6b7280;
+      font-size: 0.85rem;
+      font-style: italic;
+    }
+
+    .gem-submit-btn {
+      grid-column: 1 / -1;
+      background: linear-gradient(90deg, #5f72e7, #8d61ec);
+      color: #fff;
+      border: none;
+      border-radius: 12px;
+      padding: 1.1rem 2rem;
+      font-weight: 700;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: transform 0.2s ease, opacity 0.2s ease, box-shadow 0.2s ease;
+      margin-top: 1rem;
+      box-shadow: 0 8px 20px rgba(95, 114, 231, 0.3);
+    }
+
+    .gem-submit-btn:hover {
+      transform: translateY(-2px);
+      opacity: 0.95;
+      box-shadow: 0 12px 28px rgba(95, 114, 231, 0.4);
+    }
+
+    .gem-checkbox-group {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.8rem;
+      grid-column: 1 / -1;
+      padding: 1.2rem;
+      background: #f0f4f9;
+      border-radius: 12px;
+      border: 1px solid #dfe8f6;
+    }
+
+    .gem-checkbox-group input[type="checkbox"] {
+      width: 20px;
+      height: 20px;
+      margin-top: 0.3rem;
+      flex-shrink: 0;
+      cursor: pointer;
+    }
+
+    .gem-checkbox-group label {
+      font-size: 0.95rem;
+      color: #1f2d44;
+      cursor: pointer;
+      margin: 0;
+      font-weight: 500;
+    }
+
+    @media (min-width: 1024px) {
+      .gem-form-container {
+        grid-template-columns: 1fr 1fr;
+        gap: 2.5rem;
+      }
+
+      .gem-form-section {
+        grid-column: 1;
+      }
+
+      .gem-guidelines {
+        grid-column: 2;
+        height: fit-content;
+        position: sticky;
+        top: 2rem;
+      }
+    }
+
     @media (min-width: 720px) {
       .form-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .gem-form-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
       }
     }
@@ -226,6 +433,10 @@
         flex-direction: column;
         align-items: flex-start;
         gap: 0.75rem;
+      }
+
+      .gem-form-grid {
+        grid-template-columns: 1fr;
       }
     }
   </style>
@@ -291,32 +502,315 @@
           <div id="serviceDetails">Please choose your registration type above.</div>
         </div>
 
-        <div class="form-grid" id="gemFields" style="display:none;">
-          <div class="field-group">
-            <label for="gemCategory">Product / Service Category</label>
-            <input id="gemCategory" name="gemCategory" type="text" placeholder="Example: Office Supplies, Electronics" />
-          </div>
+        <div id="gemFields" style="display:none;">
+          <div class="gem-form-container">
+            <!-- Left Side: Registration Form -->
+            <div class="gem-form-section">
+              <h2>APPLICATION FORM FOR GEM REGISTRATION</h2>
+              <p class="subtitle">जेम रजिस्ट्रेशन के लिए पंजीकरण फॉर्म</p>
 
-          <div class="field-group">
-            <label for="gemWebsite">Business Website / Catalog</label>
-            <input id="gemWebsite" name="gemWebsite" type="url" placeholder="https://yourbusiness.com" />
-          </div>
+              <div class="gem-form-grid">
+                <div class="gem-field-group">
+                  <label for="gemAuthPersonName">NAME OF AUTHORIZED PERSON <span class="required">*</span></label>
+                  <input id="gemAuthPersonName" name="gemAuthPersonName" type="text" placeholder="Enter authorized person name" />
+                </div>
 
-          <div class="field-group">
-            <label for="gemCompanyType">Company Type</label>
-            <select id="gemCompanyType" name="gemCompanyType">
-              <option value="">Select type</option>
-              <option>Proprietorship</option>
-              <option>Partnership</option>
-              <option>Private Limited</option>
-              <option>LLP</option>
-              <option>Others</option>
-            </select>
-          </div>
+                <div class="gem-field-group">
+                  <label for="gemAuthEmail">E-MAIL ID <span class="required">*</span></label>
+                  <input id="gemAuthEmail" name="gemAuthEmail" type="email" placeholder="Enter valid email address" />
+                </div>
 
-          <div class="field-group">
-            <label for="gemProductCount">Approximate Product Count</label>
-            <input id="gemProductCount" name="gemProductCount" type="text" placeholder="Number of products/services" />
+                <div class="gem-field-group">
+                  <label for="gemAuthPhone">MOBILE NUMBER <span class="required">*</span></label>
+                  <input id="gemAuthPhone" name="gemAuthPhone" type="tel" placeholder="10 digit mobile number" />
+                </div>
+
+                <div class="gem-field-group">
+                  <label for="gemAuthDob">DATE OF BIRTH <span class="required">*</span></label>
+                  <input id="gemAuthDob" name="gemAuthDob" type="date" />
+                </div>
+
+                <div class="gem-field-group">
+                  <label for="gemBusinessName">BUSINESS / ORGANIZATION NAME <span class="required">*</span></label>
+                  <input id="gemBusinessName" name="gemBusinessName" type="text" placeholder="Enter business name" />
+                </div>
+
+                <div class="gem-field-group">
+                  <label for="gemBusinessType">BUSINESS / ORGANIZATION TYPE <span class="required">*</span></label>
+                  <select id="gemBusinessType" name="gemBusinessType">
+                    <option value="">SELECT TYPE</option>
+                    <option>Proprietorship</option>
+                    <option>Partnership</option>
+                    <option>Private Limited</option>
+                    <option>LLP</option>
+                    <option>Public Limited</option>
+                    <option>NGO</option>
+                    <option>Government Department</option>
+                    <option>Others</option>
+                  </select>
+                </div>
+
+                <div class="gem-field-group">
+                  <label for="gemIncorporationDate">INCORPORATION DATE <span class="required">*</span></label>
+                  <input id="gemIncorporationDate" name="gemIncorporationDate" type="date" />
+                </div>
+
+                <div class="gem-field-group">
+                  <label for="gemBusinessPan">BUSINESS PAN NUMBER (NOT APPLICABLE FOR PROPRIETOR) <span class="required">*</span></label>
+                  <input id="gemBusinessPan" name="gemBusinessPan" type="text" placeholder="Enter PAN number" />
+                </div>
+
+                <div class="gem-field-group" style="grid-column: 1 / -1;">
+                  <label for="gemBusinessAddress">BUSINESS OFFICE ADDRESS <span class="required">*</span></label>
+                  <textarea id="gemBusinessAddress" name="gemBusinessAddress" placeholder="Enter full business address"></textarea>
+                </div>
+
+                <div class="gem-field-group">
+                  <label for="gemState">STATE <span class="required">*</span></label>
+                  <select id="gemState" name="gemState">
+                    <option value="">SELECT STATE</option>
+                    <option>Andhra Pradesh</option>
+                    <option>Arunachal Pradesh</option>
+                    <option>Assam</option>
+                    <option>Bihar</option>
+                    <option>Chhattisgarh</option>
+                    <option>Goa</option>
+                    <option>Gujarat</option>
+                    <option>Haryana</option>
+                    <option>Himachal Pradesh</option>
+                    <option>Jharkhand</option>
+                    <option>Karnataka</option>
+                    <option>Kerala</option>
+                    <option>Madhya Pradesh</option>
+                    <option>Maharashtra</option>
+                    <option>Manipur</option>
+                    <option>Meghalaya</option>
+                    <option>Mizoram</option>
+                    <option>Nagaland</option>
+                    <option>Odisha</option>
+                    <option>Punjab</option>
+                    <option>Rajasthan</option>
+                    <option>Sikkim</option>
+                    <option>Tamil Nadu</option>
+                    <option>Telangana</option>
+                    <option>Tripura</option>
+                    <option>Uttar Pradesh</option>
+                    <option>Uttarakhand</option>
+                    <option>West Bengal</option>
+                  </select>
+                </div>
+
+                <div class="gem-field-group">
+                  <label for="gemDistrict">DISTRICT <span class="required">*</span></label>
+                  <select id="gemDistrict" name="gemDistrict">
+                    <option value="">SELECT DISTRICT</option>
+                    <option>District 1</option>
+                    <option>District 2</option>
+                  </select>
+                </div>
+
+                <div class="gem-field-group">
+                  <label for="gemPincode">PIN CODE <span class="required">*</span></label>
+                  <input id="gemPincode" name="gemPincode" type="text" placeholder="6 digit PIN code" />
+                </div>
+
+                <div class="gem-field-group">
+                  <label for="gemAccountHolder">ACCOUNT HOLDER NAME <span class="required">*</span></label>
+                  <input id="gemAccountHolder" name="gemAccountHolder" type="text" placeholder="Name as per bank records" />
+                </div>
+
+                <div class="gem-field-group">
+                  <label for="gemBankName">BANK NAME <span class="required">*</span></label>
+                  <input id="gemBankName" name="gemBankName" type="text" placeholder="Enter bank name" />
+                </div>
+
+                <div class="gem-field-group">
+                  <label for="gemBankAccountNumber">BANK A/C NUMBER <span class="required">*</span></label>
+                  <input id="gemBankAccountNumber" name="gemBankAccountNumber" type="text" placeholder="Enter account number" />
+                </div>
+
+                <div class="gem-field-group">
+                  <label for="gemIfscCode">BANK IFSC CODE <span class="required">*</span></label>
+                  <input id="gemIfscCode" name="gemIfscCode" type="text" placeholder="Enter IFSC code" />
+                </div>
+
+                <div class="gem-field-group" style="grid-column: 1 / -1;">
+                  <label for="gemBankAddress">BANK ADDRESS <span class="required">*</span></label>
+                  <textarea id="gemBankAddress" name="gemBankAddress" placeholder="Enter bank branch address"></textarea>
+                </div>
+
+                <div class="gem-field-group">
+                  <label for="gemGstNumber">GST NUMBER / जीएसटी नंबर <span class="required">*</span></label>
+                  <input id="gemGstNumber" name="gemGstNumber" type="text" placeholder="Enter GST number (if applicable)" />
+                </div>
+
+                <div class="gem-field-group" style="grid-column: 1 / -1;">
+                  <label for="gemWebsite">BUSINESS WEBSITE / CATALOG URL</label>
+                  <input id="gemWebsite" name="gemWebsite" type="url" placeholder="https://yourbusiness.com" />
+                </div>
+
+                <div class="gem-field-group" style="grid-column: 1 / -1;">
+                  <label for="gemProductCategories">PRIMARY PRODUCT / SERVICE CATEGORIES <span class="required">*</span></label>
+                  <textarea id="gemProductCategories" name="gemProductCategories" placeholder="e.g., Office Supplies, IT Services, Manufacturing, etc." style="min-height: 80px;"></textarea>
+                </div>
+
+                <div class="gem-field-group">
+                  <label for="gemAnnualTurnover">ANNUAL TURNOVER (APPROX.) <span class="required">*</span></label>
+                  <input id="gemAnnualTurnover" name="gemAnnualTurnover" type="text" placeholder="Example: ₹50 Lakhs" />
+                </div>
+
+                <div class="gem-field-group">
+                  <label for="gemPreferredTender">INTERESTED TENDER AMOUNT RANGE <span class="required">*</span></label>
+                  <select id="gemPreferredTender" name="gemPreferredTender">
+                    <option value="">Select range</option>
+                    <option>&lt; 1 Lakh</option>
+                    <option>1 Lakh - 5 Lakhs</option>
+                    <option>5 Lakhs - 25 Lakhs</option>
+                    <option>25 Lakhs - 1 Crore</option>
+                    <option>&gt; 1 Crore</option>
+                  </select>
+                </div>
+
+                <div class="gem-field-group" style="grid-column: 1 / -1;">
+                  <label for="gemDocuments">UPLOAD DOCUMENTS <span class="required">*</span></label>
+                  <input id="gemDocuments" name="gemDocuments" type="file" accept=".pdf,.jpg,.jpeg,.png,.doc,.docx" multiple />
+                  <small style="color: #6b7280; margin-top: 0.3rem; display: block;">PAN / GST / Cancelled Cheque / Address Proof (Max 5MB per file)</small>
+                </div>
+
+                <div class="gem-checkbox-group">
+                  <input id="gemTermsAgree" name="gemTermsAgree" type="checkbox" />
+                  <label for="gemTermsAgree">TICK ON BOTH CHECKBOX TO ACCEPT TERMS AND CONDITIONS OF OUR COMPANY. PLEASE NOTE OTP WILL BE REQUIRED TO PROCESS THE APPLICATION.</label>
+                </div>
+
+                <button type="submit" class="gem-submit-btn">SUBMIT REGISTRATION</button>
+              </div>
+            </div>
+
+            <!-- Right Side: Guidelines -->
+            <div class="gem-guidelines">
+              <h2>GUIDELINES TO FILL GEM REGISTRATION FORM</h2>
+              <p class="subtitle">जेम पोर्टल पर आवेदन करने के लिए दिशानिर्देश</p>
+
+              <div class="guideline-item">
+                <h4>Name of Authorized Person</h4>
+                <p>ENTER THE NAME OF OWNER/ DIRECTOR/ AUTHORIZED PERSON, STRICTLY AS PER AADHAAR CARD OR PAN CARD / आधार कार्ड या पैन कार्ड के अनुसार, स्वामी/निदेशक/अधिकृत व्यक्ति का नाम दर्ज करें</p>
+              </div>
+
+              <div class="guideline-item">
+                <h4>Email Id</h4>
+                <p>ENTER A VALID EMAIL ADDRESS OF AUTHORIZED PERSON, OUR EXECUTIVE WILL CALL TO VERIFY EMAIL OTP / अधिकृत व्यक्ति का एक वैध ईमेल पता दर्ज करें, हमारे कार्यकारी ईमेल ओटीपी को सत्यापित करने के लिए कॉल करेंगे</p>
+              </div>
+
+              <div class="guideline-item">
+                <h4>Mobile Number</h4>
+                <p>ENTER VALID 10 DIGIT MOBILE NUMBER OF AUTHORIZED PERSON, OUR EXECUTIVE WILL CALL TO VERIFY MOBILE OTP / अधिकृत व्यक्ति का वैध 10 अंकों का मोबाइल नंबर दर्ज करें, हमारे कार्यकारी मोबाइल ओटीपी को सत्यापित करने के लिए कॉल करेंगे</p>
+              </div>
+
+              <div class="guideline-item">
+                <h4>Date of Birth</h4>
+                <p>SELECT DATE OF BIRTH AS PER YOUR PAN CARD RECORD (COMPANY FORMATION DATE FOR COMPANY HAVING PAN CARD). / अपने पैन कार्ड रिकॉर्ड के अनुसार जन्म तिथि चुनें (पैन कार्ड रखने वाली कंपनी के लिए कंपनी निर्माण तिथि चुनें)</p>
+              </div>
+
+              <div class="guideline-item">
+                <h4>Name of Organization</h4>
+                <p>ENTER THE NAME OF THE ORGANIZATION/BUSINESS, AS PER PAN CARD. / पैन कार्ड के अनुसार संगठन / व्यवसाय का नाम दर्ज करें।</p>
+              </div>
+
+              <div class="guideline-item">
+                <h4>Type of Organization</h4>
+                <p>SELECT TYPE OF ORGANIZATION OF YOUR BUSINESS / अपने व्यवसाय के संगठन का प्रकार चुनें</p>
+              </div>
+
+              <div class="guideline-item">
+                <h4>Date of Incorporation</h4>
+                <p>SELECT DATE OF REGISTRATION OF YOUR BUSINESS / अपने व्यवसाय के पंजीकरण की तिथि चुनें</p>
+              </div>
+
+              <div class="guideline-item">
+                <h4>Business Pan Number</h4>
+                <p>ENTER BUSINESS PAN NUMBER / व्यवसाय पैन नंबर दर्ज करें</p>
+              </div>
+
+              <div class="guideline-item">
+                <h4>Business Office Address</h4>
+                <p>APPLICANTS MUST HAVE TO PROVIDE VALID DETAILS ACCORDING TO THEIR REGISTRATION PROOF PROVIDED IN THE ADDRESS OF THE BUSINESS FIRM. / आवेदकों को व्यवसाय फर्म के पते में प्रदान किए गए प्रमाण पत्र के अनुसार वैध विवरण प्रदान करना होगा।</p>
+              </div>
+
+              <div class="guideline-item">
+                <h4>Select State</h4>
+                <p>SELECT STATE OF YOUR BUSINESS. / अपने व्यवसाय की स्थिति का चयन करें।</p>
+              </div>
+
+              <div class="guideline-item">
+                <h4>Select District</h4>
+                <p>SELECT DISTRICT OF YOUR BUSINESS. / अपने व्यवसाय का जिला चुनें।</p>
+              </div>
+
+              <div class="guideline-item">
+                <h4>Enter Pin Code</h4>
+                <p>ENTER PIN CODE OF YOUR BUSINESS / अपने व्यवसाय का पिन कोड दर्ज करें</p>
+              </div>
+
+              <div class="guideline-item">
+                <h4>Bank Name</h4>
+                <p>ENTER APPLICANT'S BANK NAME . / आवेदक का बैंक नाम दर्ज करें।</p>
+              </div>
+
+              <div class="guideline-item">
+                <h4>GST</h4>
+                <p>SELECT WHETHER YOU HAVE GST OR NOT, IF YES ENTER GST NUMBER. --> </p>
+              </div>
+
+              <div class="guideline-item">
+                <h4>Account Holder Name</h4>
+                <p>ENTER NAME AS PER BANK RECORDS (CURRENT OR SAVINGS). / बैंक रिकॉर्ड (वर्तमान या बचत) के अनुसार नाम दर्ज करें।</p>
+              </div>
+
+              <div class="guideline-item">
+                <h4>Account Number</h4>
+                <p>ENTER VALID ACCOUNT NUMBER OF BANK. / बैंक का वैध खाता संख्या दर्ज करें।</p>
+              </div>
+
+              <div class="guideline-item">
+                <h4>Ifsc Code</h4>
+                <p>ENTER VALID IFS CODE OF YOUR BANK. / अपने बैंक के वैध आईएफएससी कोड दर्ज करें।</p>
+              </div>
+
+              <div class="guideline-item">
+                <h4>Bank Address</h4>
+                <p>ENTER APPLICANT'S BANK ADDRESS . / आवेदक का बैंक पता दर्ज करें ।</p>
+              </div>
+
+              <div class="guideline-item">
+                <h4>Terms & Conditions</h4>
+                <p>TICK ON BOTH CHECKBOX TO ACCEPT TERMS AND CONDITIONS OF OUR COMPANY. PLEASE NOTE OTP WILL BE REQUIRED TO PROCESS THE APPLICATION. / हमारी कंपनी की शर्तों और शर्तों को स्वीकार करने के लिए दोनों चेकबॉक्स पर टिक करें। कृपया ध्यान दें कि आवेदन को संसाधित करने के लिए ओटीपी की आवश्यकता होगी।</p>
+              </div>
+
+              <div class="guideline-item">
+                <h4>Business Website / Catalog URL</h4>
+                <p>ENTER YOUR BUSINESS WEBSITE OR ONLINE CATALOG URL IF AVAILABLE. THIS HELPS SHOWCASE YOUR PRODUCTS/SERVICES ON GEM PORTAL. / यदि उपलब्ध हो तो अपनी व्यावसायिक वेबसाइट या ऑनलाइन कैटलॉग URL दर्ज करें।</p>
+              </div>
+
+              <div class="guideline-item">
+                <h4>Primary Product / Service Categories</h4>
+                <p>LIST ALL PRIMARY PRODUCTS OR SERVICES YOUR BUSINESS OFFERS. PROVIDE DETAILED CATEGORIES SO BUYERS CAN FIND YOU EASILY ON GEM PORTAL. / अपने व्यवसाय द्वारा प्रदान की जाने वाली सभी प्राथमिक उत्पादों या सेवाओं को सूचीबद्ध करें।</p>
+              </div>
+
+              <div class="guideline-item">
+                <h4>Annual Turnover (Approx.)</h4>
+                <p>ENTER YOUR APPROXIMATE ANNUAL BUSINESS TURNOVER. THIS IS IMPORTANT FOR VENDOR CATEGORIZATION AND TENDER ELIGIBILITY ON GEM. / अपने व्यवसाय का अनुमानित वार्षिक टर्नओवर दर्ज करें।</p>
+              </div>
+
+              <div class="guideline-item">
+                <h4>Interested Tender Amount Range</h4>
+                <p>SELECT THE TENDER AMOUNT RANGE YOUR BUSINESS IS INTERESTED IN. THIS HELPS FILTER SUITABLE TENDERS AND BIDS ON GEM PORTAL. / वह टेंडर राशि सीमा चुनें जिसमें आपका व्यवसाय रुचि रखता है।</p>
+              </div>
+
+              <div class="guideline-item">
+                <h4>Upload Documents</h4>
+                <p>ATTACH COPIES OF PAN, GST (IF APPLICABLE), CANCELLED CHEQUE, AND ADDRESS PROOF (UTILITY BILL OR RENT AGREEMENT). THESE DOCUMENTS VERIFY YOUR BUSINESS AUTHENTICITY. / पैन, जीएसटी, रद्द किया गया चेक और पते का प्रमाण की प्रतियां संलग्न करें।</p>
+              </div>
+            </div>
           </div>
         </div>
 
