@@ -1,0 +1,874 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Udyam Registration Portal | MSME</title>
+  <link href="https://fonts.googleapis.com/css2?family=Tiro+Devanagari+Hindi&family=Poppins:wght@400;500;600;700&family=Baloo+2:wght@600;700&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --saffron: #FF6B00;
+      --deep-blue: #0A2E5C;
+      --india-green: #138808;
+      --gold: #E8A000;
+      --red: #C62828;
+      --white: #FFFFFF;
+      --light-bg: #F4F7FB;
+      --border: #C8D6E8;
+      --text-dark: #1A2A40;
+      --text-mid: #4A5A70;
+      --input-bg: #FAFCFF;
+      --shadow: 0 4px 24px rgba(10,46,92,0.10);
+    }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body { font-family:'Poppins',sans-serif; background:var(--light-bg); color:var(--text-dark); min-height:100vh; }
+
+    /* TOP BAR */
+    .topbar {
+      background:#fff; border-bottom:1px solid #e0e8f0;
+      padding:5px 40px; display:flex; justify-content:space-between; align-items:center;
+      font-size:0.75rem; color:var(--text-mid);
+    }
+    .topbar a { color:var(--deep-blue); text-decoration:none; margin-left:10px; }
+    .topbar a:hover { color:var(--saffron); }
+
+    /* HEADER */
+    .header {
+      background:linear-gradient(135deg, var(--deep-blue) 0%, #1a4a8a 100%);
+      box-shadow:0 2px 16px rgba(10,46,92,0.25);
+    }
+    .header-stripe { height:5px; background:linear-gradient(90deg,#FF6B00 33.3%,#fff 33.3%,#fff 66.6%,#138808 66.6%); }
+    .header-inner {
+      display:flex; align-items:center; justify-content:space-between;
+      padding:14px 40px; max-width:1200px; margin:0 auto;
+    }
+    .portal-brand { display:flex; align-items:center; gap:16px; }
+    .brand-logo { width:54px; height:54px; background:white; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:1.6rem; box-shadow:0 2px 8px rgba(0,0,0,.15); flex-shrink:0; }
+    .brand-text h1 { font-family:'Baloo 2',cursive; font-size:1.2rem; color:white; line-height:1.2; }
+    .brand-text p { font-size:0.7rem; color:rgba(255,255,255,.75); }
+    .brand-right img { height:50px; opacity:.9; }
+    .aadhar-logo { background:white; border-radius:8px; padding:4px 10px; font-size:0.7rem; color:var(--deep-blue); font-weight:700; }
+
+    /* NAVBAR */
+    .navbar {
+      background:var(--deep-blue);
+      border-top:1px solid rgba(255,255,255,.1);
+    }
+    .navbar-inner {
+      max-width:1200px; margin:0 auto;
+      display:flex; align-items:center; gap:2px; padding:0 40px;
+    }
+    .nav-btn {
+      background:none; border:none; cursor:pointer;
+      color:rgba(255,255,255,.8); font-family:'Poppins',sans-serif;
+      font-size:0.78rem; font-weight:600; letter-spacing:0.2px;
+      padding:11px 16px; position:relative; transition:all .2s;
+      white-space:nowrap;
+    }
+    .nav-btn:hover { color:white; background:rgba(255,255,255,.08); }
+    .nav-btn.active {
+      color:white; background:var(--saffron);
+      border-radius:0;
+    }
+    .nav-btn.active::after {
+      content:''; position:absolute; bottom:0; left:0; right:0;
+      height:3px; background:var(--gold);
+    }
+
+    /* NOTICE BAR */
+    .notice-bar {
+      background:#fff3cd; border-bottom:1px solid #ffc107;
+      padding:7px 40px; font-size:0.75rem; color:#856404;
+      display:flex; align-items:center; gap:8px;
+    }
+
+    /* PAGE SECTIONS */
+    .page-section { display:none; }
+    .page-section.active { display:block; }
+
+    /* HERO */
+    .section-hero {
+      background:linear-gradient(120deg, var(--deep-blue) 0%, #1565C0 60%, #0d47a1 100%);
+      padding:28px 40px; text-align:center; position:relative; overflow:hidden;
+    }
+    .section-hero::before {
+      content:''; position:absolute; inset:0;
+      background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/svg%3E");
+    }
+    .section-hero h2 { font-family:'Baloo 2',cursive; font-size:1.6rem; color:white; margin-bottom:5px; }
+    .section-hero h2 span { color:var(--gold); }
+    .section-hero p { color:rgba(255,255,255,.8); font-size:0.85rem; margin-bottom:14px; }
+    .hero-badges { display:flex; gap:8px; justify-content:center; flex-wrap:wrap; }
+    .hero-badge {
+      background:rgba(255,255,255,.12); border:1px solid rgba(255,255,255,.25);
+      color:white; border-radius:20px; padding:4px 12px; font-size:0.75rem;
+    }
+
+    /* WARNING BANNER */
+    .warning-banner {
+      background:#fff3e0; border:1px solid #ffb74d; border-left:4px solid var(--saffron);
+      border-radius:8px; padding:12px 16px; margin-bottom:20px;
+      font-size:0.82rem; color:#bf360c; display:flex; align-items:flex-start; gap:10px;
+    }
+
+    /* MAIN LAYOUT */
+    .main-container { max-width:1200px; margin:28px auto; padding:0 20px; display:grid; grid-template-columns:1fr 320px; gap:22px; }
+    .main-container.full { grid-template-columns:1fr; }
+
+    /* FORM CARD */
+    .form-card { background:white; border-radius:14px; box-shadow:var(--shadow); overflow:hidden; }
+    .form-card-header {
+      padding:16px 24px; display:flex; align-items:center; gap:12px;
+    }
+    .form-card-header.blue { background:linear-gradient(90deg, var(--deep-blue), #1a4a8a); }
+    .form-card-header.orange { background:linear-gradient(90deg, var(--saffron), #FF8C42); }
+    .form-card-header.green { background:linear-gradient(90deg, var(--india-green), #1a8f1a); }
+    .form-card-header.red { background:linear-gradient(90deg, var(--red), #e53935); }
+    .form-card-header .icon { font-size:1.5rem; }
+    .form-card-header h3 { font-family:'Baloo 2',cursive; font-size:1.1rem; color:white; }
+    .form-card-header p { color:rgba(255,255,255,.82); font-size:0.75rem; }
+    .form-body { padding:24px; }
+
+    /* SECTIONS */
+    .form-section { margin-bottom:24px; }
+    .section-title {
+      display:flex; align-items:center; gap:8px;
+      font-size:0.82rem; font-weight:700; color:var(--deep-blue);
+      text-transform:uppercase; letter-spacing:.8px; margin-bottom:14px;
+      padding-bottom:7px; border-bottom:2px solid var(--light-bg);
+    }
+    .section-title .dot { width:9px; height:9px; border-radius:50%; flex-shrink:0; }
+    .dot-orange { background:var(--saffron); }
+    .dot-blue { background:var(--deep-blue); }
+    .dot-green { background:var(--india-green); }
+    .dot-red { background:var(--red); }
+
+    /* FORM GRID */
+    .form-grid { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+    .form-grid.three { grid-template-columns:1fr 1fr 1fr; }
+    .form-grid.four  { grid-template-columns:repeat(4,1fr); }
+    .field-full { grid-column:1/-1; }
+
+    .field-group { display:flex; flex-direction:column; gap:4px; }
+    .field-group label { font-size:0.76rem; font-weight:600; color:var(--text-mid); }
+    .field-group label .req { color:var(--saffron); }
+    .field-group label .hi { font-family:'Tiro Devanagari Hindi',serif; font-weight:400; color:#7a8a9a; font-size:0.74rem; }
+    .field-group input, .field-group select, .field-group textarea {
+      width:100%; padding:9px 13px; border:1.5px solid var(--border);
+      border-radius:8px; font-family:'Poppins',sans-serif; font-size:0.83rem;
+      color:var(--text-dark); background:var(--input-bg); transition:all .2s; outline:none;
+    }
+    .field-group input:focus, .field-group select:focus, .field-group textarea:focus {
+      border-color:var(--deep-blue); background:white; box-shadow:0 0 0 3px rgba(10,46,92,.08);
+    }
+    .field-group select { appearance:none; cursor:pointer; }
+    .field-group input::placeholder { color:#b8c8d8; }
+    .field-group textarea { resize:vertical; min-height:80px; }
+
+    /* UPLOAD */
+    .upload-zone {
+      border:2px dashed var(--border); border-radius:10px; padding:16px;
+      text-align:center; background:var(--light-bg); cursor:pointer; transition:all .2s;
+    }
+    .upload-zone:hover { border-color:var(--saffron); background:#fff5ed; }
+    .upload-zone input[type="file"] { display:none; }
+    .upload-zone .u-icon { font-size:1.8rem; margin-bottom:5px; }
+    .upload-zone p { font-size:0.78rem; color:var(--text-mid); }
+    .upload-zone strong { color:var(--saffron); }
+
+    /* RADIO */
+    .radio-group { display:flex; flex-direction:column; gap:8px; margin-top:6px; }
+    .radio-item {
+      display:flex; align-items:center; gap:10px;
+      background:var(--light-bg); border:1.5px solid var(--border);
+      border-radius:8px; padding:9px 14px; cursor:pointer; transition:all .2s;
+      font-size:0.82rem; color:var(--text-mid);
+    }
+    .radio-item input[type="radio"] { accent-color:var(--deep-blue); }
+    .radio-item:hover { border-color:var(--deep-blue); }
+
+    /* EMPLOYEE GRID */
+    .emp-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:12px; }
+
+    /* VERIFICATION */
+    .verify-box {
+      background:var(--light-bg); border-radius:10px; padding:14px 18px;
+      display:flex; align-items:center; gap:14px; flex-wrap:wrap;
+    }
+    .captcha-code {
+      background:var(--deep-blue); color:white; font-size:1.25rem; font-weight:700;
+      padding:7px 18px; border-radius:8px; letter-spacing:6px; font-family:monospace; user-select:none;
+    }
+    .verify-box input {
+      flex:1; min-width:120px; padding:9px 12px;
+      border:1.5px solid var(--border); border-radius:8px; font-size:0.88rem; outline:none;
+    }
+    .verify-btn {
+      background:var(--india-green); color:white; border:none;
+      padding:9px 20px; border-radius:8px; font-weight:600; font-size:0.83rem; cursor:pointer;
+    }
+    .verify-btn:hover { background:#0d6b06; }
+
+    /* CHECK */
+    .check-item {
+      display:flex; align-items:flex-start; gap:10px;
+      font-size:0.8rem; color:var(--text-mid); margin-bottom:9px; line-height:1.5;
+    }
+    .check-item input[type="checkbox"] { margin-top:2px; flex-shrink:0; accent-color:var(--deep-blue); width:15px; height:15px; cursor:pointer; }
+    .check-item a { color:var(--saffron); text-decoration:none; }
+    .otp-notice {
+      background:#fff8e1; border:1px solid #ffe082; border-radius:8px;
+      padding:9px 12px; font-size:0.79rem; color:#7a5800; margin-bottom:12px;
+    }
+
+    /* SUBMIT */
+    .submit-btn {
+      width:100%; padding:14px; border:none; border-radius:10px;
+      font-family:'Baloo 2',cursive; font-size:1.05rem; font-weight:700;
+      cursor:pointer; transition:all .25s; display:flex; align-items:center; justify-content:center; gap:8px; color:white;
+    }
+    .submit-btn.blue-btn { background:linear-gradient(135deg, var(--deep-blue), #1565C0); box-shadow:0 4px 15px rgba(10,46,92,.3); }
+    .submit-btn.orange-btn { background:linear-gradient(135deg, var(--saffron), #FF8C42); box-shadow:0 4px 15px rgba(255,107,0,.3); }
+    .submit-btn.green-btn { background:linear-gradient(135deg, var(--india-green), #1a8f1a); box-shadow:0 4px 15px rgba(19,136,8,.3); }
+    .submit-btn.red-btn { background:linear-gradient(135deg, var(--red), #e53935); box-shadow:0 4px 15px rgba(198,40,40,.3); }
+    .submit-btn:hover { transform:translateY(-2px); }
+
+    /* SIDEBAR */
+    .sidebar { display:flex; flex-direction:column; gap:14px; }
+    .info-card { background:white; border-radius:12px; box-shadow:var(--shadow); overflow:hidden; }
+    .info-card-header {
+      background:linear-gradient(135deg, var(--deep-blue), #1a4a8a);
+      padding:12px 16px; color:white; font-weight:700; font-size:0.84rem;
+      display:flex; align-items:center; gap:7px;
+    }
+    .info-card-body { padding:14px 16px; }
+    .info-item { display:flex; gap:9px; margin-bottom:11px; padding-bottom:11px; border-bottom:1px solid var(--light-bg); }
+    .info-item:last-child { margin-bottom:0; padding-bottom:0; border-bottom:none; }
+    .info-item .bul { width:6px; height:6px; background:var(--saffron); border-radius:50%; margin-top:6px; flex-shrink:0; }
+    .info-item p { font-size:0.77rem; color:var(--text-mid); line-height:1.5; }
+    .info-item strong { color:var(--text-dark); display:block; margin-bottom:1px; }
+
+    .helpline-card {
+      background:linear-gradient(135deg, var(--india-green), #0a6600);
+      border-radius:12px; padding:16px; color:white; text-align:center; box-shadow:var(--shadow);
+    }
+    .helpline-card h4 { font-size:0.84rem; margin-bottom:7px; opacity:.9; }
+    .helpline-card .number { font-size:1.35rem; font-weight:700; letter-spacing:1px; margin-bottom:3px; }
+    .helpline-card p { font-size:0.73rem; opacity:.8; }
+
+    .benefit-item { display:flex; align-items:flex-start; gap:10px; padding:9px 0; border-bottom:1px solid var(--light-bg); }
+    .benefit-item:last-child { border-bottom:none; }
+    .b-icon { font-size:1.25rem; flex-shrink:0; }
+    .benefit-item p { font-size:0.78rem; color:var(--text-mid); line-height:1.4; }
+    .benefit-item strong { color:var(--text-dark); font-size:0.8rem; }
+
+    /* SAMPLE CERT */
+    .sample-cert-wrap {
+      max-width:700px; margin:30px auto; background:white; border-radius:14px;
+      box-shadow:var(--shadow); overflow:hidden;
+    }
+    .cert-header { background:linear-gradient(135deg, var(--deep-blue), #1565C0); padding:20px; text-align:center; color:white; }
+    .cert-header h2 { font-family:'Baloo 2',cursive; font-size:1.5rem; }
+    .cert-header p { font-size:0.8rem; opacity:.85; margin-top:4px; }
+    .cert-body { padding:28px; }
+    .cert-row { display:flex; border-bottom:1px solid #e8f0fa; padding:10px 0; }
+    .cert-row:last-child { border-bottom:none; }
+    .cert-label { width:45%; font-size:0.82rem; font-weight:600; color:var(--text-mid); }
+    .cert-value { flex:1; font-size:0.82rem; color:var(--text-dark); font-weight:500; }
+    .cert-stamp {
+      text-align:center; margin-top:20px; padding-top:20px;
+      border-top:2px dashed var(--border);
+    }
+    .cert-stamp .stamp { font-size:2.5rem; display:block; }
+    .cert-stamp p { font-size:0.78rem; color:var(--text-mid); margin-top:6px; }
+
+    /* PRINT CERT */
+    .print-wrap { max-width:600px; margin:30px auto; }
+
+    /* FOOTER */
+    .footer { background:var(--deep-blue); color:rgba(255,255,255,.7); text-align:center; padding:16px; font-size:0.76rem; margin-top:36px; }
+    .footer a { color:var(--gold); text-decoration:none; }
+
+    @media(max-width:900px){
+      .main-container { grid-template-columns:1fr; }
+      .form-grid { grid-template-columns:1fr; }
+      .form-grid.three,.form-grid.four { grid-template-columns:1fr 1fr; }
+      .emp-grid { grid-template-columns:1fr 1fr; }
+      .header-inner,.topbar,.notice-bar { padding-left:16px; padding-right:16px; }
+      .navbar-inner { padding:0 8px; overflow-x:auto; }
+      .section-hero { padding:20px 16px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  <span>📞 Helpline: <strong>+91 9625694159</strong> &nbsp;|&nbsp; Timing: 9:30 AM – 9:30 PM (Mon–Sat)</span>
+  <span><a href="#">Home</a><a href="#">About</a><a href="#">Blog</a><a href="#">Contact</a></span>
+</div>
+
+<!-- HEADER -->
+<header class="header">
+  <div class="header-stripe"></div>
+  <div class="header-inner">
+    <div class="portal-brand">
+      <div class="brand-logo">🏭</div>
+      <div class="brand-text">
+        <h1>Udyam Registration Portal for MSME /</h1>
+        <p>सूक्ष्म, लघु और मध्यम उद्यम पंजीकरण पोर्टल</p>
+        <p style="color:rgba(255,255,255,.6);font-size:0.66rem;">ISO Certified MSME Registration Consultancy Services in India</p>
+        <p style="color:rgba(255,255,255,.6);font-size:0.66rem;">Expert Guidance for Udyam Registration, Re-Registration, and Certificate Updates</p>
+      </div>
+    </div>
+    <div class="aadhar-logo">🪪 UDYOG<br>AADHAR</div>
+  </div>
+</header>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+  <div class="navbar-inner">
+    <button class="nav-btn active" onclick="showTab('new-reg')">NEW REGISTRATION</button>
+    <button class="nav-btn" onclick="showTab('re-reg')">RE-REGISTRATION</button>
+    <button class="nav-btn" onclick="showTab('update-cert')">UPDATE CERTIFICATE</button>
+    <button class="nav-btn" onclick="showTab('print-cert')">PRINT CERTIFICATE</button>
+    <button class="nav-btn" onclick="showTab('cancel-reg')">CANCEL REGISTRATION</button>
+    <button class="nav-btn" onclick="showTab('sample-cert')">SAMPLE CERTIFICATE</button>
+  </div>
+</nav>
+
+<!-- NOTICE -->
+<div class="notice-bar">
+  ℹ️ This is a private consultancy firm providing expert assistance for Udyam/MSME registration. Free official registration available at <strong>udyamregistration.gov.in</strong>. For help, call <strong>+91 9625694159</strong>.
+</div>
+
+<!-- ===================== NEW REGISTRATION ===================== -->
+<div id="new-reg" class="page-section active">
+  <div class="section-hero">
+    <h2>Udyam <span>New Registration</span> 2026</h2>
+    <p>Register your Micro, Small & Medium Enterprise — 100% Online & Free</p>
+    <div class="hero-badges">
+      <span class="hero-badge">✅ Free Registration</span>
+      <span class="hero-badge">⚡ Instant Certificate</span>
+      <span class="hero-badge">🔒 Secure & Official</span>
+      <span class="hero-badge">📱 OTP Verified</span>
+    </div>
+  </div>
+  <div class="main-container">
+    <div>
+      <div class="form-card">
+        <div class="form-card-header orange">
+          <span class="icon">📋</span>
+          <div><h3>Udyam Registration Online Form</h3><p>उद्यम पंजीकरण ऑनलाइन फॉर्म — Fill all required fields carefully</p></div>
+        </div>
+        <div class="form-body">
+          <form onsubmit="submitForm(event,'New Registration')">
+            <div class="form-section">
+              <div class="section-title"><span class="dot dot-orange"></span>Personal Information / व्यक्तिगत जानकारी</div>
+              <div class="form-grid">
+                <div class="field-group"><label>Applicant Name / <span class="hi">आवेदक का नाम</span> <span class="req">*</span></label><input type="text" placeholder="Full name as per Aadhaar" required/></div>
+                <div class="field-group"><label>Mobile Number / <span class="hi">मोबाइल नंबर</span> <span class="req">*</span></label><input type="tel" placeholder="10-digit mobile" maxlength="10" required/></div>
+                <div class="field-group"><label>Email ID / <span class="hi">ईमेल आईडी</span> <span class="req">*</span></label><input type="email" placeholder="yourname@email.com" required/></div>
+                <div class="field-group"><label>Aadhaar Card Number / <span class="hi">आधार कार्ड नंबर</span> <span class="req">*</span></label><input type="text" placeholder="12-digit Aadhaar" maxlength="12" required/></div>
+                <div class="field-group"><label>Gender / <span class="hi">लिंग</span></label><select><option value="">--Select--</option><option>Male / पुरुष</option><option>Female / महिला</option><option>Transgender / ट्रांसजेंडर</option></select></div>
+                <div class="field-group"><label>Social Category / <span class="hi">सामाजिक श्रेणी</span> <span class="req">*</span></label><select required><option value="">--Select--</option><option>General</option><option>SC</option><option>ST</option><option>OBC</option></select></div>
+              </div>
+            </div>
+            <div class="form-section">
+              <div class="section-title"><span class="dot dot-orange"></span>Office Address / कार्यालय का पता</div>
+              <div class="form-grid">
+                <div class="field-group field-full"><label>Office Address / <span class="hi">कार्यालय का पता</span> <span class="req">*</span></label><input type="text" placeholder="Full address with state and pincode" required/></div>
+                <div class="field-group"><label>Pincode <span class="req">*</span></label><input type="text" placeholder="6-digit pincode" maxlength="6" required/></div>
+                <div class="field-group"><label>State / <span class="hi">राज्य</span> <span class="req">*</span></label><select required><option value="">Select State</option><option>Uttar Pradesh</option><option>Maharashtra</option><option>Delhi</option><option>Gujarat</option><option>Rajasthan</option><option>Karnataka</option><option>Tamil Nadu</option><option>Bihar</option><option>West Bengal</option></select></div>
+                <div class="field-group"><label>District / <span class="hi">जिला</span> <span class="req">*</span></label><select required><option value="">Please Select District</option></select></div>
+              </div>
+            </div>
+            <div class="form-section">
+              <div class="section-title"><span class="dot dot-orange"></span>Bank Details / बैंक विवरण</div>
+              <div class="form-grid">
+                <div class="field-group"><label>Bank Account Number / <span class="hi">बैंक खाता संख्या</span></label><input type="text" placeholder="Enter bank account number"/></div>
+                <div class="field-group"><label>IFSC Code / <span class="hi">आईएफएससी कोड</span></label><input type="text" placeholder="E.g. SBIN0001234" style="text-transform:uppercase;"/></div>
+              </div>
+            </div>
+            <div class="form-section">
+              <div class="section-title"><span class="dot dot-orange"></span>Business Details / व्यापार विवरण</div>
+              <div class="form-grid">
+                <div class="field-group"><label>Business Name / <span class="hi">व्यवसाय का नाम</span></label><input type="text" placeholder="Name of your business"/></div>
+                <div class="field-group"><label>Date of Commencement / <span class="hi">व्यवसाय प्रारंभ तिथि</span></label><input type="text" placeholder="DD/MM/YYYY"/></div>
+                <div class="field-group"><label>Annual Turnover / <span class="hi">वार्षिक कारोबार</span></label><input type="text" placeholder="Annual turnover in INR"/></div>
+                <div class="field-group"><label>Type of Organisation <span class="req">*</span></label><select required><option value="">--Select--</option><option>Proprietorship</option><option>Partnership</option><option>Private Limited</option><option>Public Limited</option><option>LLP</option><option>HUF</option></select></div>
+                <div class="field-group"><label>Main Business Activity <span class="req">*</span></label><select required><option value="">--Select--</option><option>Manufacturing</option><option>Services</option><option>Trading</option></select></div>
+                <div class="field-group"><label>Investment in Plant &amp; Machinery (₹ Lacs)</label><input type="number" placeholder="Amount in Lacs"/></div>
+                <div class="field-group field-full"><label>Additional Details About Business</label><textarea placeholder="Describe your business activity..."></textarea></div>
+              </div>
+            </div>
+            <div class="form-section">
+              <div class="section-title"><span class="dot dot-orange"></span>Number of Persons Employed / कर्मचारी संख्या</div>
+              <div class="emp-grid">
+                <div class="field-group"><label>Male / <span class="hi">पुरुष</span></label><input type="number" placeholder="0" min="0" class="emp-m"/></div>
+                <div class="field-group"><label>Female / <span class="hi">महिला</span></label><input type="number" placeholder="0" min="0" class="emp-f"/></div>
+                <div class="field-group"><label>Other / <span class="hi">अन्य</span></label><input type="number" placeholder="0" min="0" class="emp-o"/></div>
+                <div class="field-group"><label>Total / <span class="hi">कुल</span></label><input type="number" placeholder="0" readonly class="emp-t" style="background:#f0f4f8;font-weight:600;"/></div>
+              </div>
+            </div>
+            <div class="form-section">
+              <div class="section-title"><span class="dot dot-orange"></span>Upload Documents / दस्तावेज़ अपलोड करें</div>
+              <div class="form-grid">
+                <div class="field-group"><label>Aadhaar Card – Front Side <span class="req">*</span></label><label class="upload-zone"><input type="file" accept="image/*,.pdf"/><div class="u-icon">🪪</div><p><strong>Click to upload</strong> Aadhaar Card</p><p style="font-size:.7rem;">JPG, PNG or PDF • Max 2MB</p></label></div>
+                <div class="field-group"><label>PAN Card – Front Side <span class="req">*</span></label><label class="upload-zone"><input type="file" accept="image/*,.pdf"/><div class="u-icon">💳</div><p><strong>Click to upload</strong> PAN Card</p><p style="font-size:.7rem;">JPG, PNG or PDF • Max 2MB</p></label></div>
+              </div>
+            </div>
+            <div class="form-section">
+              <div class="section-title"><span class="dot dot-orange"></span>Verification / सत्यापन</div>
+              <div class="verify-box">
+                <div><div style="font-size:.75rem;font-weight:600;color:var(--text-mid);margin-bottom:5px;">VERIFICATION CODE:</div><div class="captcha-code">69163</div></div>
+                <div style="flex:1;"><label style="font-size:.75rem;font-weight:600;color:var(--text-mid);display:block;margin-bottom:4px;">Enter the above code:</label><input type="text" placeholder="Enter verification code"/></div>
+                <button type="button" class="verify-btn" onclick="alert('✅ Verified!')">✓ VERIFY</button>
+              </div>
+            </div>
+            <div class="form-section">
+              <div class="check-item"><input type="checkbox" required/><span>I agree to the <a href="#">Terms of Service [Updated]</a></span></div>
+              <div class="check-item"><input type="checkbox" required/><span>I, the applicant, agree to share OTP sent on my mobile and/or other details required for the purpose of Udyam certificate generation.</span></div>
+              <div class="otp-notice">⚠️ <strong>I am aware that generation of Udyam certificate requires OTP verification [Updated]</strong></div>
+            </div>
+            <button type="submit" class="submit-btn orange-btn">🚀 Submit Application / आवेदन जमा करें</button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <aside class="sidebar">
+      <div class="helpline-card"><h4>📞 Helpline / सहायता</h4><div class="number">+91 9625694159</div><p>Mon–Sat • 9:30 AM – 9:30 PM</p></div>
+      <div class="info-card">
+        <div class="info-card-header">📖 How to Fill / कैसे भरें</div>
+        <div class="info-card-body">
+          <div class="info-item"><div class="bul"></div><p><strong>Applicant Name</strong>Enter full name as per Aadhaar card.</p></div>
+          <div class="info-item"><div class="bul"></div><p><strong>Mobile Number</strong>Give correct mobile. Avoid country code.</p></div>
+          <div class="info-item"><div class="bul"></div><p><strong>Email ID</strong>Certificate will be sent to registered email.</p></div>
+          <div class="info-item"><div class="bul"></div><p><strong>Office Address</strong>Fill proper address with state and pincode.</p></div>
+          <div class="info-item"><div class="bul"></div><p><strong>Bank Account</strong>Fill as mentioned on passbook.</p></div>
+          <div class="info-item"><div class="bul"></div><p><strong>IFSC Code</strong>Fill bank IFSC as mentioned on passbook.</p></div>
+          <div class="info-item"><div class="bul"></div><p><strong>Investment in Plant &amp; Machinery</strong>Total investment in machinery, equipment etc.</p></div>
+          <div class="info-item"><div class="bul"></div><p><strong>Submit Application</strong>Click submit once all fields and documents are filled.</p></div>
+        </div>
+      </div>
+      <div class="info-card">
+        <div class="info-card-header">🎯 Key Benefits / मुख्य लाभ</div>
+        <div class="info-card-body">
+          <div class="benefit-item"><span class="b-icon">💰</span><p><strong>Collateral-free Loans</strong>Priority sector lending with lower interest rates.</p></div>
+          <div class="benefit-item"><span class="b-icon">🏛️</span><p><strong>Government Tenders</strong>Exclusive access to MSME reserved tenders.</p></div>
+          <div class="benefit-item"><span class="b-icon">⚡</span><p><strong>Faster Payments</strong>Legal protection under MSMED Act.</p></div>
+          <div class="benefit-item"><span class="b-icon">📊</span><p><strong>Tax Benefits</strong>Various tax exemptions and concessions.</p></div>
+          <div class="benefit-item"><span class="b-icon">🌐</span><p><strong>GeM Portal Access</strong>Sell directly to government through GeM.</p></div>
+        </div>
+      </div>
+    </aside>
+  </div>
+</div>
+
+<!-- ===================== RE-REGISTRATION ===================== -->
+<div id="re-reg" class="page-section">
+  <div class="section-hero" style="background:linear-gradient(120deg,#1B5E20,#2E7D32,#388E3C);">
+    <h2>Udyam <span style="color:#A5D6A7;">Re-Registration</span></h2>
+    <p>Apply for Re-Registration for Existing UAM (Others) — For UAM / MSME registered enterprises</p>
+    <div class="hero-badges">
+      <span class="hero-badge">🔄 Existing UAM Holders</span>
+      <span class="hero-badge">📋 Re-Registration Form</span>
+    </div>
+  </div>
+  <div class="main-container">
+    <div>
+      <div class="warning-banner">
+        ⚠️ <strong>This form is applicable only for those applicants who have already registered under erstwhile UAM / MSME Registration System.</strong>
+      </div>
+      <div class="form-card">
+        <div class="form-card-header green">
+          <span class="icon">🔄</span>
+          <div><h3>Re-Registration Form</h3><p>पुनः पंजीकरण फॉर्म — For existing UAM / MSME registered enterprises</p></div>
+        </div>
+        <div class="form-body">
+          <form onsubmit="submitForm(event,'Re-Registration')">
+            <div class="form-section">
+              <div class="section-title"><span class="dot dot-green"></span>Personal Information / व्यक्तिगत जानकारी</div>
+              <div class="form-grid">
+                <div class="field-group"><label>Applicant Name / <span class="hi">आवेदक का नाम</span> <span class="req">*</span></label><input type="text" placeholder="As per PAN Card" required/></div>
+                <div class="field-group"><label>Mobile Number / <span class="hi">मोबाइल संख्या</span> <span class="req">*</span></label><input type="tel" placeholder="Indian mobile number. Do not add +91" maxlength="10" required/></div>
+                <div class="field-group"><label>Email ID / <span class="hi">ईमेल आईडी</span> <span class="req">*</span></label><input type="email" placeholder="Certificate will be sent to this email" required/></div>
+                <div class="field-group"><label>Social Category / <span class="hi">सामाजिक श्रेणी</span></label><select><option value="">--Select--</option><option>General</option><option>SC</option><option>ST</option><option>OBC</option></select></div>
+                <div class="field-group"><label>PAN Card Number / <span class="hi">पैन कार्ड नंबर</span></label><input type="text" placeholder="10-digit PAN" maxlength="10" style="text-transform:uppercase;"/></div>
+                <div class="field-group"><label>Previous UAM Number / <span class="hi">पिछला UAM नंबर</span></label><input type="text" placeholder='Write "NA" if not available'/></div>
+              </div>
+            </div>
+            <div class="form-section">
+              <div class="section-title"><span class="dot dot-green"></span>Plant &amp; Office Address / पता विवरण</div>
+              <div class="form-grid">
+                <div class="field-group field-full"><label>Office Address / <span class="hi">कार्यालय का पता</span> <span class="req">*</span></label><input type="text" placeholder="Complete office address with state and pincode" required/></div>
+                <div class="field-group"><label>Pincode / <span class="hi">पिन कोड</span> <span class="req">*</span></label><input type="text" placeholder="6-digit pincode" maxlength="6" required/></div>
+                <div class="field-group"><label>State / <span class="hi">राज्य</span> <span class="req">*</span></label><select required><option value="">Select State</option><option>Uttar Pradesh</option><option>Maharashtra</option><option>Delhi</option><option>Gujarat</option><option>Rajasthan</option><option>Karnataka</option><option>Tamil Nadu</option><option>Bihar</option><option>West Bengal</option></select></div>
+                <div class="field-group"><label>District / <span class="hi">जिला</span> <span class="req">*</span></label><select required><option value="">Please Select District</option></select></div>
+              </div>
+            </div>
+            <div class="form-section">
+              <div class="section-title"><span class="dot dot-green"></span>Financial Details / वित्तीय विवरण</div>
+              <div class="form-grid">
+                <div class="field-group"><label>Annual Turnover / <span class="hi">वार्षिक कारोबार</span></label><input type="text" placeholder="Enter annual turnover"/></div>
+                <div class="field-group"><label>Bank Account Number / <span class="hi">बैंक खाता संख्या</span></label><input type="text" placeholder="Bank account number"/></div>
+                <div class="field-group"><label>IFSC Code / <span class="hi">आईएफएससी कोड</span></label><input type="text" placeholder="Bank IFSC code" style="text-transform:uppercase;"/></div>
+              </div>
+            </div>
+            <div class="form-section">
+              <div class="section-title"><span class="dot dot-green"></span>Business Details / व्यापार विवरण</div>
+              <div class="form-grid">
+                <div class="field-group"><label>Business Name / <span class="hi">व्यवसाय का नाम</span></label><input type="text" placeholder="Name of your business / enterprise"/></div>
+                <div class="field-group"><label>Date of Commencement / <span class="hi">व्यवसाय प्रारंभ तिथि</span></label><input type="text" placeholder="DD/MM/YYYY"/></div>
+                <div class="field-group"><label>Type of Organisation / <span class="hi">संगठन का प्रकार</span></label><select><option value="OTHERS">OTHERS</option><option>Proprietorship</option><option>Partnership</option><option>Private Limited</option><option>LLP</option></select></div>
+                <div class="field-group"><label>Main Business Activity</label><select><option value="">--Select--</option><option>Manufacturing</option><option>Services</option><option>Trading</option></select></div>
+                <div class="field-group"><label>Investment in Plant &amp; Machinery (₹ Lacs)</label><input type="number" placeholder="Amount in Lacs"/></div>
+                <div class="field-group"><label>Number of Employees</label><input type="number" placeholder="Total employees" min="0"/></div>
+                <div class="field-group field-full"><label>Additional Details About Business</label><textarea placeholder="E.g. Manufacturing of food products, computer programming..."></textarea></div>
+              </div>
+            </div>
+            <div class="form-section">
+              <div class="section-title"><span class="dot dot-green"></span>Upload Documents / दस्तावेज़ अपलोड करें</div>
+              <div class="form-grid">
+                <div class="field-group"><label>Aadhaar Card – Front Side <span class="req">*</span></label><label class="upload-zone"><input type="file" accept="image/*,.pdf"/><div class="u-icon">🪪</div><p><strong>Click to upload</strong> Aadhaar Card</p></label></div>
+                <div class="field-group"><label>PAN Card – Front Side <span class="req">*</span></label><label class="upload-zone"><input type="file" accept="image/*,.pdf"/><div class="u-icon">💳</div><p><strong>Click to upload</strong> PAN Card</p></label></div>
+              </div>
+            </div>
+            <div class="form-section">
+              <div class="section-title"><span class="dot dot-green"></span>Verification / सत्यापन</div>
+              <div class="verify-box">
+                <div><div style="font-size:.75rem;font-weight:600;color:var(--text-mid);margin-bottom:5px;">VERIFICATION CODE:</div><div class="captcha-code">38291</div></div>
+                <div style="flex:1;"><label style="font-size:.75rem;font-weight:600;display:block;margin-bottom:4px;">Enter the above code:</label><input type="text" placeholder="Enter verification code"/></div>
+                <button type="button" class="verify-btn" onclick="alert('✅ Verified!')">✓ VERIFY</button>
+              </div>
+            </div>
+            <div class="form-section">
+              <div class="check-item"><input type="checkbox" required/><span>I agree to the <a href="#">Terms of Service [Updated]</a></span></div>
+              <div class="check-item"><input type="checkbox" required/><span>I, the applicant, agree to share OTP sent on my mobile and/or other details required for the purpose of Udyam certificate generation.</span></div>
+              <div class="otp-notice">⚠️ <strong>I am aware that generation of Udyam certificate requires OTP verification [Updated]</strong></div>
+            </div>
+            <button type="submit" class="submit-btn green-btn">🔄 Submit Re-Registration Application</button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <aside class="sidebar">
+      <div class="helpline-card"><h4>📞 Helpline / सहायता</h4><div class="number">+91 9625694159</div><p>Mon–Sat • 9:30 AM – 9:30 PM</p></div>
+      <div class="info-card">
+        <div class="info-card-header">📖 Instructions / निर्देश</div>
+        <div class="info-card-body">
+          <div class="info-item"><div class="bul"></div><p><strong>Applicant Name</strong>Enter name as mentioned on PAN card.</p></div>
+          <div class="info-item"><div class="bul"></div><p><strong>Mobile Number</strong>Enter Indian mobile number. Do not add +91.</p></div>
+          <div class="info-item"><div class="bul"></div><p><strong>Email ID</strong>Certificate & acknowledgement will be sent to registered mail.</p></div>
+          <div class="info-item"><div class="bul"></div><p><strong>Plant Address</strong>Enter complete plant address with state and pincode.</p></div>
+          <div class="info-item"><div class="bul"></div><p><strong>Annual Turnover</strong>Applicant can enter annual turnover.</p></div>
+          <div class="info-item"><div class="bul"></div><p><strong>PAN Card Number</strong>Applicant must enter PAN card number.</p></div>
+          <div class="info-item"><div class="bul"></div><p><strong>Bank Account Number</strong>Applicant can enter bank account number.</p></div>
+          <div class="info-item"><div class="bul"></div><p><strong>IFSC Code</strong>Applicant can enter bank IFSC code.</p></div>
+          <div class="info-item"><div class="bul"></div><p><strong>Investment in Plant &amp; Machinery</strong>Enter total investment in plant, machinery and equipment.</p></div>
+          <div class="info-item"><div class="bul"></div><p><strong>Submit Application</strong>Click submit after all details and documents are uploaded.</p></div>
+        </div>
+      </div>
+    </aside>
+  </div>
+</div>
+
+<!-- ===================== UPDATE CERTIFICATE ===================== -->
+<div id="update-cert" class="page-section">
+  <div class="section-hero" style="background:linear-gradient(120deg,#1565C0,#1976D2,#1E88E5);">
+    <h2>Update Udyam <span style="color:#90CAF9;">Registration Certificate</span> Online</h2>
+    <p>Update details on your existing Udyam Registration Certificate</p>
+    <div class="hero-badges">
+      <span class="hero-badge">📝 Certificate Update</span>
+      <span class="hero-badge">🔐 OTP Verified</span>
+    </div>
+  </div>
+  <div class="main-container">
+    <div>
+      <div class="warning-banner">
+        ⚠️ <strong>KYC Details, PAN Number, State and District CANNOT be updated.</strong> Only other business details can be modified.
+      </div>
+      <div class="form-card">
+        <div class="form-card-header blue">
+          <span class="icon">✏️</span>
+          <div><h3>Online Form for Update Udyam Registration Certificate</h3><p>उद्यम पंजीकरण प्रमाण पत्र अद्यतन फॉर्म</p></div>
+        </div>
+        <div class="form-body">
+          <form onsubmit="submitForm(event,'Update Certificate')">
+            <div class="form-section">
+              <div class="section-title"><span class="dot dot-blue"></span>Certificate &amp; Identity Details</div>
+              <div class="form-grid">
+                <div class="field-group"><label>Udyam Registration Number / <span class="hi">उद्यम पंजीकरण संख्या</span> <span class="req">*</span></label><input type="text" placeholder="As mentioned on Udyam Certificate" required/></div>
+                <div class="field-group"><label>Applicant Name / <span class="hi">आवेदक का नाम</span> <span class="req">*</span></label><input type="text" placeholder="As per PAN Card" required/></div>
+                <div class="field-group">
+                  <label>Mobile Number <span class="req">*</span></label>
+                  <input type="tel" placeholder="Mobile number as on Udyam Certificate" maxlength="10" required/>
+                  <span style="font-size:.7rem;color:var(--saffron);">(Enter mobile number as mentioned on your Udyam Certificate)</span>
+                </div>
+                <div class="field-group">
+                  <label>Email ID / <span class="hi">ईमेल आईडी</span> <span class="req">*</span></label>
+                  <input type="email" placeholder="Email as on Udyam Certificate" required/>
+                  <span style="font-size:.7rem;color:var(--saffron);">(Enter email ID as mentioned on your Udyam Certificate)</span>
+                </div>
+              </div>
+            </div>
+            <div class="form-section">
+              <div class="section-title"><span class="dot dot-blue"></span>OTP Delivery Preference</div>
+              <p style="font-size:0.82rem;color:var(--text-mid);margin-bottom:10px;">Choose the option on which you want to receive OTP / <span style="font-family:'Tiro Devanagari Hindi',serif;">वह विकल्प चुनें जिस पर आप ओटीपी प्राप्त करना चाहते हैं</span></p>
+              <div class="radio-group">
+                <label class="radio-item"><input type="radio" name="otpChoice" value="mobile" checked/> Mobile Number as mentioned on your Udyam Certificate</label>
+                <label class="radio-item"><input type="radio" name="otpChoice" value="email"/> Email ID as mentioned on your Udyam Certificate</label>
+              </div>
+            </div>
+            <div class="form-section">
+              <div class="section-title"><span class="dot dot-blue"></span>Upload &amp; Update Details</div>
+              <div class="field-group" style="margin-bottom:14px;">
+                <label>Upload Udyam Certificate / <span class="hi">उद्यम प्रमाण पत्र अपलोड करें</span></label>
+                <label class="upload-zone">
+                  <input type="file" accept="image/*,.pdf"/>
+                  <div class="u-icon">📄</div>
+                  <p><strong>Click to upload</strong> Udyam Certificate</p>
+                  <p style="font-size:.7rem;">JPG, PNG or PDF • Max 2MB</p>
+                </label>
+              </div>
+              <div class="field-group">
+                <label>Provide the Details to be Updated on Certificate / <span class="hi">प्रमाण पत्र पर अपडेट किए जाने वाले विवरण दर्ज करें</span></label>
+                <div style="background:#fff3e0;border:1px solid #ffb74d;border-radius:6px;padding:7px 12px;font-size:.75rem;color:#bf360c;margin-bottom:7px;font-weight:600;">⛔ KYC DETAILS, PAN NUMBER, STATE AND DISTRICT CANNOT BE UPDATED</div>
+                <textarea placeholder="Enter the details you want to update on your Udyam Certificate..." style="min-height:100px;"></textarea>
+              </div>
+              <div class="form-grid" style="margin-top:14px;">
+                <div class="field-group"><label>State / <span class="hi">राज्य</span> <span class="req">*</span></label><select required><option value="">SELECT STATE</option><option>Uttar Pradesh</option><option>Maharashtra</option><option>Delhi</option><option>Gujarat</option><option>Rajasthan</option></select></div>
+              </div>
+            </div>
+            <div class="form-section">
+              <div class="section-title"><span class="dot dot-blue"></span>Verification / सत्यापन</div>
+              <div class="verify-box">
+                <div><div style="font-size:.75rem;font-weight:600;color:var(--text-mid);margin-bottom:5px;">VERIFICATION CODE:</div><div class="captcha-code">61775</div></div>
+                <div style="flex:1;"><label style="font-size:.75rem;font-weight:600;display:block;margin-bottom:4px;">Enter the above code:</label><input type="text" placeholder="Enter verification code"/></div>
+                <button type="button" class="verify-btn" onclick="alert('✅ Verified!')">✓ VERIFY</button>
+              </div>
+            </div>
+            <div class="form-section">
+              <div class="check-item"><input type="checkbox" required/><span>I, the applicant, agree to share OTP sent on my mobile and/or other details required for the purpose of Udyam certificate generation.</span></div>
+              <div class="otp-notice">⚠️ <strong>I am aware that generation of Udyam certificate requires OTP verification [Updated]</strong></div>
+            </div>
+            <button type="submit" class="submit-btn blue-btn">✏️ Submit Update Request</button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <aside class="sidebar">
+      <div class="helpline-card"><h4>📞 Helpline / सहायता</h4><div class="number">+91 9625694159</div><p>Mon–Sat • 9:30 AM – 9:30 PM</p></div>
+      <div class="info-card">
+        <div class="info-card-header">📖 Important Instructions</div>
+        <div class="info-card-body">
+          <div class="info-item"><div class="bul"></div><p><strong>Udyam Registration Number</strong>Applicant needs to enter the Udyam Registration Number as mentioned on Udyam certificate.</p></div>
+          <div class="info-item"><div class="bul"></div><p><strong>Applicant Name</strong>Enter name as per PAN card.</p></div>
+          <div class="info-item"><div class="bul"></div><p><strong>Mobile Number</strong>Enter mobile number as mentioned on your Udyam certificate. Do not add +91.</p></div>
+          <div class="info-item"><div class="bul"></div><p><strong>Email ID</strong>Certificate and acknowledgement will be sent to registered ID.</p></div>
+          <div class="info-item"><div class="bul"></div><p><strong>Choose Option for OTP</strong>Select from which the OTP will be sent — registered Email/Mobile.</p></div>
+          <div class="info-item"><div class="bul"></div><p><strong>Submit Application</strong>Click submit after all details and documents are uploaded.</p></div>
+        </div>
+      </div>
+    </aside>
+  </div>
+</div>
+
+<!-- ===================== PRINT CERTIFICATE ===================== -->
+<div id="print-cert" class="page-section">
+  <div class="section-hero" style="background:linear-gradient(120deg,#4A148C,#6A1B9A,#7B1FA2);">
+    <h2>Print Udyam <span style="color:#CE93D8;">Registration Certificate</span></h2>
+    <p>Download and print your existing Udyam Registration Certificate</p>
+  </div>
+  <div style="max-width:600px;margin:32px auto;padding:0 20px;">
+    <div class="form-card">
+      <div class="form-card-header" style="background:linear-gradient(90deg,#4A148C,#7B1FA2);">
+        <span class="icon">🖨️</span>
+        <div><h3>Print Certificate Form</h3><p>Enter your Udyam Registration details to retrieve and print certificate</p></div>
+      </div>
+      <div class="form-body">
+        <form onsubmit="printCertificate(event)">
+          <div class="form-section">
+            <div class="form-grid" style="grid-template-columns:1fr;">
+              <div class="field-group"><label>Udyam Registration Number <span class="req">*</span></label><input type="text" id="printRegNo" placeholder="e.g. UDYAM-UP-01-0012345" required/></div>
+              <div class="field-group"><label>Registered Mobile Number <span class="req">*</span></label><input type="tel" id="printMobile" placeholder="Mobile number on your certificate" maxlength="10" required/></div>
+              <div class="field-group"><label>Registered Email ID <span class="req">*</span></label><input type="email" id="printEmail" placeholder="Email on your certificate" required/></div>
+            </div>
+          </div>
+          <div class="form-section">
+            <div class="verify-box">
+              <div><div style="font-size:.75rem;font-weight:600;color:var(--text-mid);margin-bottom:5px;">VERIFICATION CODE:</div><div class="captcha-code">52847</div></div>
+              <div style="flex:1;"><label style="font-size:.75rem;font-weight:600;display:block;margin-bottom:4px;">Enter the above code:</label><input type="text" placeholder="Enter verification code"/></div>
+              <button type="button" class="verify-btn" onclick="alert('✅ Verified!')">✓ VERIFY</button>
+            </div>
+          </div>
+          <button type="submit" class="submit-btn" style="background:linear-gradient(135deg,#4A148C,#7B1FA2);box-shadow:0 4px 15px rgba(74,20,140,.3);">🖨️ Fetch &amp; Print Certificate</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== CANCEL REGISTRATION ===================== -->
+<div id="cancel-reg" class="page-section">
+  <div class="section-hero" style="background:linear-gradient(120deg,#B71C1C,#C62828,#D32F2F);">
+    <h2>Cancel Udyam <span style="color:#FFCDD2;">Registration</span></h2>
+    <p>Cancel Udyam Registration Application Form — Withdraw your MSME Certificate</p>
+    <div class="hero-badges">
+      <span class="hero-badge">⚠️ Irreversible Action</span>
+      <span class="hero-badge">📋 Reason Required</span>
+    </div>
+  </div>
+  <div class="main-container">
+    <div>
+      <div class="warning-banner" style="background:#ffebee;border-left-color:var(--red);color:#b71c1c;">
+        ⚠️ <span>If your business is no longer eligible for MSME classification, or you have ceased operations, you may cancel your Udyam Registration. <strong>This action cannot be undone.</strong></span>
+      </div>
+      <div class="form-card">
+        <div class="form-card-header red">
+          <span class="icon">❌</span>
+          <div><h3>Cancel Udyam Registration Online Form</h3><p>उद्यम पंजीकरण रद्द ऑनलाइन फॉर्म</p></div>
+        </div>
+        <div class="form-body">
+          <form onsubmit="submitForm(event,'Cancel Registration')">
+            <div class="form-section">
+              <div class="section-title"><span class="dot dot-red"></span>Applicant Details / आवेदक विवरण</div>
+              <div class="form-grid">
+                <div class="field-group"><label>Applicant Name / <span class="hi">आवेदक का नाम</span> <span class="req">*</span></label><input type="text" placeholder="As per PAN Card" required/></div>
+                <div class="field-group"><label>Mobile Number / <span class="hi">मोबाइल संख्या</span> <span class="req">*</span></label><input type="tel" placeholder="Indian mobile number. Do not add +91" maxlength="10" required/></div>
+                <div class="field-group"><label>Email ID / <span class="hi">ईमेल आईडी</span> <span class="req">*</span></label><input type="email" placeholder="Certificate was sent to this email" required/></div>
+                <div class="field-group"><label>Udyam / UAM Number <span class="req" style="color:var(--red);">*</span></label><input type="text" placeholder="Enter your Udyam/UAM number" required/><span style="font-size:.7rem;color:var(--text-mid);">Find your Udyam/UAM number ℹ️</span></div>
+                <div class="field-group"><label>Business Name / <span class="hi">व्यवसाय का नाम</span></label><input type="text" placeholder="Your business name (as on certificate)"/></div>
+                <div class="field-group"><label>Type of Cancellation / <span class="hi">रद्द करने का प्रकार</span> <span class="req" style="color:var(--red);">*</span></label><select required><option value="">SELECT AN OPTION</option><option>Business Closure / व्यवसाय बंद</option><option>Change of Business Structure</option><option>Merger / Acquisition</option><option>No Longer Eligible for MSME</option><option>Other Reason</option></select></div>
+                <div class="field-group"><label>State / <span class="hi">राज्य</span> <span class="req">*</span></label><select required><option value="">SELECT STATE</option><option>Uttar Pradesh</option><option>Maharashtra</option><option>Delhi</option><option>Gujarat</option><option>Rajasthan</option><option>Karnataka</option></select></div>
+                <div class="field-group"><label>District / <span class="hi">जिला</span> <span class="req">*</span></label><select required><option value="">BADDI</option></select></div>
+              </div>
+            </div>
+            <div class="form-section">
+              <div class="section-title"><span class="dot dot-red"></span>Verification / सत्यापन</div>
+              <div class="verify-box">
+                <div><div style="font-size:.75rem;font-weight:600;color:var(--text-mid);margin-bottom:5px;">VERIFICATION CODE:</div><div class="captcha-code">46631</div></div>
+                <div style="flex:1;"><label style="font-size:.75rem;font-weight:600;display:block;margin-bottom:4px;">Enter the above code:</label><input type="text" placeholder="Enter the above code"/></div>
+                <button type="button" class="verify-btn" onclick="alert('✅ Verified!')">✓ VERIFY</button>
+              </div>
+            </div>
+            <div class="form-section">
+              <div class="check-item"><input type="checkbox" required/><span>I agree to the <a href="#">Terms of Service [Updated]</a></span></div>
+              <div class="check-item"><input type="checkbox" required/><span>I, the applicant, agree to share OTP sent on my mobile and/or other details required for the purpose of Udyam certificate generation.</span></div>
+              <div class="otp-notice" style="background:#ffebee;border-color:#ef9a9a;color:#b71c1c;">⚠️ <strong>I am aware that generation of Udyam certificate requires OTP verification [Updated]</strong></div>
+            </div>
+            <button type="submit" class="submit-btn red-btn">❌ Submit Cancellation Application</button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <aside class="sidebar">
+      <div class="helpline-card"><h4>📞 Helpline / सहायता</h4><div class="number">+91 9625694159</div><p>Mon–Sat • 9:30 AM – 9:30 PM</p></div>
+      <div class="info-card">
+        <div class="info-card-header" style="background:linear-gradient(135deg,var(--red),#e53935);">📖 Guidance / मार्गदर्शन</div>
+        <div class="info-card-body">
+          <div class="info-item"><div class="bul" style="background:var(--red);"></div><p><strong>Applicant Name</strong>Enter name as mentioned on PAN card.</p></div>
+          <div class="info-item"><div class="bul" style="background:var(--red);"></div><p><strong>Mobile Number</strong>Enter Indian mobile number. Do not add +91.</p></div>
+          <div class="info-item"><div class="bul" style="background:var(--red);"></div><p><strong>Email ID</strong>Certificate & acknowledgement will be sent to registered ID.</p></div>
+          <div class="info-item"><div class="bul" style="background:var(--red);"></div><p><strong>Business Name</strong>Enter your business name as it will be printed on certificate.</p></div>
+          <div class="info-item"><div class="bul" style="background:var(--red);"></div><p><strong>Type of Cancellation</strong>Applicant must enter reason for cancellation.</p></div>
+          <div class="info-item"><div class="bul" style="background:var(--red);"></div><p><strong>Submit Application</strong>Click submit after all details and documents are uploaded.</p></div>
+        </div>
+      </div>
+    </aside>
+  </div>
+</div>
+
+<!-- ===================== SAMPLE CERTIFICATE ===================== -->
+<div id="sample-cert" class="page-section">
+  <div class="section-hero" style="background:linear-gradient(120deg,#004D40,#00695C,#00796B);">
+    <h2>Sample Udyam <span style="color:#80CBC4;">Registration Certificate</span></h2>
+    <p>Preview of a Udyam Registration Certificate — For reference only</p>
+  </div>
+  <div style="max-width:720px;margin:32px auto;padding:0 20px;">
+    <div class="sample-cert-wrap">
+      <div class="cert-header">
+        <div style="font-size:2rem;margin-bottom:8px;">🏭</div>
+        <h2>UDYAM REGISTRATION CERTIFICATE</h2>
+        <p>Government of India | Ministry of MSME</p>
+      </div>
+      <div class="cert-body">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;">
+          <div><div style="font-size:.72rem;color:var(--text-mid);font-weight:600;">UDYAM REGISTRATION NUMBER</div><div style="font-size:1.15rem;font-weight:800;color:var(--deep-blue);letter-spacing:1px;">UDYAM-UP-01-0012345</div></div>
+          <div style="text-align:right;"><div style="font-size:.72rem;color:var(--text-mid);">DATE OF REGISTRATION</div><div style="font-weight:700;color:var(--india-green);">01/01/2024</div></div>
+        </div>
+        <div class="cert-row"><span class="cert-label">Name of Enterprise</span><span class="cert-value">XYZ Manufacturing Pvt. Ltd.</span></div>
+        <div class="cert-row"><span class="cert-label">Type of Organisation</span><span class="cert-value">Private Limited Company</span></div>
+        <div class="cert-row"><span class="cert-label">Social Category of Entrepreneur</span><span class="cert-value">General</span></div>
+        <div class="cert-row"><span class="cert-label">Name of Entrepreneur</span><span class="cert-value">Ramesh Kumar Sharma</span></div>
+        <div class="cert-row"><span class="cert-label">Gender</span><span class="cert-value">Male</span></div>
+        <div class="cert-row"><span class="cert-label">Physically Handicapped</span><span class="cert-value">No</span></div>
+        <div class="cert-row"><span class="cert-label">Date of Commencement of Business</span><span class="cert-value">15/03/2018</span></div>
+        <div class="cert-row"><span class="cert-label">Major Activity</span><span class="cert-value">Manufacturing</span></div>
+        <div class="cert-row"><span class="cert-label">NIC 2-Digit Code & Description</span><span class="cert-value">25 — Manufacture of fabricated metal products</span></div>
+        <div class="cert-row"><span class="cert-label">Location of Plant / Office</span><span class="cert-value">Industrial Area, Kanpur, Uttar Pradesh – 208001</span></div>
+        <div class="cert-row"><span class="cert-label">Investment in Plant & Machinery (₹)</span><span class="cert-value">₹ 85,00,000</span></div>
+        <div class="cert-row"><span class="cert-label">Turnover (₹)</span><span class="cert-value">₹ 2,50,00,000</span></div>
+        <div class="cert-row"><span class="cert-label">Enterprise Classification</span><span class="cert-value" style="color:var(--india-green);font-weight:700;">SMALL ENTERPRISE</span></div>
+        <div class="cert-stamp">
+          <span class="stamp">🔏</span>
+          <p>This is a computer generated certificate. No signature required.</p>
+          <p style="margin-top:4px;font-size:.72rem;">Generated on: udyamregistration.gov.in</p>
+        </div>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:16px;">
+      <button onclick="window.print()" style="background:var(--deep-blue);color:white;border:none;padding:12px 28px;border-radius:8px;font-size:.9rem;font-weight:600;cursor:pointer;">🖨️ Print This Sample</button>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <p>© 2026 Udyam Registration Portal for MSME | Government of India &nbsp;|&nbsp; <a href="#">Privacy Policy</a> &nbsp;|&nbsp; <a href="#">Terms of Service</a></p>
+  <p style="margin-top:3px;">ISO Certified MSME Registration Consultancy Services in India</p>
+</footer>
+
+<script>
+  function showTab(id) {
+    document.querySelectorAll('.page-section').forEach(s => s.classList.remove('active'));
+    document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    const map = {'new-reg':0,'re-reg':1,'update-cert':2,'print-cert':3,'cancel-reg':4,'sample-cert':5};
+    document.querySelectorAll('.nav-btn')[map[id]].classList.add('active');
+    window.scrollTo({top:0,behavior:'smooth'});
+  }
+
+  // Employee auto-total
+  document.addEventListener('input', e => {
+    if(e.target.classList.contains('emp-m')||e.target.classList.contains('emp-f')||e.target.classList.contains('emp-o')){
+      const m = +document.querySelector('.emp-m')?.value||0;
+      const f = +document.querySelector('.emp-f')?.value||0;
+      const o = +document.querySelector('.emp-o')?.value||0;
+      const t = document.querySelector('.emp-t');
+      if(t) t.value = m+f+o;
+    }
+  });
+
+  // File upload label update
+  document.addEventListener('change', e => {
+    if(e.target.type==='file' && e.target.closest('.upload-zone')) {
+      const zone = e.target.closest('.upload-zone');
+      if(e.target.files[0]) {
+        zone.querySelector('p').innerHTML = `<strong style="color:var(--india-green)">✅ ${e.target.files[0].name}</strong>`;
+      }
+    }
+  });
+
+  function submitForm(e, name) {
+    e.preventDefault();
+    alert(`✅ Your ${name} application has been submitted successfully!\n\nYou will receive a confirmation on your registered email and mobile number.`);
+  }
+
+  function printCertificate(e) {
+    e.preventDefault();
+    alert('✅ Certificate found! Redirecting to print preview...\n\nYour certificate will be displayed for printing.');
+  }
+</script>
+</body>
+</html>
