@@ -1,0 +1,1068 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>GeM Registration | Government e-Marketplace</title>
+  <link href="https://fonts.googleapis.com/css2?family=Tiro+Devanagari+Hindi&family=Poppins:wght@400;500;600;700&family=Baloo+2:wght@600;700&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --gem-blue: #003087;
+      --gem-teal: #007B6E;
+      --gem-accent: #FFC107;
+      --gem-green: #2E7D32;
+      --white: #FFFFFF;
+      --light-bg: #F0F4F8;
+      --border: #C5D5E8;
+      --text-dark: #1A2840;
+      --text-mid: #4A5A72;
+      --input-bg: #FAFCFF;
+      --shadow: 0 4px 24px rgba(0,48,135,0.10);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: var(--light-bg);
+      color: var(--text-dark);
+      min-height: 100vh;
+    }
+
+    /* HEADER */
+    .header {
+      background: linear-gradient(135deg, #003087 0%, #005288 100%);
+      position: sticky; top: 0; z-index: 100;
+      box-shadow: 0 2px 18px rgba(0,48,135,0.25);
+    }
+    .header-stripe {
+      height: 5px;
+      background: linear-gradient(90deg, #FF6B00 33.3%, #FFFFFF 33.3%, #FFFFFF 66.6%, #138808 66.6%);
+    }
+    .header-inner {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 12px 40px; max-width: 1200px; margin: 0 auto;
+    }
+    .logo-area { display: flex; align-items: center; gap: 14px; }
+    .gem-logo {
+      background: white; border-radius: 10px;
+      padding: 6px 14px; display: flex; align-items: center; gap: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    }
+    .gem-logo .gem-star { color: var(--gem-blue); font-size: 1.4rem; }
+    .gem-logo .gem-name { color: var(--gem-blue); font-weight: 800; font-size: 1.2rem; letter-spacing: -0.5px; }
+    .gem-logo .gem-name span { color: var(--gem-teal); }
+    .logo-text { color: white; }
+    .logo-text h1 { font-family: 'Baloo 2', cursive; font-size: 1.1rem; }
+    .logo-text p { font-size: 0.7rem; opacity: 0.8; }
+    .header-right { display: flex; align-items: center; gap: 12px; }
+    .trust-badge {
+      background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.25);
+      border-radius: 20px; padding: 5px 14px; color: white; font-size: 0.75rem;
+    }
+    .nav-menu {
+      display: flex; gap: 4px;
+      background: rgba(255,255,255,0.08);
+      border-radius: 8px;
+      padding: 4px;
+    }
+    .nav-menu a {
+      color: rgba(255,255,255,0.85); text-decoration: none;
+      font-size: 0.75rem; font-weight: 500;
+      padding: 5px 12px; border-radius: 6px;
+      transition: background 0.2s;
+    }
+    .nav-menu a:hover, .nav-menu a.active {
+      background: rgba(255,255,255,0.2); color: white;
+    }
+
+    /* HERO */
+    .hero {
+      background: linear-gradient(135deg, #003087 0%, #0052A5 50%, #007B6E 100%);
+      padding: 36px 40px 32px;
+      text-align: center; position: relative; overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 30% 50%, rgba(255,193,7,0.08) 0%, transparent 60%),
+                  radial-gradient(ellipse at 70% 50%, rgba(0,123,110,0.15) 0%, transparent 60%);
+    }
+    .hero-offer {
+      display: inline-block;
+      background: var(--gem-accent); color: var(--text-dark);
+      font-size: 0.78rem; font-weight: 700;
+      padding: 5px 16px; border-radius: 20px;
+      margin-bottom: 14px; animation: pulse 2s infinite;
+    }
+    @keyframes pulse { 0%,100%{transform:scale(1)} 50%{transform:scale(1.03)} }
+    .hero h2 { font-family: 'Baloo 2', cursive; font-size: 1.8rem; color: white; margin-bottom: 6px; }
+    .hero h2 span { color: var(--gem-accent); }
+    .hero p { color: rgba(255,255,255,0.8); font-size: 0.88rem; margin-bottom: 16px; }
+    .hero-badges { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+    .hero-badge {
+      background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.25);
+      color: white; border-radius: 20px; padding: 5px 14px; font-size: 0.78rem;
+      display: flex; align-items: center; gap: 5px;
+    }
+
+    .mobile-toggle {
+      display: none;
+      border: none;
+      background: rgba(255,255,255,0.12);
+      color: white;
+      border-radius: 10px;
+      width: 42px;
+      height: 42px;
+      font-size: 1.1rem;
+      cursor: pointer;
+      align-self: center;
+    }
+
+    .detail-section {
+      background: var(--white);
+      border-radius: 16px;
+      box-shadow: var(--shadow);
+      padding: 28px;
+      margin-top: 32px;
+    }
+
+    .detail-section h3 {
+      color: var(--gem-blue);
+      font-size: 1.35rem;
+      margin-bottom: 16px;
+    }
+
+    .detail-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 20px;
+    }
+
+    .detail-card {
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 20px;
+      background: #fff;
+    }
+
+    .detail-card h4 {
+      color: var(--gem-blue);
+      margin-bottom: 10px;
+      font-size: 1rem;
+    }
+
+    .detail-card p,
+    .detail-card li {
+      color: var(--text-mid);
+      line-height: 1.7;
+      font-size: 0.92rem;
+    }
+
+    .detail-card ul {
+      padding-left: 18px;
+      margin-top: 10px;
+    }
+
+    .detail-card li { margin-bottom: 8px; }
+
+    .detail-card .read-more {
+      display: inline-block;
+      margin-top: 14px;
+      color: var(--gem-teal);
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .detail-card form {
+      display: grid;
+      gap: 16px;
+    }
+
+    .detail-card .field-group {
+      margin-bottom: 0;
+    }
+
+    .detail-card input,
+    .detail-card textarea,
+    .detail-card select {
+      width: 100%;
+      padding: 10px 14px;
+      border: 1.5px solid var(--border);
+      border-radius: 10px;
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.9rem;
+      color: var(--text-dark);
+      background: var(--input-bg);
+      outline: none;
+      transition: all 0.2s;
+    }
+
+    .detail-card textarea { min-height: 84px; resize: vertical; }
+
+    .detail-card input:focus,
+    .detail-card textarea:focus,
+    .detail-card select:focus {
+      border-color: var(--gem-blue);
+      box-shadow: 0 0 0 2px rgba(0,48,135,0.08);
+      background: white;
+    }
+
+    .submit-btn.secondary {
+      background: linear-gradient(135deg, #005288, #003087);
+    }
+
+    /* MAIN LAYOUT */
+    .main-container {
+      max-width: 1200px; margin: 32px auto; padding: 0 20px;
+      display: grid; grid-template-columns: 1fr 340px; gap: 24px;
+    }
+
+    /* FORM CARD */
+    .form-card {
+      background: var(--white); border-radius: 16px;
+      box-shadow: var(--shadow); overflow: hidden;
+    }
+    .form-card-header {
+      background: linear-gradient(90deg, #003087 0%, #0052A5 100%);
+      padding: 18px 28px; display: flex; align-items: center; gap: 12px;
+    }
+    .form-card-header .icon { font-size: 1.6rem; }
+    .form-card-header h3 { font-family: 'Baloo 2', cursive; font-size: 1.15rem; color: white; }
+    .form-card-header p { color: rgba(255,255,255,0.8); font-size: 0.78rem; }
+    .form-body { padding: 28px; }
+
+    /* SECTION */
+    .form-section { margin-bottom: 28px; }
+    .section-title {
+      display: flex; align-items: center; gap: 8px;
+      font-size: 0.88rem; font-weight: 700;
+      color: var(--gem-blue); text-transform: uppercase;
+      letter-spacing: 1px; margin-bottom: 16px;
+      padding-bottom: 8px; border-bottom: 2px solid var(--light-bg);
+    }
+    .section-title .dot {
+      width: 10px; height: 10px; border-radius: 50%;
+      background: var(--gem-teal); flex-shrink: 0;
+    }
+
+    /* FORM FIELDS */
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .form-grid.three { grid-template-columns: 1fr 1fr 1fr; }
+    .field-full { grid-column: 1 / -1; }
+
+    .field-group { display: flex; flex-direction: column; gap: 5px; }
+    .field-group label {
+      font-size: 0.78rem; font-weight: 600;
+      color: var(--text-mid); letter-spacing: 0.2px;
+    }
+    .field-group label .req { color: #e53935; }
+    .field-group label .hindi {
+      font-family: 'Tiro Devanagari Hindi', serif;
+      font-weight: 400; color: var(--text-mid); font-size: 0.76rem;
+    }
+    .field-group input,
+    .field-group select,
+    .field-group textarea {
+      width: 100%; padding: 10px 14px;
+      border: 1.5px solid var(--border); border-radius: 8px;
+      font-family: 'Poppins', sans-serif; font-size: 0.84rem;
+      color: var(--text-dark); background: var(--input-bg);
+      transition: all 0.2s; outline: none;
+    }
+    .field-group input:focus,
+    .field-group select:focus {
+      border-color: var(--gem-blue); background: white;
+      box-shadow: 0 0 0 3px rgba(0,48,135,0.08);
+    }
+    .field-group select { appearance: none; cursor: pointer; }
+    .field-group input::placeholder { color: #b0bec5; }
+    .field-group textarea { resize: vertical; min-height: 70px; }
+
+    /* TENDER SECTION */
+    .tender-box {
+      background: linear-gradient(135deg, #E3F2FD, #E8F5E9);
+      border: 1.5px solid #90CAF9;
+      border-radius: 12px; padding: 18px;
+    }
+    .tender-title {
+      font-weight: 700; color: var(--gem-blue); font-size: 0.92rem;
+      margin-bottom: 12px; display: flex; align-items: center; gap: 8px;
+    }
+    .tender-types {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 8px; margin-bottom: 16px;
+    }
+    .tender-type {
+      background: white; border: 1px solid #BBDEFB;
+      border-radius: 8px; padding: 10px 12px;
+      font-size: 0.79rem; color: var(--text-mid);
+    }
+    .tender-type strong { color: var(--gem-blue); display: block; font-size: 0.82rem; }
+    .tender-type .range { color: var(--gem-green); font-weight: 600; }
+
+    .range-label {
+      font-size: 0.82rem; font-weight: 600; color: var(--text-dark);
+      margin-bottom: 10px;
+    }
+    .radio-group { display: flex; flex-direction: column; gap: 8px; }
+    .radio-item {
+      display: flex; align-items: center; gap: 10px;
+      background: white; border: 1.5px solid #BBDEFB;
+      border-radius: 8px; padding: 10px 14px; cursor: pointer;
+      transition: all 0.2s; font-size: 0.83rem; color: var(--text-mid);
+    }
+    .radio-item:hover { border-color: var(--gem-blue); background: #F0F4FF; }
+    .radio-item input[type="radio"] { accent-color: var(--gem-blue); }
+    .radio-item.selected { border-color: var(--gem-blue); background: #EEF3FF; color: var(--gem-blue); font-weight: 600; }
+
+    /* GST FIELD */
+    .gst-field { position: relative; }
+    .gst-field input { padding-right: 80px; font-family: monospace; font-size: 0.88rem; text-transform: uppercase; }
+    .gst-placeholder { font-size: 0.7rem; color: #90A4AE; position: absolute; right: 12px; top: 50%; transform: translateY(-50%); }
+
+    /* CHECKBOXES */
+    .check-item {
+      display: flex; align-items: flex-start; gap: 10px;
+      font-size: 0.82rem; color: var(--text-mid);
+      margin-bottom: 10px; line-height: 1.5;
+    }
+    .check-item input[type="checkbox"] {
+      margin-top: 2px; flex-shrink: 0;
+      accent-color: var(--gem-blue); width: 16px; height: 16px; cursor: pointer;
+    }
+    .check-item a { color: var(--gem-teal); text-decoration: none; font-weight: 600; }
+
+    /* SUBMIT */
+    .submit-btn {
+      width: 100%; padding: 16px;
+      background: linear-gradient(135deg, #003087, #005288);
+      color: white; border: none; border-radius: 10px;
+      font-family: 'Baloo 2', cursive; font-size: 1.1rem; font-weight: 700;
+      cursor: pointer; letter-spacing: 0.5px;
+      transition: all 0.25s; box-shadow: 0 4px 15px rgba(0,48,135,0.3);
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+    }
+    .submit-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(0,48,135,0.4); }
+
+    /* SIDEBAR */
+    .sidebar { display: flex; flex-direction: column; gap: 16px; }
+
+    .info-card {
+      background: var(--white); border-radius: 14px;
+      box-shadow: var(--shadow); overflow: hidden;
+    }
+    .info-card-header {
+      background: linear-gradient(135deg, #003087, #005288);
+      padding: 14px 18px; color: white;
+      font-weight: 700; font-size: 0.88rem;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .info-card-body { padding: 16px 18px; }
+
+    .info-item {
+      display: flex; gap: 10px;
+      margin-bottom: 12px; padding-bottom: 12px;
+      border-bottom: 1px solid var(--light-bg);
+    }
+    .info-item:last-child { margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
+    .info-item .bullet {
+      width: 6px; height: 6px; background: var(--gem-teal);
+      border-radius: 50%; margin-top: 7px; flex-shrink: 0;
+    }
+    .info-item p { font-size: 0.79rem; color: var(--text-mid); line-height: 1.5; }
+    .info-item strong { color: var(--text-dark); display: block; margin-bottom: 2px; }
+
+    .gem-stat {
+      display: flex; gap: 10px; align-items: center;
+      padding: 10px 0; border-bottom: 1px solid var(--light-bg);
+    }
+    .gem-stat:last-child { border-bottom: none; }
+    .gem-stat .num { font-size: 1.4rem; font-weight: 800; color: var(--gem-blue); }
+    .gem-stat .desc { font-size: 0.78rem; color: var(--text-mid); }
+
+    .helpline-card {
+      background: linear-gradient(135deg, #003087, #0052A5);
+      border-radius: 14px; padding: 18px; color: white;
+      text-align: center; box-shadow: var(--shadow);
+    }
+    .helpline-card h4 { font-size: 0.88rem; margin-bottom: 8px; opacity: 0.9; }
+    .helpline-card .number { font-size: 1.4rem; font-weight: 700; letter-spacing: 1px; margin-bottom: 4px; }
+    .helpline-card p { font-size: 0.75rem; opacity: 0.8; }
+    .contact-btns { display: flex; gap: 8px; margin-top: 12px; }
+    .contact-btn {
+      flex: 1; padding: 8px; border-radius: 8px; border: none;
+      font-size: 0.78rem; font-weight: 600; cursor: pointer;
+      display: flex; align-items: center; justify-content: center; gap: 5px;
+    }
+    .contact-btn.call { background: #FFC107; color: #1A2840; }
+    .contact-btn.whatsapp { background: #25D366; color: white; }
+
+    /* FOOTER */
+    .footer {
+      background: var(--gem-blue); color: rgba(255,255,255,0.7);
+      text-align: center; padding: 18px; font-size: 0.78rem; margin-top: 40px;
+    }
+    .footer a { color: var(--gem-accent); text-decoration: none; }
+
+    @media (max-width: 900px) {
+      .main-container { grid-template-columns: 1fr; }
+      .form-grid { grid-template-columns: 1fr; }
+      .form-grid.three { grid-template-columns: 1fr 1fr; }
+      .tender-types { grid-template-columns: 1fr; }
+      .header-inner { padding: 12px 20px; flex-wrap: wrap; gap: 10px; }
+      .header-right { position: relative; width: 100%; }
+      .nav-menu {
+        position: absolute;
+        top: 56px;
+        left: 0;
+        width: 100%;
+        flex-direction: column;
+        gap: 0;
+        background: #051f3d;
+        border-bottom: 2px solid #f2c14e;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease;
+      }
+      .nav-menu.active {
+        max-height: 500px;
+        padding: 10px 0;
+      }
+      .hero { padding: 24px 20px; }
+
+      /* Mobile Navbar */
+      .mobile-toggle { display: flex; }
+      .nav-menu a {
+        width: 100%;
+        border: none;
+        border-bottom: 1px solid rgba(242, 193, 78, 0.3);
+        padding: 14px 20px;
+        text-align: left;
+        height: auto;
+      }
+      .nav-menu a.active {
+        background: rgba(255, 255, 255, 0.08);
+      }
+      .top-contact-bar {
+        flex-direction: column;
+        padding: 8px 20px;
+        gap: 5px;
+        font-size: 0.75rem;
+      }
+    }
+
+    /* TOP CONTACT BAR */
+    .top-contact-bar {
+      background: #00122e;
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      padding: 10px 40px;
+      font-size: 0.82rem;
+      font-weight: 500;
+      align-items: center;
+    }
+    .top-left, .top-right {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    
+
+/* UPDATE GEM SECTION */
+.update-gem-section {
+  background: white;
+  border-radius: 14px;
+  box-shadow: 0 4px 18px rgba(0,0,0,0.08);
+  margin-top: 35px;
+  overflow: hidden;
+}
+
+.update-header {
+  background: linear-gradient(90deg,#001f54,#003087);
+  color: white;
+}
+  </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header">
+  <div class="header-stripe"></div>
+  <div class="header-inner">
+    <div class="logo-area">
+      <div class="gem-logo">
+        <span class="gem-star">⭐</span>
+        <span class="gem-name">Ge<span>M</span></span>
+      </div>
+      <div class="logo-text">
+        <h1>GeM Registration Assistance Portal</h1>
+        <p>भारत सरकार के सरकारी ई-मार्केटप्लेस पर पंजीकरण हेतु सहायता केंद्र</p>
+      </div>
+    </div>
+    <div class="header-right">
+      <nav id="navMenu" class="nav-menu">
+        <a href="#gem-registration" class="active">GeM Registration</a>
+        <a href="index.html">Home</a>
+        <a href="#cancel-gem">Cancel GeM</a>
+        <a href="#update-gem">Update GeM</a>
+        <a href="#gem-blog">Blog</a>
+      </nav>
+      <button type="button" class="mobile-toggle" onclick="toggleMenu()" aria-label="Toggle menu">☰</button>
+    </div>
+  </div>
+</header>
+<!-- TOP CONTACT BAR -->
+<div class="top-contact-bar">
+  <div class="top-left">📞 Help Desk: +91 - 9625694159</div>
+  <div class="top-right">Mon to Sat: 10:00 AM - 9:00 PM</div>
+</div>
+
+
+
+<!-- HERO -->
+<div class="hero" id="gem-registration">
+  <div class="hero-offer">🎉 Get ₹500 OFF on your first booking! Limited time offer — Book now and save big!</div>
+  <h2>GeM Registration <span>2026</span></h2>
+  <p>Apply for Government e-Marketplace Registration — Sell to Government Directly</p>
+  <div class="hero-badges">
+    <span class="hero-badge">✅ 10,000+ Registered Sellers</span>
+    <span class="hero-badge">🏅 ISO 9001:2015 Certified</span>
+    <span class="hero-badge">🔒 Secure & Official</span>
+    <span class="hero-badge">⚡ Priority Processing</span>
+  </div>
+</div>
+
+<!-- MAIN -->
+<div class="main-container">
+
+  <!-- FORM -->
+  <div class="form-card">
+    <div class="form-card-header">
+      <span class="icon">📋</span>
+      <div>
+        <h3>Application Form for GeM Registration</h3>
+        <p>जेम कंसल्टेंसी के लिए पंजीकरण फॉर्म — Fill all required fields carefully</p>
+      </div>
+    </div>
+    <div class="form-body">
+      <form id="gemForm">
+
+        <!-- AUTHORIZED PERSON -->
+        <div class="form-section">
+          <div class="section-title"><span class="dot"></span> Authorized Person Details / अधिकृत व्यक्ति का विवरण</div>
+          <div class="form-grid">
+            <div class="field-group">
+              <label>Name of Authorized Person / <span class="hindi">अधिकृत व्यक्ति का नाम</span> <span class="req">*</span></label>
+              <input type="text" placeholder="As per Aadhaar / PAN Card" required />
+            </div>
+            <div class="field-group">
+              <label>Email ID / <span class="hindi">ईमेल आईडी</span> <span class="req">*</span></label>
+              <input type="email" placeholder="Valid email address" required />
+            </div>
+            <div class="field-group">
+              <label>Mobile Number / <span class="hindi">मोबाइल नंबर</span> <span class="req">*</span></label>
+              <input type="tel" placeholder="10-digit mobile number" maxlength="10" required />
+            </div>
+            <div class="field-group">
+              <label>Date of Birth / <span class="hindi">जन्म की तारीख</span> <span class="req">*</span></label>
+              <input type="date" placeholder="MM/DD/YYYY" required />
+            </div>
+          </div>
+        </div>
+
+        <!-- BUSINESS / ORGANISATION -->
+        <div class="form-section">
+          <div class="section-title"><span class="dot"></span> Business / Organisation Details / व्यवसाय विवरण</div>
+          <div class="form-grid">
+            <div class="field-group">
+              <label>Business / Organisation Name / <span class="hindi">व्यवसाय / संगठन का नाम</span> <span class="req">*</span></label>
+              <input type="text" placeholder="As per PAN Card" required />
+            </div>
+            <div class="field-group">
+              <label>Business / Organisation Type / <span class="hindi">संगठन का प्रकार</span> <span class="req">*</span></label>
+              <select required>
+                <option value="">SELECT TYPE</option>
+                <option>Proprietorship / एकल स्वामित्व</option>
+                <option>Partnership / साझेदारी</option>
+                <option>Private Limited Company</option>
+                <option>Public Limited Company</option>
+                <option>LLP / सीमित देयता भागीदारी</option>
+                <option>Trust / न्यास</option>
+                <option>Society / समिति</option>
+                <option>Government Organisation</option>
+              </select>
+            </div>
+            <div class="field-group">
+              <label>Incorporation Date / <span class="hindi">निगमन की तारीख</span> <span class="req">*</span></label>
+              <input type="date" required />
+            </div>
+            <div class="field-group">
+              <label>Business PAN Number / <span class="hindi">व्यवसाय पैन नंबर</span> <span class="req">*</span></label>
+              <input type="text" placeholder="10-digit PAN number" maxlength="10" style="text-transform:uppercase;" required />
+            </div>
+          </div>
+        </div>
+
+        <!-- BUSINESS ADDRESS -->
+        <div class="form-section">
+          <div class="section-title"><span class="dot"></span> Business Office Address / व्यापार कार्यालय का पता</div>
+          <div class="form-grid">
+            <div class="field-group field-full">
+              <label>Business Office Address / <span class="hindi">व्यापार कार्यालय का पता</span> <span class="req">*</span></label>
+              <input type="text" placeholder="Full address as per registration proof" required />
+            </div>
+            <div class="field-group">
+              <label>State / <span class="hindi">राज्य</span> <span class="req">*</span></label>
+              <select required>
+                <option value="">SELECT STATE</option>
+                <option>Uttar Pradesh</option>
+                <option>Maharashtra</option>
+                <option>Delhi</option>
+                <option>Gujarat</option>
+                <option>Rajasthan</option>
+                <option>Madhya Pradesh</option>
+                <option>West Bengal</option>
+                <option>Bihar</option>
+                <option>Karnataka</option>
+                <option>Tamil Nadu</option>
+                <option>Andhra Pradesh</option>
+                <option>Telangana</option>
+                <option>Kerala</option>
+                <option>Punjab</option>
+                <option>Haryana</option>
+                <option>Jharkhand</option>
+                <option>Uttarakhand</option>
+                <option>Himachal Pradesh</option>
+                <option>Chhattisgarh</option>
+                <option>Odisha</option>
+                <option>Assam</option>
+              </select>
+            </div>
+            <div class="field-group">
+              <label>District / <span class="hindi">जिला</span> <span class="req">*</span></label>
+              <select required>
+                <option value="">SELECT DISTRICT</option>
+              </select>
+            </div>
+            <div class="field-group">
+              <label>Pin Code / <span class="hindi">पिन कोड</span> <span class="req">*</span></label>
+              <input type="text" placeholder="6-digit pin code" maxlength="6" required />
+            </div>
+          </div>
+        </div>
+
+        <!-- BANK DETAILS -->
+        <div class="form-section">
+          <div class="section-title"><span class="dot"></span> Bank Details / बैंक विवरण</div>
+          <div class="form-grid">
+            <div class="field-group">
+              <label>Account Holder Name / <span class="hindi">खाता धारक का नाम</span> <span class="req">*</span></label>
+              <input type="text" placeholder="As per bank records (current or savings)" required />
+            </div>
+            <div class="field-group">
+              <label>Bank Name / <span class="hindi">बैंक का नाम</span> <span class="req">*</span></label>
+              <input type="text" placeholder="Enter applicant's bank name" required />
+            </div>
+            <div class="field-group">
+              <label>Bank A/C Number / <span class="hindi">बैंक खाता संख्या</span> <span class="req">*</span></label>
+              <input type="text" placeholder="Valid account number of bank" required />
+            </div>
+            <div class="field-group">
+              <label>Bank IFSC Code / <span class="hindi">बैंक IFSC कोड</span> <span class="req">*</span></label>
+              <input type="text" placeholder="Valid IFS code of your bank" style="text-transform:uppercase;" required />
+            </div>
+            <div class="field-group field-full">
+              <label>Bank Address / <span class="hindi">बैंक पता</span> <span class="req">*</span></label>
+              <input type="text" placeholder="Enter applicant's bank address" required />
+            </div>
+          </div>
+        </div>
+
+        <!-- GST -->
+        <div class="form-section">
+          <div class="section-title"><span class="dot"></span> GST Details / जीएसटी विवरण</div>
+          <div class="form-grid">
+            <div class="field-group">
+              <label>GST Number / <span class="hindi">जीएसटी नंबर</span> <span class="req">*</span></label>
+              <div class="gst-field">
+                <input type="text" placeholder="E.G. 22AAAAA0000A1Z5" maxlength="15" style="text-transform:uppercase;" required />
+              </div>
+              <span style="font-size:0.72rem;color:#90A4AE;">Select whether you have GST or not. If yes, enter GST number.</span>
+            </div>
+            <div class="field-group">
+              <label>Do you have GST? / <span class="hindi">क्या आपके पास GST है?</span></label>
+              <select id="gstSelect" onchange="toggleGST(this)">
+                <option value="">--Select--</option>
+                <option value="yes">Yes / हाँ</option>
+                <option value="no">No / नहीं</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- TENDER INTEREST -->
+        <div class="form-section">
+          <div class="tender-box">
+            <div class="tender-title">📌 What Kind of Tenders Are Available on GeM? / जेम पर कौन-कौन सी निविदाएं होती हैं?</div>
+            <div class="tender-types">
+              <div class="tender-type">
+                <strong>1. Direct Purchase / डायरेक्ट खरीद</strong>
+                <span class="range">₹0 – ₹25,000</span> तक की खरीद, बिना बोली के
+              </div>
+              <div class="tender-type">
+                <strong>2. L1 Purchase / न्यूनतम मूल्य खरीद</strong>
+                <span class="range">₹25,001 – ₹5,00,000</span> तक, सबसे कम रेट वाला विक्रेता चुना जाता है
+              </div>
+              <div class="tender-type">
+                <strong>3. Open Bidding / ओपन बिडिंग</strong>
+                <span class="range">₹5 लाख से ₹2 करोड़</span> तक के टेंडर, बोली प्रक्रिया होती है
+              </div>
+              <div class="tender-type">
+                <strong>4. Custom Bid & Projects / कस्टम प्रोजेक्ट्स</strong>
+                <span class="range">₹10 लाख से अधिक</span>, विशेष सेवाएं (जैसे: सुरक्षा, IT सेवाएं)
+              </div>
+            </div>
+
+            <div style="background:white;border-radius:8px;padding:12px;border:1px solid #BBDEFB;margin-bottom:14px;">
+              <p style="font-size:0.8rem;color:var(--text-mid);">✅ Choose your tender range below so we can guide you to suitable bids. / कृपया नीचे दिए गए विकल्प से निविदा राशि चुनें ताकि हम उसी अनुसार आपकी सहायता कर सकें।</p>
+            </div>
+
+            <div class="range-label">Interested Tender Amount Range / इच्छुक निविदा राशि सीमा <span style="color:#e53935;">*</span></div>
+            <div class="radio-group">
+              <label class="radio-item" onclick="selectRadio(this)">
+                <input type="radio" name="tenderRange" value="1to5" required /> 1 TO 5 LAKH / 1 से 5 लाख
+              </label>
+              <label class="radio-item" onclick="selectRadio(this)">
+                <input type="radio" name="tenderRange" value="5to10" /> 5 TO 10 LAKH / 5 से 10 लाख
+              </label>
+              <label class="radio-item" onclick="selectRadio(this)">
+                <input type="radio" name="tenderRange" value="10to20" /> 10 TO 20 LAKH / 10 से 20 लाख
+              </label>
+              <label class="radio-item" onclick="selectRadio(this)">
+                <input type="radio" name="tenderRange" value="20plus" /> MORE THAN 20 LAKH / 20 लाख से अधिक
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <!-- TERMS -->
+        <div class="form-section">
+          <div class="check-item">
+            <input type="checkbox" required />
+            <span>I agree to the <a href="#">Terms of Service</a>. Please note OTP will be required to process your application. / हमारी कंपनी के नियमों और शर्तों को स्वीकार करने के लिए दोनों चेकबॉक्स पर टिक करें।</span>
+          </div>
+        </div>
+
+        <!-- SUBMIT -->
+        <button type="submit" class="submit-btn">
+          🚀 Submit Application / आवेदन जमा करें
+        </button>
+
+      </form>
+    </div>
+  </div>
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+
+    <div class="helpline-card">
+      <h4>📞 Helpline / सहायता केंद्र</h4>
+      <div class="number">+91 9625694159</div>
+      <p>Mon–Sat • 10:00 AM – 9:00 PM</p>
+      <div class="contact-btns">
+        <button class="contact-btn call">📞 Call Now</button>
+        <button class="contact-btn whatsapp">💬 WhatsApp</button>
+      </div>
+    </div>
+
+    <div class="info-card">
+      <div class="info-card-header">📖 Guidelines / दिशानिर्देश</div>
+      <div class="info-card-body">
+        <div class="info-item">
+          <div class="bullet"></div>
+          <p><strong>Name of Authorized Person</strong> Enter name of Owner/Director/Authorized Person strictly as per Aadhaar or PAN Card.</p>
+        </div>
+        <div class="info-item">
+          <div class="bullet"></div>
+          <p><strong>Email ID</strong> Our executive will call to verify email OTP.</p>
+        </div>
+        <div class="info-item">
+          <div class="bullet"></div>
+          <p><strong>Mobile Number</strong> Enter valid 10-digit mobile number. Executive will call to verify OTP.</p>
+        </div>
+        <div class="info-item">
+          <div class="bullet"></div>
+          <p><strong>Date of Birth</strong> As per PAN card record. (Company formation date for companies having PAN).</p>
+        </div>
+        <div class="info-item">
+          <div class="bullet"></div>
+          <p><strong>Business PAN Number</strong> Enter business PAN number. (Not applicable for Proprietor).</p>
+        </div>
+        <div class="info-item">
+          <div class="bullet"></div>
+          <p><strong>Business Office Address</strong> Provide valid details as per registration proof of the business firm.</p>
+        </div>
+        <div class="info-item">
+          <div class="bullet"></div>
+          <p><strong>Account Number</strong> Enter valid account number of bank.</p>
+        </div>
+        <div class="info-item">
+          <div class="bullet"></div>
+          <p><strong>IFSC Code</strong> Enter valid IFS code of your bank.</p>
+        </div>
+        <div class="info-item">
+          <div class="bullet"></div>
+          <p><strong>Bank Address</strong> Enter applicant's bank address.</p>
+        </div>
+        <div class="info-item">
+          <div class="bullet"></div>
+          <p><strong>Submit Application</strong> Click submit application button to submit. OTP will be required to process your application.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="info-card">
+      <div class="info-card-header">📊 GeM at a Glance</div>
+      <div class="info-card-body">
+        <div class="gem-stat">
+          <div class="num">10K+</div>
+          <div class="desc">Trusted sellers & service providers across India</div>
+        </div>
+        <div class="gem-stat">
+          <div class="num">ISO</div>
+          <div class="desc">9001:2015 Certified Service Portal</div>
+        </div>
+        <div class="gem-stat">
+          <div class="num">₹500</div>
+          <div class="desc">OFF on first booking — Limited time offer</div>
+        </div>
+        <div class="gem-stat">
+          <div class="num">24/7</div>
+          <div class="desc">Online access to government procurement</div>
+        </div>
+      </div>
+    </div>
+
+  </aside>
+</div>
+
+<section class="detail-section" id="update-gem">
+  <h3>Update GeM Seller Details</h3>
+  <div class="detail-card">
+    <form id="updateGemForm">
+      <div class="form-grid">
+        <div class="field-group">
+          <label>GeM Seller ID <span class="req">*</span></label>
+          <input type="text" placeholder="Enter your GeM Seller ID" required />
+        </div>
+        <div class="field-group">
+          <label>Registered Email <span class="req">*</span></label>
+          <input type="email" placeholder="Enter registered email" required />
+        </div>
+        <div class="field-group">
+          <label>Registered Mobile <span class="req">*</span></label>
+          <input type="tel" placeholder="10-digit mobile number" maxlength="10" required />
+        </div>
+        <div class="field-group">
+          <label>New Contact Person</label>
+          <input type="text" placeholder="Name of updated contact person" />
+        </div>
+        <div class="field-group">
+          <label>New Bank Account Number</label>
+          <input type="text" placeholder="Updated account number" />
+        </div>
+        <div class="field-group">
+          <label>New Bank IFSC Code</label>
+          <input type="text" placeholder="Updated IFSC code" style="text-transform:uppercase;" />
+        </div>
+        <div class="field-group field-full">
+          <label>Updated Business Address</label>
+          <input type="text" placeholder="Enter new registered business address" />
+        </div>
+        <div class="field-group field-full">
+          <label>What would you like to update?</label>
+          <textarea placeholder="E.g. contact details, bank details, product category, GST information"></textarea>
+        </div>
+      </div>
+      <button type="submit" class="submit-btn secondary">Submit Update Request</button>
+    </form>
+  </div>
+</section>
+
+<section class="detail-section" id="cancel-gem">
+  <h3>Cancel GeM Seller Account</h3>
+  <div class="detail-card">
+    <form id="cancelGemForm">
+      <div class="form-grid">
+        <div class="field-group">
+          <label>GeM Seller ID <span class="req">*</span></label>
+          <input type="text" placeholder="Enter your GeM Seller ID" required />
+        </div>
+        <div class="field-group">
+          <label>Seller Name <span class="req">*</span></label>
+          <input type="text" placeholder="Registered seller or company name" required />
+        </div>
+        <div class="field-group">
+          <label>Registered Mobile <span class="req">*</span></label>
+          <input type="tel" placeholder="10-digit mobile number" maxlength="10" required />
+        </div>
+        <div class="field-group">
+          <label>Registered Email</label>
+          <input type="email" placeholder="Registered email address" />
+        </div>
+        <div class="field-group field-full">
+          <label>Reason for Cancellation <span class="req">*</span></label>
+          <textarea placeholder="Write your cancellation reason" required></textarea>
+        </div>
+      </div>
+      <div class="check-item">
+        <input type="checkbox" id="cancelConfirm" required />
+        <label for="cancelConfirm">I confirm that there are no active GeM orders or pending obligations on this account.</label>
+      </div>
+      <button type="submit" class="submit-btn secondary">Submit Cancellation Request</button>
+    </form>
+  </div>
+</section>
+
+<section class="detail-section" id="gem-blog">
+  <h3>GeM Blog & Helpful Guides</h3>
+  <div class="detail-grid">
+    <div class="detail-card">
+      <h4>How to register on GeM portal</h4>
+      <p>Get complete guidance for GeM registration, document preparation, and first-time login.</p>
+      <a class="read-more" href="#">Read More</a>
+    </div>
+    <div class="detail-card">
+      <h4>GeM login & verification issues</h4>
+      <p>Find support for OTP verification, password reset, and account access problems.</p>
+      <a class="read-more" href="#">Read More</a>
+    </div>
+    <div class="detail-card">
+      <h4>GeM seller profile optimization</h4>
+      <p>Learn how to improve your GeM profile and product listings for better tender visibility.</p>
+      <a class="read-more" href="#">Read More</a>
+    </div>
+    <div class="detail-card">
+      <h4>Subscribe for GeM updates</h4>
+      <form id="blogSubscribeForm">
+        <div class="field-group">
+          <label>Your Name</label>
+          <input type="text" placeholder="Enter your name" />
+        </div>
+        <div class="field-group">
+          <label>Email Address</label>
+          <input type="email" placeholder="Enter your email" />
+        </div>
+        <button type="submit" class="submit-btn secondary">Subscribe</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <p>© 2026 GeM Registration Assistance Portal | Government e-Marketplace &nbsp;|&nbsp; <a href="#">Privacy Policy</a> &nbsp;|&nbsp; <a href="#">Terms of Service</a></p>
+  <p style="margin-top:4px;">Trusted by 10,000+ Sellers & Service Providers Across India</p>
+</footer>
+
+<script>
+  // Toggle mobile menu
+  function toggleMenu() {
+    const navMenu = document.getElementById('navMenu');
+    navMenu.classList.toggle('active');
+  }
+
+  // Close menu when a link is clicked
+  document.querySelectorAll('.nav-menu a').forEach(link => {
+    link.addEventListener('click', function() {
+      const navMenu = document.getElementById('navMenu');
+      if (navMenu.classList.contains('active')) {
+        navMenu.classList.remove('active');
+      }
+    });
+  });
+
+  // Handle active nav link based on current page section
+  window.addEventListener('scroll', function() {
+    const scrollPos = window.scrollY;
+    document.querySelectorAll('.nav-menu a[href^="#"]').forEach(link => {
+      const section = document.querySelector(link.getAttribute('href'));
+      if (section && section.offsetTop <= scrollPos + 120) {
+        document.querySelectorAll('.nav-menu a').forEach(a => a.classList.remove('active'));
+        link.classList.add('active');
+      }
+    });
+  });
+
+  // Smooth scroll for navigation links
+  document.querySelectorAll('.nav-menu a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      e.preventDefault();
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth' });
+      }
+    });
+  });
+
+  // Update GeM form submission
+  const updateGemForm = document.getElementById('updateGemForm');
+  if (updateGemForm) {
+    updateGemForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      alert('✅ Your GeM update request has been submitted. Our executive will contact you shortly to verify and apply the requested changes.');
+      updateGemForm.reset();
+    });
+  }
+
+  // Cancel GeM form submission
+  const cancelGemForm = document.getElementById('cancelGemForm');
+  if (cancelGemForm) {
+    cancelGemForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      alert('⚠️ Your cancellation request has been received. We will review the details and contact you on the registered mobile number for final OTP verification.');
+      cancelGemForm.reset();
+    });
+  }
+
+  // Blog subscription form submission
+  const blogSubscribeForm = document.getElementById('blogSubscribeForm');
+  if (blogSubscribeForm) {
+    blogSubscribeForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      alert('📬 Thank you! You are now subscribed to GeM updates and helpful guides. Please check your email for confirmation.');
+      blogSubscribeForm.reset();
+    });
+  }
+
+  // Radio button selection for tender range
+  function selectRadio(label) {
+    document.querySelectorAll('.radio-item').forEach(l => l.classList.remove('selected'));
+    label.classList.add('selected');
+  }
+
+  // GST field toggle
+  function toggleGST(sel) {
+    const gstInput = document.querySelector('input[placeholder="E.G. 22AAAAA0000A1Z5"]');
+    if (sel.value === 'no') {
+      gstInput.disabled = true;
+      gstInput.style.background = '#f0f0f0';
+      gstInput.value = 'N/A';
+    } else {
+      gstInput.disabled = false;
+      gstInput.style.background = '';
+      gstInput.value = '';
+    }
+  }
+
+  // Form submission
+  document.getElementById('gemForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    alert('✅ Your GeM Registration application has been submitted successfully!\nOur executive will contact you on your registered mobile number to verify OTP and process your application.');
+  });
+</script>
+</body>
+</html>

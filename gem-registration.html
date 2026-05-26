@@ -1,1068 +1,605 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>GeM Registration | Government e-Marketplace</title>
-  <link href="https://fonts.googleapis.com/css2?family=Tiro+Devanagari+Hindi&family=Poppins:wght@400;500;600;700&family=Baloo+2:wght@600;700&display=swap" rel="stylesheet"/>
-  <style>
-    :root {
-      --gem-blue: #003087;
-      --gem-teal: #007B6E;
-      --gem-accent: #FFC107;
-      --gem-green: #2E7D32;
-      --white: #FFFFFF;
-      --light-bg: #F0F4F8;
-      --border: #C5D5E8;
-      --text-dark: #1A2840;
-      --text-mid: #4A5A72;
-      --input-bg: #FAFCFF;
-      --shadow: 0 4px 24px rgba(0,48,135,0.10);
-    }
-
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-
-    body {
-      font-family: 'Poppins', sans-serif;
-      background: var(--light-bg);
-      color: var(--text-dark);
-      min-height: 100vh;
-    }
-
-    /* HEADER */
-    .header {
-      background: linear-gradient(135deg, #003087 0%, #005288 100%);
-      position: sticky; top: 0; z-index: 100;
-      box-shadow: 0 2px 18px rgba(0,48,135,0.25);
-    }
-    .header-stripe {
-      height: 5px;
-      background: linear-gradient(90deg, #FF6B00 33.3%, #FFFFFF 33.3%, #FFFFFF 66.6%, #138808 66.6%);
-    }
-    .header-inner {
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 12px 40px; max-width: 1200px; margin: 0 auto;
-    }
-    .logo-area { display: flex; align-items: center; gap: 14px; }
-    .gem-logo {
-      background: white; border-radius: 10px;
-      padding: 6px 14px; display: flex; align-items: center; gap: 8px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
-    }
-    .gem-logo .gem-star { color: var(--gem-blue); font-size: 1.4rem; }
-    .gem-logo .gem-name { color: var(--gem-blue); font-weight: 800; font-size: 1.2rem; letter-spacing: -0.5px; }
-    .gem-logo .gem-name span { color: var(--gem-teal); }
-    .logo-text { color: white; }
-    .logo-text h1 { font-family: 'Baloo 2', cursive; font-size: 1.1rem; }
-    .logo-text p { font-size: 0.7rem; opacity: 0.8; }
-    .header-right { display: flex; align-items: center; gap: 12px; }
-    .trust-badge {
-      background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.25);
-      border-radius: 20px; padding: 5px 14px; color: white; font-size: 0.75rem;
-    }
-    .nav-menu {
-      display: flex; gap: 4px;
-      background: rgba(255,255,255,0.08);
-      border-radius: 8px;
-      padding: 4px;
-    }
-    .nav-menu a {
-      color: rgba(255,255,255,0.85); text-decoration: none;
-      font-size: 0.75rem; font-weight: 500;
-      padding: 5px 12px; border-radius: 6px;
-      transition: background 0.2s;
-    }
-    .nav-menu a:hover, .nav-menu a.active {
-      background: rgba(255,255,255,0.2); color: white;
-    }
-
-    /* HERO */
-    .hero {
-      background: linear-gradient(135deg, #003087 0%, #0052A5 50%, #007B6E 100%);
-      padding: 36px 40px 32px;
-      text-align: center; position: relative; overflow: hidden;
-    }
-    .hero::before {
-      content: '';
-      position: absolute; inset: 0;
-      background: radial-gradient(ellipse at 30% 50%, rgba(255,193,7,0.08) 0%, transparent 60%),
-                  radial-gradient(ellipse at 70% 50%, rgba(0,123,110,0.15) 0%, transparent 60%);
-    }
-    .hero-offer {
-      display: inline-block;
-      background: var(--gem-accent); color: var(--text-dark);
-      font-size: 0.78rem; font-weight: 700;
-      padding: 5px 16px; border-radius: 20px;
-      margin-bottom: 14px; animation: pulse 2s infinite;
-    }
-    @keyframes pulse { 0%,100%{transform:scale(1)} 50%{transform:scale(1.03)} }
-    .hero h2 { font-family: 'Baloo 2', cursive; font-size: 1.8rem; color: white; margin-bottom: 6px; }
-    .hero h2 span { color: var(--gem-accent); }
-    .hero p { color: rgba(255,255,255,0.8); font-size: 0.88rem; margin-bottom: 16px; }
-    .hero-badges { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
-    .hero-badge {
-      background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.25);
-      color: white; border-radius: 20px; padding: 5px 14px; font-size: 0.78rem;
-      display: flex; align-items: center; gap: 5px;
-    }
-
-    .mobile-toggle {
-      display: none;
-      border: none;
-      background: rgba(255,255,255,0.12);
-      color: white;
-      border-radius: 10px;
-      width: 42px;
-      height: 42px;
-      font-size: 1.1rem;
-      cursor: pointer;
-      align-self: center;
-    }
-
-    .detail-section {
-      background: var(--white);
-      border-radius: 16px;
-      box-shadow: var(--shadow);
-      padding: 28px;
-      margin-top: 32px;
-    }
-
-    .detail-section h3 {
-      color: var(--gem-blue);
-      font-size: 1.35rem;
-      margin-bottom: 16px;
-    }
-
-    .detail-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 20px;
-    }
-
-    .detail-card {
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 20px;
-      background: #fff;
-    }
-
-    .detail-card h4 {
-      color: var(--gem-blue);
-      margin-bottom: 10px;
-      font-size: 1rem;
-    }
-
-    .detail-card p,
-    .detail-card li {
-      color: var(--text-mid);
-      line-height: 1.7;
-      font-size: 0.92rem;
-    }
-
-    .detail-card ul {
-      padding-left: 18px;
-      margin-top: 10px;
-    }
-
-    .detail-card li { margin-bottom: 8px; }
-
-    .detail-card .read-more {
-      display: inline-block;
-      margin-top: 14px;
-      color: var(--gem-teal);
-      font-weight: 700;
-      text-decoration: none;
-    }
-
-    .detail-card form {
-      display: grid;
-      gap: 16px;
-    }
-
-    .detail-card .field-group {
-      margin-bottom: 0;
-    }
-
-    .detail-card input,
-    .detail-card textarea,
-    .detail-card select {
-      width: 100%;
-      padding: 10px 14px;
-      border: 1.5px solid var(--border);
-      border-radius: 10px;
-      font-family: 'Poppins', sans-serif;
-      font-size: 0.9rem;
-      color: var(--text-dark);
-      background: var(--input-bg);
-      outline: none;
-      transition: all 0.2s;
-    }
-
-    .detail-card textarea { min-height: 84px; resize: vertical; }
-
-    .detail-card input:focus,
-    .detail-card textarea:focus,
-    .detail-card select:focus {
-      border-color: var(--gem-blue);
-      box-shadow: 0 0 0 2px rgba(0,48,135,0.08);
-      background: white;
-    }
-
-    .submit-btn.secondary {
-      background: linear-gradient(135deg, #005288, #003087);
-    }
-
-    /* MAIN LAYOUT */
-    .main-container {
-      max-width: 1200px; margin: 32px auto; padding: 0 20px;
-      display: grid; grid-template-columns: 1fr 340px; gap: 24px;
-    }
-
-    /* FORM CARD */
-    .form-card {
-      background: var(--white); border-radius: 16px;
-      box-shadow: var(--shadow); overflow: hidden;
-    }
-    .form-card-header {
-      background: linear-gradient(90deg, #003087 0%, #0052A5 100%);
-      padding: 18px 28px; display: flex; align-items: center; gap: 12px;
-    }
-    .form-card-header .icon { font-size: 1.6rem; }
-    .form-card-header h3 { font-family: 'Baloo 2', cursive; font-size: 1.15rem; color: white; }
-    .form-card-header p { color: rgba(255,255,255,0.8); font-size: 0.78rem; }
-    .form-body { padding: 28px; }
-
-    /* SECTION */
-    .form-section { margin-bottom: 28px; }
-    .section-title {
-      display: flex; align-items: center; gap: 8px;
-      font-size: 0.88rem; font-weight: 700;
-      color: var(--gem-blue); text-transform: uppercase;
-      letter-spacing: 1px; margin-bottom: 16px;
-      padding-bottom: 8px; border-bottom: 2px solid var(--light-bg);
-    }
-    .section-title .dot {
-      width: 10px; height: 10px; border-radius: 50%;
-      background: var(--gem-teal); flex-shrink: 0;
-    }
-
-    /* FORM FIELDS */
-    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-    .form-grid.three { grid-template-columns: 1fr 1fr 1fr; }
-    .field-full { grid-column: 1 / -1; }
-
-    .field-group { display: flex; flex-direction: column; gap: 5px; }
-    .field-group label {
-      font-size: 0.78rem; font-weight: 600;
-      color: var(--text-mid); letter-spacing: 0.2px;
-    }
-    .field-group label .req { color: #e53935; }
-    .field-group label .hindi {
-      font-family: 'Tiro Devanagari Hindi', serif;
-      font-weight: 400; color: var(--text-mid); font-size: 0.76rem;
-    }
-    .field-group input,
-    .field-group select,
-    .field-group textarea {
-      width: 100%; padding: 10px 14px;
-      border: 1.5px solid var(--border); border-radius: 8px;
-      font-family: 'Poppins', sans-serif; font-size: 0.84rem;
-      color: var(--text-dark); background: var(--input-bg);
-      transition: all 0.2s; outline: none;
-    }
-    .field-group input:focus,
-    .field-group select:focus {
-      border-color: var(--gem-blue); background: white;
-      box-shadow: 0 0 0 3px rgba(0,48,135,0.08);
-    }
-    .field-group select { appearance: none; cursor: pointer; }
-    .field-group input::placeholder { color: #b0bec5; }
-    .field-group textarea { resize: vertical; min-height: 70px; }
-
-    /* TENDER SECTION */
-    .tender-box {
-      background: linear-gradient(135deg, #E3F2FD, #E8F5E9);
-      border: 1.5px solid #90CAF9;
-      border-radius: 12px; padding: 18px;
-    }
-    .tender-title {
-      font-weight: 700; color: var(--gem-blue); font-size: 0.92rem;
-      margin-bottom: 12px; display: flex; align-items: center; gap: 8px;
-    }
-    .tender-types {
-      display: grid; grid-template-columns: 1fr 1fr;
-      gap: 8px; margin-bottom: 16px;
-    }
-    .tender-type {
-      background: white; border: 1px solid #BBDEFB;
-      border-radius: 8px; padding: 10px 12px;
-      font-size: 0.79rem; color: var(--text-mid);
-    }
-    .tender-type strong { color: var(--gem-blue); display: block; font-size: 0.82rem; }
-    .tender-type .range { color: var(--gem-green); font-weight: 600; }
-
-    .range-label {
-      font-size: 0.82rem; font-weight: 600; color: var(--text-dark);
-      margin-bottom: 10px;
-    }
-    .radio-group { display: flex; flex-direction: column; gap: 8px; }
-    .radio-item {
-      display: flex; align-items: center; gap: 10px;
-      background: white; border: 1.5px solid #BBDEFB;
-      border-radius: 8px; padding: 10px 14px; cursor: pointer;
-      transition: all 0.2s; font-size: 0.83rem; color: var(--text-mid);
-    }
-    .radio-item:hover { border-color: var(--gem-blue); background: #F0F4FF; }
-    .radio-item input[type="radio"] { accent-color: var(--gem-blue); }
-    .radio-item.selected { border-color: var(--gem-blue); background: #EEF3FF; color: var(--gem-blue); font-weight: 600; }
-
-    /* GST FIELD */
-    .gst-field { position: relative; }
-    .gst-field input { padding-right: 80px; font-family: monospace; font-size: 0.88rem; text-transform: uppercase; }
-    .gst-placeholder { font-size: 0.7rem; color: #90A4AE; position: absolute; right: 12px; top: 50%; transform: translateY(-50%); }
-
-    /* CHECKBOXES */
-    .check-item {
-      display: flex; align-items: flex-start; gap: 10px;
-      font-size: 0.82rem; color: var(--text-mid);
-      margin-bottom: 10px; line-height: 1.5;
-    }
-    .check-item input[type="checkbox"] {
-      margin-top: 2px; flex-shrink: 0;
-      accent-color: var(--gem-blue); width: 16px; height: 16px; cursor: pointer;
-    }
-    .check-item a { color: var(--gem-teal); text-decoration: none; font-weight: 600; }
-
-    /* SUBMIT */
-    .submit-btn {
-      width: 100%; padding: 16px;
-      background: linear-gradient(135deg, #003087, #005288);
-      color: white; border: none; border-radius: 10px;
-      font-family: 'Baloo 2', cursive; font-size: 1.1rem; font-weight: 700;
-      cursor: pointer; letter-spacing: 0.5px;
-      transition: all 0.25s; box-shadow: 0 4px 15px rgba(0,48,135,0.3);
-      display: flex; align-items: center; justify-content: center; gap: 8px;
-    }
-    .submit-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(0,48,135,0.4); }
-
-    /* SIDEBAR */
-    .sidebar { display: flex; flex-direction: column; gap: 16px; }
-
-    .info-card {
-      background: var(--white); border-radius: 14px;
-      box-shadow: var(--shadow); overflow: hidden;
-    }
-    .info-card-header {
-      background: linear-gradient(135deg, #003087, #005288);
-      padding: 14px 18px; color: white;
-      font-weight: 700; font-size: 0.88rem;
-      display: flex; align-items: center; gap: 8px;
-    }
-    .info-card-body { padding: 16px 18px; }
-
-    .info-item {
-      display: flex; gap: 10px;
-      margin-bottom: 12px; padding-bottom: 12px;
-      border-bottom: 1px solid var(--light-bg);
-    }
-    .info-item:last-child { margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
-    .info-item .bullet {
-      width: 6px; height: 6px; background: var(--gem-teal);
-      border-radius: 50%; margin-top: 7px; flex-shrink: 0;
-    }
-    .info-item p { font-size: 0.79rem; color: var(--text-mid); line-height: 1.5; }
-    .info-item strong { color: var(--text-dark); display: block; margin-bottom: 2px; }
-
-    .gem-stat {
-      display: flex; gap: 10px; align-items: center;
-      padding: 10px 0; border-bottom: 1px solid var(--light-bg);
-    }
-    .gem-stat:last-child { border-bottom: none; }
-    .gem-stat .num { font-size: 1.4rem; font-weight: 800; color: var(--gem-blue); }
-    .gem-stat .desc { font-size: 0.78rem; color: var(--text-mid); }
-
-    .helpline-card {
-      background: linear-gradient(135deg, #003087, #0052A5);
-      border-radius: 14px; padding: 18px; color: white;
-      text-align: center; box-shadow: var(--shadow);
-    }
-    .helpline-card h4 { font-size: 0.88rem; margin-bottom: 8px; opacity: 0.9; }
-    .helpline-card .number { font-size: 1.4rem; font-weight: 700; letter-spacing: 1px; margin-bottom: 4px; }
-    .helpline-card p { font-size: 0.75rem; opacity: 0.8; }
-    .contact-btns { display: flex; gap: 8px; margin-top: 12px; }
-    .contact-btn {
-      flex: 1; padding: 8px; border-radius: 8px; border: none;
-      font-size: 0.78rem; font-weight: 600; cursor: pointer;
-      display: flex; align-items: center; justify-content: center; gap: 5px;
-    }
-    .contact-btn.call { background: #FFC107; color: #1A2840; }
-    .contact-btn.whatsapp { background: #25D366; color: white; }
-
-    /* FOOTER */
-    .footer {
-      background: var(--gem-blue); color: rgba(255,255,255,0.7);
-      text-align: center; padding: 18px; font-size: 0.78rem; margin-top: 40px;
-    }
-    .footer a { color: var(--gem-accent); text-decoration: none; }
-
-    @media (max-width: 900px) {
-      .main-container { grid-template-columns: 1fr; }
-      .form-grid { grid-template-columns: 1fr; }
-      .form-grid.three { grid-template-columns: 1fr 1fr; }
-      .tender-types { grid-template-columns: 1fr; }
-      .header-inner { padding: 12px 20px; flex-wrap: wrap; gap: 10px; }
-      .header-right { position: relative; width: 100%; }
-      .nav-menu {
-        position: absolute;
-        top: 56px;
-        left: 0;
-        width: 100%;
-        flex-direction: column;
-        gap: 0;
-        background: #051f3d;
-        border-bottom: 2px solid #f2c14e;
-        max-height: 0;
-        overflow: hidden;
-        transition: max-height 0.3s ease;
-      }
-      .nav-menu.active {
-        max-height: 500px;
-        padding: 10px 0;
-      }
-      .hero { padding: 24px 20px; }
-
-      /* Mobile Navbar */
-      .mobile-toggle { display: flex; }
-      .nav-menu a {
-        width: 100%;
-        border: none;
-        border-bottom: 1px solid rgba(242, 193, 78, 0.3);
-        padding: 14px 20px;
-        text-align: left;
-        height: auto;
-      }
-      .nav-menu a.active {
-        background: rgba(255, 255, 255, 0.08);
-      }
-      .top-contact-bar {
-        flex-direction: column;
-        padding: 8px 20px;
-        gap: 5px;
-        font-size: 0.75rem;
-      }
-    }
-
-    /* TOP CONTACT BAR */
-    .top-contact-bar {
-      background: #00122e;
-      color: white;
-      display: flex;
-      justify-content: space-between;
-      padding: 10px 40px;
-      font-size: 0.82rem;
-      font-weight: 500;
-      align-items: center;
-    }
-    .top-left, .top-right {
-      display: flex;
-      align-items: center;
-      gap: 5px;
-    }
-
-    
-
-/* UPDATE GEM SECTION */
-.update-gem-section {
-  background: white;
-  border-radius: 14px;
-  box-shadow: 0 4px 18px rgba(0,0,0,0.08);
-  margin-top: 35px;
-  overflow: hidden;
-}
-
-.update-header {
-  background: linear-gradient(90deg,#001f54,#003087);
-  color: white;
-}
-  </style>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>GeM Registration Consultancy 2026 | Government e-Marketplace | GeM Online Portal</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;600;700&display=swap" rel="stylesheet"/>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Noto Sans',Arial,sans-serif;background:#eef2f7;color:#222;font-size:13.5px;}
+a{text-decoration:none;color:inherit;}
+.topbar{background:#fff;border-bottom:1px solid #dde3ec;padding:5px 24px;display:flex;justify-content:space-between;align-items:center;font-size:11.5px;color:#555;}
+.topbar a{color:#003087;font-weight:600;margin-left:10px;}
+.hdr{background:linear-gradient(135deg,#0E1B2C,#1a2f4a);}
+.stripe{height:5px;background:linear-gradient(90deg,#FF9933 33.3%,#fff 33.3%,#fff 66.6%,#138808 66.6%);}
+.hdr-inner{max-width:1200px;margin:0 auto;padding:12px 20px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;}
+.hdr-left{display:flex;align-items:center;gap:14px;}
+.gem-mark{background:#fff;border-radius:8px;padding:6px 14px;display:flex;align-items:center;gap:6px;box-shadow:0 2px 8px rgba(0,0,0,.2);}
+.gem-mark .gs{color:#003087;font-size:1.4rem;}
+.gem-mark .gn{color:#003087;font-weight:900;font-size:1.1rem;letter-spacing:-0.5px;}
+.gem-mark .gn span{color:#007B6E;}
+.hdr-txt h1{font-size:1rem;color:#fff;font-weight:700;line-height:1.3;}
+.hdr-txt p{font-size:11px;color:rgba(255,255,255,.8);}
+.hdr-right{display:flex;align-items:center;gap:12px;}
+.amrit{height:44px;opacity:.9;}
+.hd-num{color:#fff;font-weight:700;font-size:13px;}
+.hd-hr{font-size:11px;color:rgba(255,255,255,.7);}
+.hdr-btns{display:flex;flex-direction:column;gap:4px;}
+.hdr-btns a{padding:6px 14px;border-radius:4px;font-size:12px;font-weight:700;display:flex;align-items:center;gap:5px;}
+.bcall{background:#FF6600;color:#fff;}
+.bwa{background:#25D366;color:#fff;}
+.trust{background:#0a1628;padding:5px 20px;color:rgba(255,255,255,.82);font-size:11.5px;display:flex;gap:18px;justify-content:center;flex-wrap:wrap;}
+.ticker-wrap{background:#c00;overflow:hidden;height:28px;display:flex;align-items:center;}
+.tick{display:inline-block;white-space:nowrap;color:#fff;font-size:12px;padding-left:100%;animation:scroll 22s linear infinite;}
+@keyframes scroll{to{transform:translateX(-100%);}}
+.navbar{background:#003087;}
+.nav-inner{max-width:1200px;margin:0 auto;display:flex;flex-wrap:wrap;}
+.nb{background:none;border:none;cursor:pointer;color:rgba(255,255,255,.85);font-size:11.5px;font-weight:700;padding:10px 14px;white-space:nowrap;transition:all .18s;letter-spacing:.3px;}
+.nb:hover{background:rgba(255,255,255,.1);color:#fff;}
+.nb.on{background:#e65c00;color:#fff;}
+.notice{background:#fff8e1;border-bottom:2px solid #ffc107;padding:6px 20px;font-size:11.5px;color:#5c4a00;text-align:center;}
+.notice a{color:#003087;font-weight:700;}
+.pg{display:none;}.pg.on{display:block;}
+.hero{padding:22px 20px;text-align:center;}
+.hero h2{font-size:1.35rem;color:#fff;margin-bottom:5px;}
+.hero h2 em{color:#FFD700;font-style:normal;}
+.hero p{color:rgba(255,255,255,.82);font-size:12px;margin-bottom:12px;}
+.tags{display:flex;gap:7px;justify-content:center;flex-wrap:wrap;}
+.tag{background:rgba(255,255,255,.13);border:1px solid rgba(255,255,255,.28);color:#fff;border-radius:20px;padding:3px 11px;font-size:11px;}
+.offer{background:#FFC107;color:#1a2f4a;display:inline-block;font-size:11.5px;font-weight:700;padding:4px 14px;border-radius:20px;margin-bottom:10px;animation:pulse 2s infinite;}
+@keyframes pulse{0%,100%{transform:scale(1);}50%{transform:scale(1.03);}}
+.wrap{max-width:1200px;margin:18px auto;padding:0 15px;display:grid;grid-template-columns:1fr 305px;gap:16px;}
+.card{background:#fff;border-radius:6px;box-shadow:0 2px 10px rgba(0,0,0,.09);overflow:hidden;margin-bottom:16px;}
+.ch{padding:12px 20px;display:flex;align-items:center;gap:10px;}
+.ch.bl{background:linear-gradient(90deg,#003087,#0050a0);}
+.ch.te{background:linear-gradient(90deg,#004D40,#00796B);}
+.ch.rd{background:linear-gradient(90deg,#7f0000,#c62828);}
+.ch.gr{background:linear-gradient(90deg,#14521a,#1a8a1a);}
+.ch.or{background:linear-gradient(90deg,#b34700,#e65c00);}
+.ch.gy{background:linear-gradient(90deg,#37474F,#546E7A);}
+.ch h3{font-size:.88rem;color:#fff;font-weight:700;}
+.ch p{color:rgba(255,255,255,.8);font-size:10.5px;}
+.cb{padding:18px 20px;}
+.fsec{margin-bottom:18px;}
+.st{font-size:10.5px;font-weight:700;color:#003087;text-transform:uppercase;letter-spacing:.8px;padding:5px 0 7px;border-bottom:2px solid #e8eef6;margin-bottom:11px;display:flex;align-items:center;gap:6px;}
+.st::before{content:'';width:7px;height:7px;border-radius:50%;background:#007B6E;flex-shrink:0;}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:11px;}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;}
+.f{display:flex;flex-direction:column;gap:4px;}
+.s2{grid-column:1/-1;}
+label.lb{font-size:11px;font-weight:700;color:#455;}
+.rq{color:#c00;}
+.hn{font-size:10.5px;font-weight:400;color:#888;}
+input,select,textarea{width:100%;padding:7.5px 10px;border:1.5px solid #c5d1e3;border-radius:4px;font-size:12.5px;color:#222;background:#f9fbff;outline:none;font-family:inherit;transition:border-color .2s;}
+input:focus,select:focus,textarea:focus{border-color:#003087;background:#fff;box-shadow:0 0 0 2px rgba(0,48,135,.07);}
+select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%23777'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 9px center;cursor:pointer;}
+input::placeholder,textarea::placeholder{color:#b0bfcc;}
+textarea{resize:vertical;min-height:68px;}
+.upz{border:2px dashed #bfcfe0;border-radius:5px;padding:13px 10px;text-align:center;background:#f5f8fd;cursor:pointer;transition:all .2s;}
+.upz:hover{border-color:#e65c00;background:#fff8f0;}
+.upz input{display:none;}
+.upz .ui{font-size:1.7rem;margin-bottom:4px;}
+.upz p{font-size:11px;color:#666;}
+.upz strong{color:#e65c00;}
+.ri{display:flex;align-items:center;gap:8px;background:#f5f8fc;border:1.5px solid #ccd8ea;border-radius:4px;padding:8px 12px;cursor:pointer;font-size:12px;color:#444;margin-bottom:7px;}
+.ri input{accent-color:#003087;width:14px;height:14px;}
+.radio-row{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:6px;}
+.rcard{display:flex;align-items:center;gap:8px;background:#f5f8fc;border:1.5px solid #ccd8ea;border-radius:4px;padding:10px 12px;cursor:pointer;font-size:12px;color:#444;transition:all .2s;}
+.rcard:hover{border-color:#003087;}
+.rcard input{accent-color:#003087;}
+.capbox{background:#f5f8fc;border-radius:5px;padding:11px 14px;display:flex;align-items:center;gap:12px;flex-wrap:wrap;}
+.capcode{background:#003087;color:#fff;font-size:1.15rem;font-weight:700;padding:7px 16px;border-radius:5px;letter-spacing:6px;font-family:monospace;user-select:none;}
+.capbox input{flex:1;min-width:100px;padding:7px 10px;border:1.5px solid #c5d1e3;border-radius:4px;font-size:13px;outline:none;}
+.vbtn{background:#138808;color:#fff;border:none;padding:7px 16px;border-radius:4px;font-weight:700;font-size:11.5px;cursor:pointer;}
+.ck{display:flex;align-items:flex-start;gap:8px;font-size:11.5px;color:#555;margin-bottom:8px;line-height:1.5;}
+.ck input[type=checkbox]{margin-top:2px;flex-shrink:0;accent-color:#003087;width:14px;height:14px;cursor:pointer;}
+.ck a{color:#007B6E;font-weight:600;}
+.sub{width:100%;padding:12px;border:none;border-radius:5px;font-size:.95rem;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;color:#fff;transition:all .2s;}
+.sub:hover{opacity:.9;transform:translateY(-1px);}
+.s-bl{background:linear-gradient(135deg,#002060,#003087);box-shadow:0 3px 10px rgba(0,32,96,.3);}
+.s-rd{background:linear-gradient(135deg,#8b0000,#c62828);box-shadow:0 3px 10px rgba(139,0,0,.3);}
+.s-gr{background:linear-gradient(135deg,#004D40,#007B6E);box-shadow:0 3px 10px rgba(0,77,64,.3);}
+.s-or{background:linear-gradient(135deg,#b34700,#e65c00);box-shadow:0 3px 10px rgba(180,70,0,.3);}
+.sbar{display:flex;flex-direction:column;gap:13px;}
+.sc{background:#fff;border-radius:6px;box-shadow:0 2px 9px rgba(0,0,0,.08);overflow:hidden;}
+.sh{background:linear-gradient(135deg,#003087,#004fa3);padding:9px 14px;color:#fff;font-weight:700;font-size:11.5px;}
+.sb{padding:12px 14px;}
+.ir{display:flex;gap:7px;padding:6px 0;border-bottom:1px solid #edf1f8;font-size:11.5px;color:#555;}
+.ir:last-child{border-bottom:none;}
+.id{width:5px;height:5px;background:#007B6E;border-radius:50%;margin-top:5px;flex-shrink:0;}
+.ir strong{color:#222;display:block;font-size:11.5px;}
+.hl{border-radius:6px;padding:14px;color:#fff;text-align:center;}
+.hl.blue-hl{background:linear-gradient(135deg,#002060,#003087);}
+.hl.teal-hl{background:linear-gradient(135deg,#004D40,#007B6E);}
+.hlnum{font-size:1.2rem;font-weight:700;letter-spacing:1px;margin:4px 0;}
+.bi{display:flex;gap:8px;align-items:flex-start;padding:6px 0;border-bottom:1px solid #edf1f8;font-size:11.5px;color:#555;}
+.bi:last-child{border-bottom:none;}
+.bi strong{color:#222;display:block;}
+.warn{background:#fff3e0;border:1px solid #ffb74d;border-left:4px solid #e65c00;border-radius:4px;padding:10px 14px;margin-bottom:14px;font-size:12px;color:#7a3600;}
+.disc{background:#fff8e1;border:1px solid #ffd040;border-radius:5px;padding:12px 14px;margin-bottom:16px;font-size:12px;color:#5c4a00;}
+.disc p{margin-bottom:4px;}
+.stat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:12px 0;}
+.sg{background:#003087;border-radius:5px;padding:10px;text-align:center;color:#fff;}
+.sg .sn{font-size:1.1rem;font-weight:700;}
+.sg .sl{font-size:10px;opacity:.8;}
+.blog-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;max-width:950px;margin:0 auto;}
+.step-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:16px 0;}
+.step{background:#fff;border-radius:6px;padding:14px;box-shadow:0 2px 8px rgba(0,0,0,.08);text-align:center;border-top:3px solid #003087;}
+.step .snum{font-size:1.5rem;font-weight:800;color:#003087;margin-bottom:5px;}
+.step h4{font-size:12.5px;font-weight:700;color:#222;margin-bottom:5px;}
+.step p{font-size:11.5px;color:#666;line-height:1.5;}
+.docs-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:12px 0;}
+.doc-item{background:#f0f4f8;border-radius:5px;padding:10px;text-align:center;font-size:11px;color:#444;border:1px solid #d0dcea;}
+.doc-item .di{font-size:1.4rem;margin-bottom:4px;}
+.doc-item strong{display:block;font-size:11.5px;color:#003087;}
+.footer{background:#0a1628;color:rgba(255,255,255,.7);padding:20px;text-align:center;font-size:11.5px;margin-top:28px;}
+.footer a{color:#FFD700;}
+.fcols{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;max-width:900px;margin:0 auto 14px;text-align:left;}
+.footer h4{color:#fff;font-size:11.5px;margin-bottom:7px;border-bottom:1px solid rgba(255,255,255,.2);padding-bottom:4px;}
+.footer ul{list-style:none;}
+.footer ul li{padding:2px 0;font-size:11.5px;}
+.footer ul li a{color:rgba(255,255,255,.7);}
+.fstats{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin:10px 0;}
+.fst .sn{font-size:1.1rem;font-weight:700;color:#fff;}
+.fst .sl{font-size:10px;color:rgba(255,255,255,.6);}
+.flinks{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:8px;}
+@media(max-width:900px){.wrap{grid-template-columns:1fr;}.g2,.g3{grid-template-columns:1fr 1fr;}.radio-row{grid-template-columns:1fr;}.hdr-inner{flex-direction:column;align-items:flex-start;}.fcols{grid-template-columns:1fr;}.step-cards{grid-template-columns:1fr;}.docs-grid{grid-template-columns:1fr 1fr;}.blog-grid{grid-template-columns:1fr;}.stat-grid{grid-template-columns:1fr 1fr;}}
+@media(max-width:560px){.g2,.g3{grid-template-columns:1fr;}}
+</style>
 </head>
 <body>
-
+<!-- TOP -->
+<div class="topbar">
+  <span>Help Desk: <strong>+91 96256 94159</strong> &nbsp;&nbsp;⏰ 10:00 AM – 9:00 PM | Mon – Sat</span>
+  <div><a href="#">Home</a><a href="#">About GeM</a><a href="#">Blog</a><a href="#">Contact</a><a href="#">Track Order</a></div>
+</div>
 <!-- HEADER -->
-<header class="header">
-  <div class="header-stripe"></div>
-  <div class="header-inner">
-    <div class="logo-area">
-      <div class="gem-logo">
-        <span class="gem-star">⭐</span>
-        <span class="gem-name">Ge<span>M</span></span>
-      </div>
-      <div class="logo-text">
-        <h1>GeM Registration Assistance Portal</h1>
+<header class="hdr">
+  <div class="stripe"></div>
+  <div class="hdr-inner">
+    <div class="hdr-left">
+      <div class="gem-mark"><span class="gs">⭐</span><span class="gn">Ge<span>M</span></span></div>
+      <div class="hdr-txt">
+        <h1>GeM Registration Portal / सरकारी ई-मार्केटप्लेस पंजीकरण पोर्टल</h1>
         <p>भारत सरकार के सरकारी ई-मार्केटप्लेस पर पंजीकरण हेतु सहायता केंद्र</p>
+        <p>Trusted by Sellers Across India &nbsp;|&nbsp; Complete Documentation Support &nbsp;|&nbsp; ISO 9001:2015 Certified Service Portal</p>
       </div>
     </div>
-    <div class="header-right">
-      <nav id="navMenu" class="nav-menu">
-        <a href="#gem-registration" class="active">GeM Registration</a>
-        <a href="index.html">Home</a>
-        <a href="#cancel-gem">Cancel GeM</a>
-        <a href="#update-gem">Update GeM</a>
-        <a href="#gem-blog">Blog</a>
-      </nav>
-      <button type="button" class="mobile-toggle" onclick="toggleMenu()" aria-label="Toggle menu">☰</button>
+    <div class="hdr-right">
+      <div>
+        <div class="hd-num">+91 96256 94159</div>
+        <div class="hd-hr">Mon – Sat · 10 AM – 9 PM IST</div>
+      </div>
+      <div class="hdr-btns">
+        <a href="tel:+919625694159" class="bcall">📞 Call Now</a>
+        <a href="#" class="bwa">💬 WhatsApp Us</a>
+      </div>
+      <img src="https://fssai.gov.in/assets/images/logo_amrit.png" alt="Azadi Ka Amrit Mahotsav" class="amrit"/>
     </div>
   </div>
 </header>
-<!-- TOP CONTACT BAR -->
-<div class="top-contact-bar">
-  <div class="top-left">📞 Help Desk: +91 - 9625694159</div>
-  <div class="top-right">Mon to Sat: 10:00 AM - 9:00 PM</div>
+<!-- TRUST BAR -->
+<div class="trust">
+  <span>🏅 Trusted by Sellers Across India</span><span>📋 Complete Documentation Support</span>
+  <span>🔒 Secure &amp; Confidential</span><span>⏰ 10 AM – 9 PM (Mon-Sat)</span><span>✅ Pvt Ltd Registered</span>
+</div>
+<!-- TICKER -->
+<div class="ticker-wrap"><div class="tick">🔴 New: Get ₹500 OFF on your first booking! Limited time offer – Book now and save big! &nbsp;&nbsp;&nbsp; Trusted by Sellers Across India &nbsp;•&nbsp; ISO 9001:2015 Certified Service Portal &nbsp;•&nbsp; Complete Support for New Registration, Catalogue Upload &amp; Compliance</div></div>
+<!-- NAVBAR -->
+<nav class="navbar"><div class="nav-inner">
+  <button class="nb on" onclick="sw('gr',this)">🏠 HOME</button>
+  <button class="nb" onclick="sw('gr',this)">GEM REGISTRATION</button>
+  <button class="nb" onclick="sw('cat',this)">CATALOGUE</button>
+  <button class="nb" onclick="sw('cg',this)">CANCEL GEM</button>
+  <button class="nb" onclick="sw('ag',this)">ABOUT GEM</button>
+  <button class="nb" onclick="sw('enq',this)">ENQUIRY</button>
+  <button class="nb" onclick="sw('blg',this)">BLOG</button>
+</div></nav>
+<!-- NOTICE -->
+<div class="notice">
+  <strong>New</strong> Get ₹500 OFF on your first booking! Limited time offer – Book now and save big!
 </div>
 
-
-
-<!-- HERO -->
-<div class="hero" id="gem-registration">
-  <div class="hero-offer">🎉 Get ₹500 OFF on your first booking! Limited time offer — Book now and save big!</div>
-  <h2>GeM Registration <span>2026</span></h2>
-  <p>Apply for Government e-Marketplace Registration — Sell to Government Directly</p>
-  <div class="hero-badges">
-    <span class="hero-badge">✅ 10,000+ Registered Sellers</span>
-    <span class="hero-badge">🏅 ISO 9001:2015 Certified</span>
-    <span class="hero-badge">🔒 Secure & Official</span>
-    <span class="hero-badge">⚡ Priority Processing</span>
+<!-- ===== GEM REGISTRATION (HOME) ===== -->
+<div id="gr" class="pg on">
+  <div class="hero" style="background:linear-gradient(135deg,#0E1B2C,#003087,#007B6E);">
+    <div class="offer">🎉 Get ₹500 OFF on your first booking! Limited time offer — Book now and save big!</div>
+    <h2>GeM Registration Portal – <em>Apply for Your GeM Certificate Online</em></h2>
+    <p>सरकारी ई-मार्केटप्लेस पंजीकरण पोर्टल · Comprehensive documentation and registration support for Indian businesses</p>
+    <div class="tags"><span class="tag">✅ Trusted by Sellers Across India</span><span class="tag">🏅 ISO 9001:2015 Certified</span><span class="tag">🔒 Secure &amp; Confidential</span><span class="tag">📋 Documentation Support</span></div>
+  </div>
+  <div class="wrap">
+    <div>
+      <div class="disc">
+        <p><strong>📣 How It Works:</strong></p>
+        <p>1. Fill the form with your business details · 2. Make secure payment for our consultancy service · 3. Our team assists with your registration on the official gem.gov.in portal.</p>
+        <p style="font-size:11px;color:#7a5500;margin-top:4px;">Free direct registration is also available on <a href="https://gem.gov.in" target="_blank" style="color:#003087;font-weight:700;">gem.gov.in</a>. We provide paid consultancy assistance.</p>
+      </div>
+      <div class="card">
+        <div class="ch bl"><span style="font-size:1.3rem;">📋</span><div><h3>APPLICATION FORM FOR GEM REGISTRATION / जेम पंजीकरण के लिए आवेदन फॉर्म</h3><p>Fill all required fields carefully · सभी आवश्यक फ़ील्ड सावधानीपूर्वक भरें</p></div></div>
+        <div class="cb">
+          <form onsubmit="sub(event,'GeM Registration')">
+            <div class="fsec">
+              <div class="st">Authorized Person &amp; Business Details</div>
+              <div class="g2">
+                <div class="f"><label class="lb">Full Name* / नाम <span class="rq">*</span></label><input type="text" placeholder="As per Aadhaar / PAN Card" required/></div>
+                <div class="f"><label class="lb">Email* / ईमेल <span class="rq">*</span></label><input type="email" placeholder="Valid email address" required/></div>
+                <div class="f"><label class="lb">Mobile* / मोबाइल <span class="rq">*</span></label><input type="tel" placeholder="10-digit mobile number" maxlength="10" required/></div>
+                <div class="f"><label class="lb">Business Name* / व्यवसाय का नाम <span class="rq">*</span></label><input type="text" placeholder="As per PAN Card" required/></div>
+                <div class="f"><label class="lb">Business Type* / प्रकार <span class="rq">*</span></label><select required><option value="">Select Type</option><option>Sole Proprietor</option><option>Partnership Firm</option><option>Private Limited</option><option>Public Limited</option><option>One Person Company</option><option>Limited Liability Partnership</option><option>Others</option></select></div>
+              </div>
+            </div>
+            <div class="fsec">
+              <div class="st">Office Address / पता</div>
+              <div class="g2">
+                <div class="f s2"><label class="lb">Office Address* / पता <span class="rq">*</span></label><input type="text" placeholder="Complete business address as per registration proof" required/></div>
+                <div class="f"><label class="lb">State* / राज्य <span class="rq">*</span></label><select required><option value="">Select State</option><option>Andhra Pradesh</option><option>Assam</option><option>Bihar</option><option>Chhattisgarh</option><option>Delhi</option><option>Goa</option><option>Gujarat</option><option>Haryana</option><option>Himachal Pradesh</option><option>Jharkhand</option><option>Karnataka</option><option>Kerala</option><option>Madhya Pradesh</option><option>Maharashtra</option><option>Manipur</option><option>Meghalaya</option><option>Odisha</option><option>Punjab</option><option>Rajasthan</option><option>Tamil Nadu</option><option>Telangana</option><option>Uttar Pradesh</option><option>Uttarakhand</option><option>West Bengal</option><option>Other UT</option></select></div>
+                <div class="f"><label class="lb">District* / जिला <span class="rq">*</span></label><select required><option value="">Select</option></select></div>
+                <div class="f"><label class="lb">Pin Code* / पिन कोड <span class="rq">*</span></label><input type="text" placeholder="6-digit pin code" maxlength="6" required/></div>
+              </div>
+            </div>
+            <div class="fsec">
+              <div class="st">Interested Tender Range* / इच्छुक निविदा राशि सीमा <span class="rq">*</span></div>
+              <div style="background:#e8f5e9;border:1px solid #a5d6a7;border-radius:5px;padding:10px 12px;margin-bottom:10px;font-size:12px;color:#1b5e20;">
+                <strong>What Kind of Tenders Are Available on GeM?</strong><br/>
+                1. Direct Purchase: ₹0–₹25,000 (without bidding) &nbsp;|&nbsp; 2. L1 Purchase: ₹25,001–₹5,00,000 &nbsp;|&nbsp; 3. Open Bidding: ₹5 Lakh–₹2 Crore &nbsp;|&nbsp; 4. Custom Bid &amp; Projects: ₹10 Lakh+
+              </div>
+              <div class="radio-row">
+                <label class="rcard"><input type="radio" name="tr" value="1to5" required/> ₹1–5 Lakh / 1 से 5 लाख</label>
+                <label class="rcard"><input type="radio" name="tr" value="5to10"/> ₹5–10 Lakh / 5 से 10 लाख</label>
+                <label class="rcard"><input type="radio" name="tr" value="10to20"/> ₹10–20 Lakh / 10 से 20 लाख</label>
+                <label class="rcard"><input type="radio" name="tr" value="20plus"/> ₹20+ Lakh / 20 लाख से अधिक</label>
+              </div>
+            </div>
+            <div class="fsec">
+              <div class="st">Documents Required for GeM Registration / आवश्यक दस्तावेज़</div>
+              <div class="docs-grid">
+                <div class="doc-item"><div class="di">💳</div><strong>PAN Card</strong>Business / Proprietor</div>
+                <div class="doc-item"><div class="di">🪪</div><strong>Aadhaar Card</strong>Authorized Person</div>
+                <div class="doc-item"><div class="di">🏦</div><strong>Bank Account</strong>Cancelled Cheque</div>
+                <div class="doc-item"><div class="di">📄</div><strong>GST Certificate</strong>If applicable</div>
+                <div class="doc-item"><div class="di">🏢</div><strong>Business Registration</strong>Incorporation / Deed</div>
+                <div class="doc-item"><div class="di">📍</div><strong>Address Proof</strong>Business / Office</div>
+                <div class="doc-item"><div class="di">📱</div><strong>Mobile &amp; Email</strong>Linked to PAN/Aadhaar</div>
+                <div class="doc-item"><div class="di">🏭</div><strong>MSME/Udyam</strong>Registration (optional)</div>
+              </div>
+              <p style="font-size:11px;color:#666;margin-top:6px;"><strong>You don't need documents now.</strong> Submit the form first — exact requirements depend on your business type and will be confirmed during registration.</p>
+            </div>
+            <div class="fsec">
+              <div class="ck"><input type="checkbox" required/><span>I agree to the <a href="#">Terms</a> and <a href="#">Privacy Policy</a>, and acknowledge that this is a private consultancy not affiliated with the Government.</span></div>
+            </div>
+            <button type="submit" class="sub s-bl">🚀 Apply for Certificate / प्रमाणपत्र के लिए आवेदन करें</button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <aside class="sbar">
+      <div class="hl blue-hl"><p style="font-size:11px;opacity:.9;margin-bottom:4px;">📞 Help Desk</p><div class="hlnum">+91 96256 94159</div><p style="font-size:11px;opacity:.8;">Mon–Sat &nbsp;10 AM – 9 PM IST</p><div style="display:flex;gap:6px;margin-top:8px;"><a href="tel:+919625694159" style="flex:1;background:#FF6600;color:#fff;text-align:center;padding:6px;border-radius:4px;font-size:11px;font-weight:700;">📞 Call Now</a><a href="#" style="flex:1;background:#25D366;color:#fff;text-align:center;padding:6px;border-radius:4px;font-size:11px;font-weight:700;">💬 WhatsApp</a></div></div>
+      <div class="sc">
+        <div class="sh" style="background:linear-gradient(135deg,#004D40,#00796B);">📖 Guidelines to Fill GeM Registration Form / जेम पोर्टल पर आवेदन करने के लिए दिशानिर्देश</div>
+        <div class="sb">
+          <div class="ir"><div class="id"></div><p><strong>NAME OF AUTHORIZED PERSON:</strong> Enter the name of Owner / Director / Authorized Person, strictly as per Aadhaar Card or PAN Card.</p></div>
+          <div class="ir"><div class="id"></div><p><strong>EMAIL ID:</strong> Enter a valid email address of the authorized person. All correspondence will be sent to this email.</p></div>
+          <div class="ir"><div class="id"></div><p><strong>MOBILE NUMBER:</strong> Enter a valid 10-digit mobile number of the authorized person.</p></div>
+          <div class="ir"><div class="id"></div><p><strong>BUSINESS NAME:</strong> Enter the name of the organization exactly as per PAN Card.</p></div>
+          <div class="ir"><div class="id"></div><p><strong>BUSINESS TYPE:</strong> Select the legal type — Sole Proprietor, Partnership, Pvt Ltd, etc.</p></div>
+          <div class="ir"><div class="id"></div><p><strong>OFFICE ADDRESS:</strong> Provide valid business address details as per your registration proof.</p></div>
+          <div class="ir"><div class="id"></div><p><strong>STATE:</strong> Select the state where your business is registered.</p></div>
+          <div class="ir"><div class="id"></div><p><strong>DISTRICT:</strong> Select the district where your business is registered.</p></div>
+          <div class="ir"><div class="id"></div><p><strong>PIN CODE:</strong> Enter the 6-digit PIN code of your business location.</p></div>
+          <div class="ir"><div class="id"></div><p><strong>TENDER AMOUNT RANGE:</strong> Select your typical interested tender amount range to help us guide your registration appropriately.</p></div>
+          <div class="ir"><div class="id"></div><p><strong>TERMS &amp; CONDITIONS:</strong> Tick the checkbox to accept our Terms of Service and Privacy Policy.</p></div>
+          <div class="ir"><div class="id"></div><p><strong>APPLY FOR CERTIFICATE:</strong> Click the button to submit your details and proceed to the secure payment page.</p></div>
+        </div>
+      </div>
+      <div class="sc">
+        <div class="sh">📊 GeM at a Glance</div>
+        <div class="sb">
+          <div class="stat-grid">
+            <div class="sg"><div class="sn">₹35.8B+</div><div class="sl">Annual Volume</div></div>
+            <div class="sg"><div class="sn">1,200+</div><div class="sl">Govt Buyers</div></div>
+            <div class="sg"><div class="sn">6M+</div><div class="sl">Sellers</div></div>
+          </div>
+          <div class="bi"><span style="font-size:1.2rem;">🏛️</span><p><strong>Direct Access to Government</strong>1,000+ government organizations buy on GeM.</p></div>
+          <div class="bi"><span style="font-size:1.2rem;">💰</span><p><strong>Reliable Payments</strong>Government payments within 30 days guaranteed.</p></div>
+          <div class="bi"><span style="font-size:1.2rem;">📈</span><p><strong>Growing Platform</strong>₹35.8 Billion+ annual transaction volume.</p></div>
+          <div class="bi"><span style="font-size:1.2rem;">🏷️</span><p><strong>MSME Preference</strong>20% procurement reserved for MSEs. EMD exemption available.</p></div>
+        </div>
+      </div>
+    </aside>
   </div>
 </div>
 
-<!-- MAIN -->
-<div class="main-container">
-
-  <!-- FORM -->
-  <div class="form-card">
-    <div class="form-card-header">
-      <span class="icon">📋</span>
-      <div>
-        <h3>Application Form for GeM Registration</h3>
-        <p>जेम कंसल्टेंसी के लिए पंजीकरण फॉर्म — Fill all required fields carefully</p>
-      </div>
-    </div>
-    <div class="form-body">
-      <form id="gemForm">
-
-        <!-- AUTHORIZED PERSON -->
-        <div class="form-section">
-          <div class="section-title"><span class="dot"></span> Authorized Person Details / अधिकृत व्यक्ति का विवरण</div>
-          <div class="form-grid">
-            <div class="field-group">
-              <label>Name of Authorized Person / <span class="hindi">अधिकृत व्यक्ति का नाम</span> <span class="req">*</span></label>
-              <input type="text" placeholder="As per Aadhaar / PAN Card" required />
-            </div>
-            <div class="field-group">
-              <label>Email ID / <span class="hindi">ईमेल आईडी</span> <span class="req">*</span></label>
-              <input type="email" placeholder="Valid email address" required />
-            </div>
-            <div class="field-group">
-              <label>Mobile Number / <span class="hindi">मोबाइल नंबर</span> <span class="req">*</span></label>
-              <input type="tel" placeholder="10-digit mobile number" maxlength="10" required />
-            </div>
-            <div class="field-group">
-              <label>Date of Birth / <span class="hindi">जन्म की तारीख</span> <span class="req">*</span></label>
-              <input type="date" placeholder="MM/DD/YYYY" required />
-            </div>
-          </div>
-        </div>
-
-        <!-- BUSINESS / ORGANISATION -->
-        <div class="form-section">
-          <div class="section-title"><span class="dot"></span> Business / Organisation Details / व्यवसाय विवरण</div>
-          <div class="form-grid">
-            <div class="field-group">
-              <label>Business / Organisation Name / <span class="hindi">व्यवसाय / संगठन का नाम</span> <span class="req">*</span></label>
-              <input type="text" placeholder="As per PAN Card" required />
-            </div>
-            <div class="field-group">
-              <label>Business / Organisation Type / <span class="hindi">संगठन का प्रकार</span> <span class="req">*</span></label>
-              <select required>
-                <option value="">SELECT TYPE</option>
-                <option>Proprietorship / एकल स्वामित्व</option>
-                <option>Partnership / साझेदारी</option>
-                <option>Private Limited Company</option>
-                <option>Public Limited Company</option>
-                <option>LLP / सीमित देयता भागीदारी</option>
-                <option>Trust / न्यास</option>
-                <option>Society / समिति</option>
-                <option>Government Organisation</option>
-              </select>
-            </div>
-            <div class="field-group">
-              <label>Incorporation Date / <span class="hindi">निगमन की तारीख</span> <span class="req">*</span></label>
-              <input type="date" required />
-            </div>
-            <div class="field-group">
-              <label>Business PAN Number / <span class="hindi">व्यवसाय पैन नंबर</span> <span class="req">*</span></label>
-              <input type="text" placeholder="10-digit PAN number" maxlength="10" style="text-transform:uppercase;" required />
-            </div>
-          </div>
-        </div>
-
-        <!-- BUSINESS ADDRESS -->
-        <div class="form-section">
-          <div class="section-title"><span class="dot"></span> Business Office Address / व्यापार कार्यालय का पता</div>
-          <div class="form-grid">
-            <div class="field-group field-full">
-              <label>Business Office Address / <span class="hindi">व्यापार कार्यालय का पता</span> <span class="req">*</span></label>
-              <input type="text" placeholder="Full address as per registration proof" required />
-            </div>
-            <div class="field-group">
-              <label>State / <span class="hindi">राज्य</span> <span class="req">*</span></label>
-              <select required>
-                <option value="">SELECT STATE</option>
-                <option>Uttar Pradesh</option>
-                <option>Maharashtra</option>
-                <option>Delhi</option>
-                <option>Gujarat</option>
-                <option>Rajasthan</option>
-                <option>Madhya Pradesh</option>
-                <option>West Bengal</option>
-                <option>Bihar</option>
-                <option>Karnataka</option>
-                <option>Tamil Nadu</option>
-                <option>Andhra Pradesh</option>
-                <option>Telangana</option>
-                <option>Kerala</option>
-                <option>Punjab</option>
-                <option>Haryana</option>
-                <option>Jharkhand</option>
-                <option>Uttarakhand</option>
-                <option>Himachal Pradesh</option>
-                <option>Chhattisgarh</option>
-                <option>Odisha</option>
-                <option>Assam</option>
-              </select>
-            </div>
-            <div class="field-group">
-              <label>District / <span class="hindi">जिला</span> <span class="req">*</span></label>
-              <select required>
-                <option value="">SELECT DISTRICT</option>
-              </select>
-            </div>
-            <div class="field-group">
-              <label>Pin Code / <span class="hindi">पिन कोड</span> <span class="req">*</span></label>
-              <input type="text" placeholder="6-digit pin code" maxlength="6" required />
-            </div>
-          </div>
-        </div>
-
-        <!-- BANK DETAILS -->
-        <div class="form-section">
-          <div class="section-title"><span class="dot"></span> Bank Details / बैंक विवरण</div>
-          <div class="form-grid">
-            <div class="field-group">
-              <label>Account Holder Name / <span class="hindi">खाता धारक का नाम</span> <span class="req">*</span></label>
-              <input type="text" placeholder="As per bank records (current or savings)" required />
-            </div>
-            <div class="field-group">
-              <label>Bank Name / <span class="hindi">बैंक का नाम</span> <span class="req">*</span></label>
-              <input type="text" placeholder="Enter applicant's bank name" required />
-            </div>
-            <div class="field-group">
-              <label>Bank A/C Number / <span class="hindi">बैंक खाता संख्या</span> <span class="req">*</span></label>
-              <input type="text" placeholder="Valid account number of bank" required />
-            </div>
-            <div class="field-group">
-              <label>Bank IFSC Code / <span class="hindi">बैंक IFSC कोड</span> <span class="req">*</span></label>
-              <input type="text" placeholder="Valid IFS code of your bank" style="text-transform:uppercase;" required />
-            </div>
-            <div class="field-group field-full">
-              <label>Bank Address / <span class="hindi">बैंक पता</span> <span class="req">*</span></label>
-              <input type="text" placeholder="Enter applicant's bank address" required />
-            </div>
-          </div>
-        </div>
-
-        <!-- GST -->
-        <div class="form-section">
-          <div class="section-title"><span class="dot"></span> GST Details / जीएसटी विवरण</div>
-          <div class="form-grid">
-            <div class="field-group">
-              <label>GST Number / <span class="hindi">जीएसटी नंबर</span> <span class="req">*</span></label>
-              <div class="gst-field">
-                <input type="text" placeholder="E.G. 22AAAAA0000A1Z5" maxlength="15" style="text-transform:uppercase;" required />
-              </div>
-              <span style="font-size:0.72rem;color:#90A4AE;">Select whether you have GST or not. If yes, enter GST number.</span>
-            </div>
-            <div class="field-group">
-              <label>Do you have GST? / <span class="hindi">क्या आपके पास GST है?</span></label>
-              <select id="gstSelect" onchange="toggleGST(this)">
-                <option value="">--Select--</option>
-                <option value="yes">Yes / हाँ</option>
-                <option value="no">No / नहीं</option>
-              </select>
-            </div>
-          </div>
-        </div>
-
-        <!-- TENDER INTEREST -->
-        <div class="form-section">
-          <div class="tender-box">
-            <div class="tender-title">📌 What Kind of Tenders Are Available on GeM? / जेम पर कौन-कौन सी निविदाएं होती हैं?</div>
-            <div class="tender-types">
-              <div class="tender-type">
-                <strong>1. Direct Purchase / डायरेक्ट खरीद</strong>
-                <span class="range">₹0 – ₹25,000</span> तक की खरीद, बिना बोली के
-              </div>
-              <div class="tender-type">
-                <strong>2. L1 Purchase / न्यूनतम मूल्य खरीद</strong>
-                <span class="range">₹25,001 – ₹5,00,000</span> तक, सबसे कम रेट वाला विक्रेता चुना जाता है
-              </div>
-              <div class="tender-type">
-                <strong>3. Open Bidding / ओपन बिडिंग</strong>
-                <span class="range">₹5 लाख से ₹2 करोड़</span> तक के टेंडर, बोली प्रक्रिया होती है
-              </div>
-              <div class="tender-type">
-                <strong>4. Custom Bid & Projects / कस्टम प्रोजेक्ट्स</strong>
-                <span class="range">₹10 लाख से अधिक</span>, विशेष सेवाएं (जैसे: सुरक्षा, IT सेवाएं)
-              </div>
-            </div>
-
-            <div style="background:white;border-radius:8px;padding:12px;border:1px solid #BBDEFB;margin-bottom:14px;">
-              <p style="font-size:0.8rem;color:var(--text-mid);">✅ Choose your tender range below so we can guide you to suitable bids. / कृपया नीचे दिए गए विकल्प से निविदा राशि चुनें ताकि हम उसी अनुसार आपकी सहायता कर सकें।</p>
-            </div>
-
-            <div class="range-label">Interested Tender Amount Range / इच्छुक निविदा राशि सीमा <span style="color:#e53935;">*</span></div>
-            <div class="radio-group">
-              <label class="radio-item" onclick="selectRadio(this)">
-                <input type="radio" name="tenderRange" value="1to5" required /> 1 TO 5 LAKH / 1 से 5 लाख
-              </label>
-              <label class="radio-item" onclick="selectRadio(this)">
-                <input type="radio" name="tenderRange" value="5to10" /> 5 TO 10 LAKH / 5 से 10 लाख
-              </label>
-              <label class="radio-item" onclick="selectRadio(this)">
-                <input type="radio" name="tenderRange" value="10to20" /> 10 TO 20 LAKH / 10 से 20 लाख
-              </label>
-              <label class="radio-item" onclick="selectRadio(this)">
-                <input type="radio" name="tenderRange" value="20plus" /> MORE THAN 20 LAKH / 20 लाख से अधिक
-              </label>
-            </div>
-          </div>
-        </div>
-
-        <!-- TERMS -->
-        <div class="form-section">
-          <div class="check-item">
-            <input type="checkbox" required />
-            <span>I agree to the <a href="#">Terms of Service</a>. Please note OTP will be required to process your application. / हमारी कंपनी के नियमों और शर्तों को स्वीकार करने के लिए दोनों चेकबॉक्स पर टिक करें।</span>
-          </div>
-        </div>
-
-        <!-- SUBMIT -->
-        <button type="submit" class="submit-btn">
-          🚀 Submit Application / आवेदन जमा करें
-        </button>
-
-      </form>
-    </div>
+<!-- ===== CATALOGUE ===== -->
+<div id="cat" class="pg">
+  <div class="hero" style="background:linear-gradient(135deg,#004D40,#00695C);">
+    <h2>GeM Catalogue <em>Upload &amp; Management</em></h2>
+    <p>Complete support for product catalogue upload, updates, and compliance on GeM portal</p>
+    <div class="tags"><span class="tag">📦 Catalogue Upload</span><span class="tag">🔄 Catalogue Update</span><span class="tag">✅ Compliance Support</span></div>
   </div>
-
-  <!-- SIDEBAR -->
-  <aside class="sidebar">
-
-    <div class="helpline-card">
-      <h4>📞 Helpline / सहायता केंद्र</h4>
-      <div class="number">+91 9625694159</div>
-      <p>Mon–Sat • 10:00 AM – 9:00 PM</p>
-      <div class="contact-btns">
-        <button class="contact-btn call">📞 Call Now</button>
-        <button class="contact-btn whatsapp">💬 WhatsApp</button>
-      </div>
-    </div>
-
-    <div class="info-card">
-      <div class="info-card-header">📖 Guidelines / दिशानिर्देश</div>
-      <div class="info-card-body">
-        <div class="info-item">
-          <div class="bullet"></div>
-          <p><strong>Name of Authorized Person</strong> Enter name of Owner/Director/Authorized Person strictly as per Aadhaar or PAN Card.</p>
-        </div>
-        <div class="info-item">
-          <div class="bullet"></div>
-          <p><strong>Email ID</strong> Our executive will call to verify email OTP.</p>
-        </div>
-        <div class="info-item">
-          <div class="bullet"></div>
-          <p><strong>Mobile Number</strong> Enter valid 10-digit mobile number. Executive will call to verify OTP.</p>
-        </div>
-        <div class="info-item">
-          <div class="bullet"></div>
-          <p><strong>Date of Birth</strong> As per PAN card record. (Company formation date for companies having PAN).</p>
-        </div>
-        <div class="info-item">
-          <div class="bullet"></div>
-          <p><strong>Business PAN Number</strong> Enter business PAN number. (Not applicable for Proprietor).</p>
-        </div>
-        <div class="info-item">
-          <div class="bullet"></div>
-          <p><strong>Business Office Address</strong> Provide valid details as per registration proof of the business firm.</p>
-        </div>
-        <div class="info-item">
-          <div class="bullet"></div>
-          <p><strong>Account Number</strong> Enter valid account number of bank.</p>
-        </div>
-        <div class="info-item">
-          <div class="bullet"></div>
-          <p><strong>IFSC Code</strong> Enter valid IFS code of your bank.</p>
-        </div>
-        <div class="info-item">
-          <div class="bullet"></div>
-          <p><strong>Bank Address</strong> Enter applicant's bank address.</p>
-        </div>
-        <div class="info-item">
-          <div class="bullet"></div>
-          <p><strong>Submit Application</strong> Click submit application button to submit. OTP will be required to process your application.</p>
+  <div class="wrap">
+    <div>
+      <div class="card">
+        <div class="ch te"><span style="font-size:1.3rem;">📦</span><div><h3>CATALOGUE SERVICE REQUEST FORM</h3><p>Get expert help with your GeM product/service catalogue</p></div></div>
+        <div class="cb">
+          <form onsubmit="sub(event,'Catalogue Service')">
+            <div class="fsec">
+              <div class="st">Business Details</div>
+              <div class="g2">
+                <div class="f"><label class="lb">FULL NAME <span class="rq">*</span></label><input type="text" placeholder="Authorized person name" required/></div>
+                <div class="f"><label class="lb">EMAIL ID <span class="rq">*</span></label><input type="email" placeholder="Email address" required/></div>
+                <div class="f"><label class="lb">MOBILE NUMBER <span class="rq">*</span></label><input type="tel" placeholder="10-digit mobile" maxlength="10" required/></div>
+                <div class="f"><label class="lb">GEM SELLER ID <span class="rq">*</span></label><input type="text" placeholder="Your GeM Seller ID" required/></div>
+                <div class="f"><label class="lb">BUSINESS NAME <span class="rq">*</span></label><input type="text" placeholder="Business name on GeM" required/></div>
+                <div class="f"><label class="lb">CATALOGUE SERVICE TYPE <span class="rq">*</span></label><select required><option value="">Select Service</option><option>New Catalogue Upload</option><option>Catalogue Update / Modification</option><option>Price Update</option><option>Product Image Upload</option><option>Category Change</option><option>Catalogue Compliance Fix</option></select></div>
+                <div class="f s2"><label class="lb">PRODUCT/SERVICE DETAILS</label><textarea placeholder="Describe the products or services you want to list on GeM..."></textarea></div>
+              </div>
+            </div>
+            <div class="fsec"><div class="ck"><input type="checkbox" required/><span>I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>.</span></div></div>
+            <button type="submit" class="sub s-gr">📦 Submit Catalogue Request</button>
+          </form>
         </div>
       </div>
     </div>
-
-    <div class="info-card">
-      <div class="info-card-header">📊 GeM at a Glance</div>
-      <div class="info-card-body">
-        <div class="gem-stat">
-          <div class="num">10K+</div>
-          <div class="desc">Trusted sellers & service providers across India</div>
-        </div>
-        <div class="gem-stat">
-          <div class="num">ISO</div>
-          <div class="desc">9001:2015 Certified Service Portal</div>
-        </div>
-        <div class="gem-stat">
-          <div class="num">₹500</div>
-          <div class="desc">OFF on first booking — Limited time offer</div>
-        </div>
-        <div class="gem-stat">
-          <div class="num">24/7</div>
-          <div class="desc">Online access to government procurement</div>
+    <aside class="sbar">
+      <div class="hl blue-hl"><p style="font-size:11px;opacity:.9;margin-bottom:4px;">📞 Help Desk</p><div class="hlnum">+91 96256 94159</div><p style="font-size:11px;opacity:.8;">Mon–Sat &nbsp;10 AM – 9 PM</p></div>
+      <div class="sc">
+        <div class="sh">📖 Catalogue Support</div>
+        <div class="sb">
+          <div class="bi"><span style="font-size:1.2rem;">📦</span><p><strong>Product Upload</strong>Upload unlimited products with proper specifications and images.</p></div>
+          <div class="bi"><span style="font-size:1.2rem;">🔄</span><p><strong>Price Updates</strong>Keep your catalogue prices competitive and updated.</p></div>
+          <div class="bi"><span style="font-size:1.2rem;">✅</span><p><strong>Compliance</strong>Ensure your catalogue meets all GeM guidelines and standards.</p></div>
+          <div class="bi"><span style="font-size:1.2rem;">🏷️</span><p><strong>Category Mapping</strong>Correct product category mapping for better discoverability.</p></div>
         </div>
       </div>
-    </div>
-
-  </aside>
+    </aside>
+  </div>
 </div>
 
-<section class="detail-section" id="update-gem">
-  <h3>Update GeM Seller Details</h3>
-  <div class="detail-card">
-    <form id="updateGemForm">
-      <div class="form-grid">
-        <div class="field-group">
-          <label>GeM Seller ID <span class="req">*</span></label>
-          <input type="text" placeholder="Enter your GeM Seller ID" required />
-        </div>
-        <div class="field-group">
-          <label>Registered Email <span class="req">*</span></label>
-          <input type="email" placeholder="Enter registered email" required />
-        </div>
-        <div class="field-group">
-          <label>Registered Mobile <span class="req">*</span></label>
-          <input type="tel" placeholder="10-digit mobile number" maxlength="10" required />
-        </div>
-        <div class="field-group">
-          <label>New Contact Person</label>
-          <input type="text" placeholder="Name of updated contact person" />
-        </div>
-        <div class="field-group">
-          <label>New Bank Account Number</label>
-          <input type="text" placeholder="Updated account number" />
-        </div>
-        <div class="field-group">
-          <label>New Bank IFSC Code</label>
-          <input type="text" placeholder="Updated IFSC code" style="text-transform:uppercase;" />
-        </div>
-        <div class="field-group field-full">
-          <label>Updated Business Address</label>
-          <input type="text" placeholder="Enter new registered business address" />
-        </div>
-        <div class="field-group field-full">
-          <label>What would you like to update?</label>
-          <textarea placeholder="E.g. contact details, bank details, product category, GST information"></textarea>
+<!-- ===== CANCEL GEM ===== -->
+<div id="cg" class="pg">
+  <div class="hero" style="background:linear-gradient(135deg,#7f0000,#b71c1c);">
+    <h2>Apply For <em>GeM Cancellation</em></h2>
+    <p>Application Form For GeM Cancellation — Submit your GeM cancellation request</p>
+    <div class="tags"><span class="tag">⚠️ Cancellation Request</span><span class="tag">🔐 OTP Verification</span></div>
+  </div>
+  <div class="wrap">
+    <div>
+      <div class="card">
+        <div class="ch rd"><span style="font-size:1.3rem;">❌</span><div><h3>APPLICATION FORM FOR GEM CANCELLATION</h3><p>GeM कैंसिलेशन के लिए आवेदन फॉर्म</p></div></div>
+        <div class="cb">
+          <form onsubmit="sub(event,'GeM Cancellation')">
+            <div class="fsec">
+              <div class="st">Authorized Person Details / अधिकृत व्यक्ति विवरण</div>
+              <div class="g2">
+                <div class="f"><label class="lb">NAME OF AUTHORIZED PERSON <span class="rq">*</span></label><input type="text" placeholder="As per Aadhaar Card or PAN Card" required/></div>
+                <div class="f"><label class="lb">E-MAIL ID <span class="rq">*</span></label><input type="email" placeholder="Valid email address" required/></div>
+                <div class="f"><label class="lb">MOBILE NUMBER / <span class="hn">मोबाइल नंबर</span> <span class="rq">*</span></label><input type="tel" placeholder="10-digit mobile number" maxlength="10" required/></div>
+              </div>
+            </div>
+            <div class="fsec">
+              <div class="st">GeM Account Details / GeM खाता विवरण</div>
+              <div class="g2">
+                <div class="f"><label class="lb">GEM SELLER ID <span class="rq">*</span></label><input type="text" placeholder="Enter GeM Seller ID" required/></div>
+                <div class="f"><label class="lb">GEM LOGIN ID <span class="rq">*</span></label><input type="text" placeholder="Enter GeM Login ID" required/></div>
+                <div class="f s2"><label class="lb">GEM PASSWORD <span class="rq">*</span></label><input type="password" placeholder="Enter GeM Password" required/></div>
+              </div>
+            </div>
+            <div class="fsec">
+              <div class="ck"><input type="checkbox" required/><span>I AGREE TO THE <a href="#">TERMS OF SERVICE</a>. Please note OTP will be required to process your application. / हमारी कंपनी के नियमों और शर्तों को स्वीकार करने के लिए टिक करें।</span></div>
+            </div>
+            <button type="submit" class="sub s-rd">❌ Submit Application</button>
+          </form>
         </div>
       </div>
-      <button type="submit" class="submit-btn secondary">Submit Update Request</button>
-    </form>
+      <div class="card" style="margin-top:16px;">
+        <div class="ch rd"><span style="font-size:1.2rem;">🛑</span><div><h3>GeM Order Cancellation Guide</h3><p>How to cancel an order on the Government e-Marketplace</p></div></div>
+        <div class="cb">
+          <div style="margin-bottom:14px;">
+            <h4 style="font-size:13px;color:#003087;margin-bottom:8px;">For Buyers:</h4>
+            <ul style="list-style:none;font-size:12px;color:#555;line-height:1.8;">
+              <li>📣 Log in to your GeM portal.</li>
+              <li>📣 Go to <strong>Dashboard &gt; Orders</strong>.</li>
+              <li>📣 Click the order number to open details.</li>
+              <li>📣 Select <strong>Request for Order Cancellation</strong>.</li>
+              <li>📣 Provide a valid reason and submit via OTP verification.</li>
+            </ul>
+          </div>
+          <div style="margin-bottom:14px;">
+            <h4 style="font-size:13px;color:#003087;margin-bottom:8px;">For Sellers:</h4>
+            <ul style="list-style:none;font-size:12px;color:#555;line-height:1.8;">
+              <li>📣 Log in to GeM.</li>
+              <li>📣 Navigate to <strong>Dashboard &gt; Orders</strong>.</li>
+              <li>📣 Select the order and choose to cancel.</li>
+              <li>📣 Enter your cancellation reason and confirm with OTP.</li>
+            </ul>
+          </div>
+          <div>
+            <h4 style="font-size:13px;color:#003087;margin-bottom:8px;">📋 GeM Cancellation Policy Highlights:</h4>
+            <ul style="list-style:none;font-size:12px;color:#555;line-height:1.8;">
+              <li>📣 Orders can only be canceled before dispatch or service initiation.</li>
+              <li>📣 Use the cancellation feature responsibly; repeated misuse may attract penalties.</li>
+              <li>📣 Ensure timely communication and documentation for smooth cancellation.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <aside class="sbar">
+      <div class="hl blue-hl"><p style="font-size:11px;opacity:.9;margin-bottom:4px;">📞 Help Desk</p><div class="hlnum">+91 96256 94159</div><p style="font-size:11px;opacity:.8;">Mon–Sat &nbsp;10 AM – 9 PM</p><div style="display:flex;gap:6px;margin-top:8px;"><a href="tel:+919625694159" style="flex:1;background:#FF6600;color:#fff;text-align:center;padding:6px;border-radius:4px;font-size:11px;font-weight:700;">📞 Call Now</a><a href="#" style="flex:1;background:#25D366;color:#fff;text-align:center;padding:6px;border-radius:4px;font-size:11px;font-weight:700;">💬 WhatsApp</a></div></div>
+      <div class="sc">
+        <div class="sh" style="background:linear-gradient(135deg,#7f0000,#c62828);">📖 Guidelines to Fill GeM Cancellation Form</div>
+        <div class="sb">
+          <div class="ir"><div class="id" style="background:#c62828;"></div><p><strong>NAME OF AUTHORIZED PERSON:</strong> Enter the Name of Owner/ Director/ Authorized Person, strictly as per Aadhaar Card or Pan Card.</p></div>
+          <div class="ir"><div class="id" style="background:#c62828;"></div><p><strong>EMAIL ID:</strong> Enter a valid email address of Authorized Person. Our Executive will call to verify Email OTP.</p></div>
+          <div class="ir"><div class="id" style="background:#c62828;"></div><p><strong>MOBILE NUMBER:</strong> Enter valid 10 digit mobile number of Authorized Person. Our Executive will call to verify mobile OTP.</p></div>
+          <div class="ir"><div class="id" style="background:#c62828;"></div><p><strong>GEM SELLER ID:</strong> Enter GeM Seller ID.</p></div>
+          <div class="ir"><div class="id" style="background:#c62828;"></div><p><strong>GEM LOGIN ID:</strong> Enter GeM Login ID.</p></div>
+          <div class="ir"><div class="id" style="background:#c62828;"></div><p><strong>GEM PASSWORD:</strong> Enter GeM Password.</p></div>
+          <div class="ir"><div class="id" style="background:#c62828;"></div><p><strong>TERMS &amp; CONDITIONS:</strong> Tick on checkbox to accept terms and conditions. OTP will be required to process your application.</p></div>
+          <div class="ir"><div class="id" style="background:#c62828;"></div><p><strong>SUBMIT APPLICATION:</strong> Click on submit application button to submit your application.</p></div>
+        </div>
+      </div>
+    </aside>
   </div>
-</section>
+</div>
 
-<section class="detail-section" id="cancel-gem">
-  <h3>Cancel GeM Seller Account</h3>
-  <div class="detail-card">
-    <form id="cancelGemForm">
-      <div class="form-grid">
-        <div class="field-group">
-          <label>GeM Seller ID <span class="req">*</span></label>
-          <input type="text" placeholder="Enter your GeM Seller ID" required />
-        </div>
-        <div class="field-group">
-          <label>Seller Name <span class="req">*</span></label>
-          <input type="text" placeholder="Registered seller or company name" required />
-        </div>
-        <div class="field-group">
-          <label>Registered Mobile <span class="req">*</span></label>
-          <input type="tel" placeholder="10-digit mobile number" maxlength="10" required />
-        </div>
-        <div class="field-group">
-          <label>Registered Email</label>
-          <input type="email" placeholder="Registered email address" />
-        </div>
-        <div class="field-group field-full">
-          <label>Reason for Cancellation <span class="req">*</span></label>
-          <textarea placeholder="Write your cancellation reason" required></textarea>
-        </div>
-      </div>
-      <div class="check-item">
-        <input type="checkbox" id="cancelConfirm" required />
-        <label for="cancelConfirm">I confirm that there are no active GeM orders or pending obligations on this account.</label>
-      </div>
-      <button type="submit" class="submit-btn secondary">Submit Cancellation Request</button>
-    </form>
+<!-- ===== ABOUT GEM ===== -->
+<div id="ag" class="pg">
+  <div class="hero" style="background:linear-gradient(135deg,#003087,#007B6E);">
+    <h2>About <em>Government e-Marketplace (GeM)</em></h2>
+    <p>India's largest online platform for government procurement — Connecting buyers and sellers across India</p>
   </div>
-</section>
+  <div style="max-width:950px;margin:20px auto;padding:0 15px;">
+    <div class="card">
+      <div class="ch bl"><span style="font-size:1.3rem;">🏛️</span><div><h3>WHAT IS GEM PORTAL?</h3><p>Complete guide to Government e-Marketplace</p></div></div>
+      <div class="cb">
+        <p style="font-size:13px;color:#555;line-height:1.7;margin-bottom:14px;">The Government e-Marketplace (GeM) is India's <strong>largest online platform for government procurement</strong>, connecting government buyers with verified sellers across the country. Launched in 2016 and operationalized in 2017, GeM has transformed how Indian government organizations purchase goods and services, promoting transparency, efficiency, and cost-effectiveness.</p>
+        <div style="margin-bottom:18px;">
+          <h4 style="font-size:13px;color:#003087;margin-bottom:10px;font-weight:700;">Key Statistics (as of January 2026)</h4>
+          <div class="stat-grid">
+            <div class="sg"><div class="sn">6M+</div><div class="sl">Registered Sellers</div></div>
+            <div class="sg"><div class="sn">1,200+</div><div class="sl">Govt Buyers</div></div>
+            <div class="sg"><div class="sn">1,500+</div><div class="sl">Product Categories</div></div>
+            <div class="sg"><div class="sn">₹35.8B</div><div class="sl">Annual Volume</div></div>
+            <div class="sg"><div class="sn">48-72h</div><div class="sl">Avg Processing</div></div>
+            <div class="sg"><div class="sn">500K+</div><div class="sl">New Sellers/Year</div></div>
+          </div>
+        </div>
+        <h4 style="font-size:13px;color:#003087;margin-bottom:8px;font-weight:700;">How It Works — 3 Simple Steps</h4>
+        <div class="step-cards">
+          <div class="step"><div class="snum">1</div><h4>Fill the Form</h4><p>Enter your business details in our secure form. Takes less than 2 minutes.</p></div>
+          <div class="step"><div class="snum">2</div><h4>Make Payment</h4><p>Complete secure payment for our consultancy service through our payment page.</p></div>
+          <div class="step"><div class="snum">3</div><h4>Application Support</h4><p>Our team assists with your registration on the official gem.gov.in portal.</p></div>
+        </div>
+        <h4 style="font-size:13px;color:#003087;margin:14px 0 8px;font-weight:700;">Benefits for Sellers</h4>
+        <div class="g2" style="margin-bottom:12px;">
+          <div class="bi"><span style="font-size:1.2rem;">🏛️</span><p><strong>Market Access</strong>Reach to 1,200+ government organizations without intermediaries.</p></div>
+          <div class="bi"><span style="font-size:1.2rem;">💰</span><p><strong>Payment Reliability</strong>Government payments within 30 days. Reliable and secure.</p></div>
+          <div class="bi"><span style="font-size:1.2rem;">📈</span><p><strong>Growth Opportunity</strong>MSMEs get fair chance to compete with large companies.</p></div>
+          <div class="bi"><span style="font-size:1.2rem;">📉</span><p><strong>Reduced Costs</strong>Lower marketing and transaction costs; no commissions to middlemen.</p></div>
+        </div>
+        <div style="background:#e8f5e9;border:1px solid #a5d6a7;border-radius:5px;padding:12px;font-size:12px;color:#1b5e20;">
+          <strong>📣 Important Notice:</strong> GeM Online Portal is a private consultancy service operated by Vinsfertility Private Limited (CIN: U85320DL2019PTC358476). We are NOT affiliated with the Government of India, Ministry of Commerce, or the official GeM portal (gem.gov.in). Free direct registration is available on gem.gov.in.
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
-<section class="detail-section" id="gem-blog">
-  <h3>GeM Blog & Helpful Guides</h3>
-  <div class="detail-grid">
-    <div class="detail-card">
-      <h4>How to register on GeM portal</h4>
-      <p>Get complete guidance for GeM registration, document preparation, and first-time login.</p>
-      <a class="read-more" href="#">Read More</a>
-    </div>
-    <div class="detail-card">
-      <h4>GeM login & verification issues</h4>
-      <p>Find support for OTP verification, password reset, and account access problems.</p>
-      <a class="read-more" href="#">Read More</a>
-    </div>
-    <div class="detail-card">
-      <h4>GeM seller profile optimization</h4>
-      <p>Learn how to improve your GeM profile and product listings for better tender visibility.</p>
-      <a class="read-more" href="#">Read More</a>
-    </div>
-    <div class="detail-card">
-      <h4>Subscribe for GeM updates</h4>
-      <form id="blogSubscribeForm">
-        <div class="field-group">
-          <label>Your Name</label>
-          <input type="text" placeholder="Enter your name" />
-        </div>
-        <div class="field-group">
-          <label>Email Address</label>
-          <input type="email" placeholder="Enter your email" />
-        </div>
-        <button type="submit" class="submit-btn secondary">Subscribe</button>
-      </form>
+<!-- ===== ENQUIRY ===== -->
+<div id="enq" class="pg">
+  <div class="hero" style="background:linear-gradient(135deg,#003087,#1565C0);">
+    <h2>GeM Registration <em>Enquiry</em></h2>
+    <p>Get expert guidance on GeM Registration, Catalogue, and Compliance — Our team will call you back</p>
+  </div>
+  <div style="max-width:620px;margin:20px auto;padding:0 15px;">
+    <div class="card">
+      <div class="ch bl"><span style="font-size:1.3rem;">📧</span><div><h3>ENQUIRY FORM</h3><p>Fill in your details and our expert will contact you</p></div></div>
+      <div class="cb">
+        <form onsubmit="sub(event,'Enquiry')">
+          <div class="fsec">
+            <div class="g2">
+              <div class="f"><label class="lb">FULL NAME <span class="rq">*</span></label><input type="text" placeholder="Your full name" required/></div>
+              <div class="f"><label class="lb">MOBILE NUMBER <span class="rq">*</span></label><input type="tel" placeholder="10-digit mobile" maxlength="10" required/></div>
+              <div class="f"><label class="lb">EMAIL ID <span class="rq">*</span></label><input type="email" placeholder="Email address" required/></div>
+              <div class="f"><label class="lb">STATE <span class="rq">*</span></label><select required><option value="">Select State</option><option>Uttar Pradesh</option><option>Maharashtra</option><option>Delhi</option><option>Gujarat</option><option>Rajasthan</option><option>Karnataka</option><option>Tamil Nadu</option></select></div>
+              <div class="f"><label class="lb">SERVICE INTERESTED IN <span class="rq">*</span></label><select required><option value="">Select Service</option><option>GeM New Registration</option><option>GeM Catalogue Upload</option><option>GeM Cancellation</option><option>GeM Account Support</option><option>Tender Bidding Help</option><option>Other</option></select></div>
+              <div class="f"><label class="lb">BUSINESS TYPE <span class="rq">*</span></label><select required><option value="">Select Type</option><option>Sole Proprietor</option><option>Partnership Firm</option><option>Private Limited</option><option>Public Limited</option><option>LLP</option></select></div>
+              <div class="f s2"><label class="lb">MESSAGE / QUERY</label><textarea placeholder="Describe your query or requirement..."></textarea></div>
+            </div>
+          </div>
+          <div class="fsec"><div class="ck"><input type="checkbox" required/><span>I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>.</span></div></div>
+          <button type="submit" class="sub s-bl">📧 Submit Enquiry</button>
+        </form>
+      </div>
     </div>
   </div>
-</section>
+</div>
+
+<!-- ===== BLOG ===== -->
+<div id="blg" class="pg">
+  <div class="hero" style="background:linear-gradient(135deg,#003087,#1565C0);">
+    <h2>GeM Portal <em>Blog &amp; Knowledge Center</em></h2>
+    <p>Complete guides, news, and expert articles about Government e-Marketplace</p>
+  </div>
+  <div style="max-width:950px;margin:20px auto;padding:0 15px;">
+    <div class="blog-grid">
+      <div class="card"><div class="ch bl"><h3>Government e-Marketplace (GeM) Portal 2026: Complete Guide</h3></div><div class="cb"><p style="font-size:12px;color:#555;line-height:1.6;margin-bottom:10px;">Complete guide to GeM registration, features, bidding process, seller performance and best practices. Everything you need to know about selling to the government.</p><a href="#" style="color:#007B6E;font-size:12px;font-weight:700;">Read More →</a></div></div>
+      <div class="card"><div class="ch te"><h3>How to Register as a Seller on GeM Portal in 2026</h3></div><div class="cb"><p style="font-size:12px;color:#555;line-height:1.6;margin-bottom:10px;">Step-by-step guide to register as a seller on Government e-Marketplace. Documents needed, process explained, and tips to get approved faster.</p><a href="#" style="color:#007B6E;font-size:12px;font-weight:700;">Read More →</a></div></div>
+      <div class="card"><div class="ch or"><h3>What Kind of Tenders Are Available on GeM?</h3></div><div class="cb"><p style="font-size:12px;color:#555;line-height:1.6;margin-bottom:10px;">Learn about Direct Purchase, L1 Purchase, Open Bidding, and Custom Bid &amp; Projects on GeM. How to participate and win government tenders.</p><a href="#" style="color:#007B6E;font-size:12px;font-weight:700;">Read More →</a></div></div>
+      <div class="card"><div class="ch bl"><h3>GeM vs Traditional Government Procurement</h3></div><div class="cb"><p style="font-size:12px;color:#555;line-height:1.6;margin-bottom:10px;">How GeM has transformed government procurement in India. Comparison of speed, transparency, and cost-effectiveness vs traditional tendering.</p><a href="#" style="color:#007B6E;font-size:12px;font-weight:700;">Read More →</a></div></div>
+    </div>
+  </div>
+</div>
 
 <!-- FOOTER -->
 <footer class="footer">
-  <p>© 2026 GeM Registration Assistance Portal | Government e-Marketplace &nbsp;|&nbsp; <a href="#">Privacy Policy</a> &nbsp;|&nbsp; <a href="#">Terms of Service</a></p>
-  <p style="margin-top:4px;">Trusted by 10,000+ Sellers & Service Providers Across India</p>
+  <div class="fcols">
+    <div>
+      <h4>📋 About GeM Online Portal</h4>
+      <p style="font-size:11.5px;color:rgba(255,255,255,.65);line-height:1.6;margin-bottom:8px;">GeM Online Portal is a brand operated by Vinsfertility Private Limited (CIN: U85320DL2019PTC358476), an independent private consultancy firm providing documentation assistance for GeM related requirements. NOT affiliated with gem.gov.in.</p>
+      <p>📞 +91 96256 94159</p><p>✉️ caregemonlineportal@grih.in</p><p>🕐 Mon–Sat · 10 AM – 9 PM IST</p>
+    </div>
+    <div>
+      <h4>🔗 Our Services</h4>
+      <ul>
+        <li><a href="#" onclick="sw2('gr')">→ GeM Registration</a></li>
+        <li><a href="#" onclick="sw2('cat')">→ Catalogue Upload</a></li>
+        <li><a href="#" onclick="sw2('cg')">→ Cancel GeM</a></li>
+        <li><a href="#" onclick="sw2('ag')">→ About GeM</a></li>
+        <li><a href="#" onclick="sw2('enq')">→ Enquiry</a></li>
+        <li><a href="#" onclick="sw2('blg')">→ Blog &amp; Guides</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>⚖️ Legal &amp; Compliance</h4>
+      <ul>
+        <li><a href="#">Terms of Service</a></li>
+        <li><a href="#">Privacy Policy</a></li>
+        <li><a href="#">Refund Policy</a></li>
+        <li><a href="#">Customer Dispute Policy</a></li>
+        <li><a href="#">Disclaimer</a></li>
+        <li><a href="#">About Us</a></li>
+        <li><a href="#">Contact Us</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="fstats">
+    <div class="fst"><div class="sn">10,000+</div><div class="sl">Trusted Sellers</div></div>
+    <div class="fst"><div class="sn">ISO</div><div class="sl">9001:2015 Certified</div></div>
+    <div class="fst"><div class="sn">₹500</div><div class="sl">First Booking OFF</div></div>
+    <div class="fst"><div class="sn">Since</div><div class="sl">2019</div></div>
+  </div>
+  <div class="flinks"><a href="#">Terms</a><a href="#">Privacy</a><a href="#">Refund Policy</a><a href="#">Customer Dispute</a><a href="#">Disclaimer</a><a href="#">Grievance</a><a href="#">About</a></div>
+  <p style="color:rgba(255,255,255,.35);font-size:10.5px;margin-top:6px;line-height:1.6;">⚠️ <strong>Disclaimer:</strong> This website is a property of a private consultancy firm providing assistance services. We expressly declare that we are private consultants and are NOT affiliated with or represent the Government of India or the official GeM portal (gem.gov.in). We only provide paid consultancy and document assistance services. Actual registration is done directly on gem.gov.in.</p>
+  <p style="color:rgba(255,255,255,.35);font-size:10.5px;margin-top:3px;">Operated by: Vinsfertility Private Limited · CIN: U85320DL2019PTC358476 · Registered with MCA, GoI</p>
+  <p style="margin-top:5px;color:rgba(255,255,255,.45);font-size:11px;">Last Updated: 21/04/2026 &nbsp;|&nbsp; © 2026 GeM Online Portal. All Rights Reserved</p>
 </footer>
 
 <script>
-  // Toggle mobile menu
-  function toggleMenu() {
-    const navMenu = document.getElementById('navMenu');
-    navMenu.classList.toggle('active');
-  }
-
-  // Close menu when a link is clicked
-  document.querySelectorAll('.nav-menu a').forEach(link => {
-    link.addEventListener('click', function() {
-      const navMenu = document.getElementById('navMenu');
-      if (navMenu.classList.contains('active')) {
-        navMenu.classList.remove('active');
-      }
-    });
-  });
-
-  // Handle active nav link based on current page section
-  window.addEventListener('scroll', function() {
-    const scrollPos = window.scrollY;
-    document.querySelectorAll('.nav-menu a[href^="#"]').forEach(link => {
-      const section = document.querySelector(link.getAttribute('href'));
-      if (section && section.offsetTop <= scrollPos + 120) {
-        document.querySelectorAll('.nav-menu a').forEach(a => a.classList.remove('active'));
-        link.classList.add('active');
-      }
-    });
-  });
-
-  // Smooth scroll for navigation links
-  document.querySelectorAll('.nav-menu a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
-      e.preventDefault();
-      const target = document.querySelector(this.getAttribute('href'));
-      if (target) {
-        target.scrollIntoView({ behavior: 'smooth' });
-      }
-    });
-  });
-
-  // Update GeM form submission
-  const updateGemForm = document.getElementById('updateGemForm');
-  if (updateGemForm) {
-    updateGemForm.addEventListener('submit', function(e) {
-      e.preventDefault();
-      alert('✅ Your GeM update request has been submitted. Our executive will contact you shortly to verify and apply the requested changes.');
-      updateGemForm.reset();
-    });
-  }
-
-  // Cancel GeM form submission
-  const cancelGemForm = document.getElementById('cancelGemForm');
-  if (cancelGemForm) {
-    cancelGemForm.addEventListener('submit', function(e) {
-      e.preventDefault();
-      alert('⚠️ Your cancellation request has been received. We will review the details and contact you on the registered mobile number for final OTP verification.');
-      cancelGemForm.reset();
-    });
-  }
-
-  // Blog subscription form submission
-  const blogSubscribeForm = document.getElementById('blogSubscribeForm');
-  if (blogSubscribeForm) {
-    blogSubscribeForm.addEventListener('submit', function(e) {
-      e.preventDefault();
-      alert('📬 Thank you! You are now subscribed to GeM updates and helpful guides. Please check your email for confirmation.');
-      blogSubscribeForm.reset();
-    });
-  }
-
-  // Radio button selection for tender range
-  function selectRadio(label) {
-    document.querySelectorAll('.radio-item').forEach(l => l.classList.remove('selected'));
-    label.classList.add('selected');
-  }
-
-  // GST field toggle
-  function toggleGST(sel) {
-    const gstInput = document.querySelector('input[placeholder="E.G. 22AAAAA0000A1Z5"]');
-    if (sel.value === 'no') {
-      gstInput.disabled = true;
-      gstInput.style.background = '#f0f0f0';
-      gstInput.value = 'N/A';
-    } else {
-      gstInput.disabled = false;
-      gstInput.style.background = '';
-      gstInput.value = '';
-    }
-  }
-
-  // Form submission
-  document.getElementById('gemForm').addEventListener('submit', function(e) {
-    e.preventDefault();
-    alert('✅ Your GeM Registration application has been submitted successfully!\nOur executive will contact you on your registered mobile number to verify OTP and process your application.');
-  });
+const tabs=['gr','cat','cg','ag','enq','blg'];
+function sw(id,btn){
+  document.querySelectorAll('.pg').forEach(p=>p.classList.remove('on'));
+  document.querySelectorAll('.nb').forEach(b=>b.classList.remove('on'));
+  document.getElementById(id).classList.add('on');
+  if(btn)btn.classList.add('on');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+function sw2(id){
+  document.querySelectorAll('.pg').forEach(p=>p.classList.remove('on'));
+  document.querySelectorAll('.nb').forEach(b=>b.classList.remove('on'));
+  document.getElementById(id).classList.add('on');
+  const i=tabs.indexOf(id);
+  const btns=document.querySelectorAll('.nb');
+  if(btns[i])btns[i].classList.add('on');
+  window.scrollTo({top:0,behavior:'smooth'});
+  return false;
+}
+function sub(e,name){
+  e.preventDefault();
+  alert('\\u2705 Your '+name+' application has been submitted successfully!\\n\\nOur executive will contact you on your registered mobile number within 15 minutes to verify details and process your application.');
+}
 </script>
 </body>
 </html>
