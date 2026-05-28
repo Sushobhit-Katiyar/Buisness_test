@@ -187,7 +187,7 @@ textarea{resize:vertical;min-height:68px;}
 <div class="ticker-wrap"><div class="tick">🔴 New: Get ₹500 OFF on your first booking! Limited time offer – Book now and save big! &nbsp;&nbsp;&nbsp; Trusted by Sellers Across India &nbsp;•&nbsp; ISO 9001:2015 Certified Service Portal &nbsp;•&nbsp; Complete Support for New Registration, Catalogue Upload &amp; Compliance</div></div>
 <!-- NAVBAR -->
 <nav class="navbar"><div class="nav-inner">
-  <button class="nb on" onclick="sw('gr',this)">🏠 HOME</button>
+  <button class="nb on" onclick="sw('gr',this)"><a href="index.html"> HOME</a></button>
   <button class="nb" onclick="sw('gr',this)">GEM REGISTRATION</button>
   <button class="nb" onclick="sw('cat',this)">CATALOGUE</button>
   <button class="nb" onclick="sw('cg',this)">CANCEL GEM</button>
@@ -393,6 +393,46 @@ textarea{resize:vertical;min-height:68px;}
         </div>
       </div>
       <div class="card" style="margin-top:16px;">
+        <div class="ch rd"><span style="font-size:1.3rem;">🧾</span><div><h3>GeM Order Cancellation Assistance</h3><p>Cancel your GeM order quickly with expert help from our team.</p></div></div>
+        <div class="cb">
+          <p style="font-size:12px;color:#555;line-height:1.8;margin-bottom:12px;">Need help with GeM order cancellation? Our team assists buyers and sellers with the complete cancellation process quickly and smoothly.</p>
+          <div style="margin-bottom:12px;">
+            <strong style="font-size:12px;color:#003087;">What We Offer</strong>
+            <ul style="list-style:none;font-size:12px;color:#555;line-height:1.8;margin-top:8px;">
+              <li>✅ Buyer & Seller Cancellation Support</li>
+              <li>✅ Order Cancellation Guidance</li>
+              <li>✅ OTP & Portal Assistance</li>
+              <li>✅ Help in Raising Cancellation Request</li>
+              <li>✅ Support Before Dispatch / Service Start</li>
+              <li>✅ Quick Process Assistance</li>
+            </ul>
+          </div>
+          <div style="margin-bottom:12px;">
+            <strong style="font-size:12px;color:#003087;">Required Details</strong>
+            <ul style="list-style:none;font-size:12px;color:#555;line-height:1.8;margin-top:8px;">
+              <li>• GeM Order Number</li>
+              <li>• Buyer / Seller Name</li>
+              <li>• Registered Mobile Number</li>
+              <li>• Registered Email ID</li>
+              <li>• Reason for Cancellation</li>
+              <li>• Screenshot of Order (Optional)</li>
+            </ul>
+          </div>
+          <div style="margin-bottom:12px;">
+            <strong style="font-size:12px;color:#003087;">Why Choose Us?</strong>
+            <ul style="list-style:none;font-size:12px;color:#555;line-height:1.8;margin-top:8px;">
+              <li>✔ Fast Response Support</li>
+              <li>✔ Experienced GeM Assistance Team</li>
+              <li>✔ Simple & Hassle-Free Process</li>
+              <li>✔ Guidance for Proper Cancellation Request</li>
+              <li>✔ Support Available Across India</li>
+            </ul>
+          </div>
+          <p style="font-size:12px;color:#d32f2f;font-weight:700;line-height:1.6;">Submit your request by filling the form and our team will contact you shortly regarding your GeM order cancellation assistance.</p>
+          <p style="font-size:12px;color:#d32f2f;line-height:1.6;">🔴 Quick Support Available&nbsp;&nbsp;🔴 Limited Assistance Slots</p>
+        </div>
+      </div>
+      <div class="card" style="margin-top:16px;">
         <div class="ch rd"><span style="font-size:1.2rem;">🛑</span><div><h3>GeM Order Cancellation Guide</h3><p>How to cancel an order on the Government e-Marketplace</p></div></div>
         <div class="cb">
           <div style="margin-bottom:14px;">
@@ -480,7 +520,8 @@ textarea{resize:vertical;min-height:68px;}
           <div class="bi"><span style="font-size:1.2rem;">📉</span><p><strong>Reduced Costs</strong>Lower marketing and transaction costs; no commissions to middlemen.</p></div>
         </div>
         <div style="background:#e8f5e9;border:1px solid #a5d6a7;border-radius:5px;padding:12px;font-size:12px;color:#1b5e20;">
-          <!-- <strong>📣 Important Notice:</strong>
+          <!-- <strong>📣 Important Notice:</strong> -->
+        </div>
       </div>
     </div>
   </div>
@@ -554,16 +595,17 @@ textarea{resize:vertical;min-height:68px;}
     <div>
       <h4>⚖️ Legal &amp; Compliance</h4>
       <ul>
-        <li><a href="#">Terms of Service</a></li>
-        <li><a href="#">Privacy Policy</a></li>
-        <li><a href="#">Refund Policy</a></li>
-        <li><a href="#">Customer Dispute Policy</a></li>
-        <li><a href="#">Disclaimer</a></li>
-        <li><a href="#">About Us</a></li>
-        <li><a href="#">Contact Us</a></li>
+        <li><a href="#" onclick="return showInfo('terms')">Terms of Service</a></li>
+        <li><a href="#" onclick="return showInfo('privacy')">Privacy Policy</a></li>
+        <li><a href="#" onclick="return showInfo('refund')">Refund Policy</a></li>
+        <li><a href="#" onclick="return showInfo('dispute')">Customer Dispute Policy</a></li>
+        <li><a href="#" onclick="return showInfo('disclaimer')">Disclaimer</a></li>
+        <li><a href="#" onclick="return showInfo('about')">About Us</a></li>
+        <li><a href="#" onclick="return showInfo('contact')">Contact Us</a></li>
       </ul>
     </div>
   </div>
+  <div id="footer-info" style="display:none;max-width:900px;margin:12px auto 14px;padding:14px;border-radius:6px;background:rgba(255,255,255,.08);color:#fff;text-align:left;font-size:11.5px;line-height:1.6;"></div>
   <div class="fstats">
     <div class="fst"><div class="sn">10,000+</div><div class="sl">Trusted Sellers</div></div>
     <div class="fst"><div class="sn">ISO</div><div class="sl">9001:2015 Certified</div></div>
@@ -593,6 +635,23 @@ function sw2(id){
   const btns=document.querySelectorAll('.nb');
   if(btns[i])btns[i].classList.add('on');
   window.scrollTo({top:0,behavior:'smooth'});
+  return false;
+}
+function showInfo(type){
+  const info={
+    terms:{title:'Terms of Service',text:'Our Terms of Service explain that we provide private consultancy and documentation assistance for GeM registration, catalogue upload, cancellation, and related support. We are not the official gem.gov.in portal and do not complete the official registration on your behalf.'},
+    privacy:{title:'Privacy Policy',text:'Our Privacy Policy explains how we collect and use your contact and business details for consultancy support. We keep your information confidential and do not share it with third parties without your consent.'},
+    refund:{title:'Warranties & Refunds Policy',text:`<p>At our website, we are committed to providing professional registration and consultancy services with complete transparency. Please read our Warranties & Refunds Policy carefully before making any payment.</p><p><strong>1. Service Nature</strong><br/>We provide consultancy and assistance services for: Udyam Registration, MSME Certificate Services, GeM Registration, ISO Certification Assistance, Re-registration & Update Services, and other government-related documentation services. Our charges are for professional consultation, documentation support, application processing, and service assistance.</p><p><strong>2. No Refund Policy</strong><br/>Once the payment is successfully made and your application process has been started, no refund will be provided under any circumstances.<br/><strong>Important Notice:</strong> If we have started your process, no refund will be applicable. This includes cases where: client changes their mind after payment; delay caused by client-side document submission; incorrect information provided by the applicant; mobile OTP/email verification not completed by client; government portal delays or technical issues; rejection due to inaccurate client information.</p><p><strong>3. Cancellation Requests</strong><br/>Cancellation requests will only be considered if the request is made before the processing of the application has started and our team has not initiated documentation, verification, or submission work. Cases where delivery from our end is not possible may be eligible for a refund after deducting internet and handling charges of Rs 500/-. If the processing has already begun, cancellation requests will not be accepted.</p><p><strong>4. Government Rejection or Delay</strong><br/>We act as a consultancy service provider and do not control government approvals, verification timelines, or portal decisions. Therefore: government rejection does not qualify for a refund; delays caused by government departments are not refundable; approval timelines may vary depending on the department and verification process.</p><p><strong>5. Client Responsibilities</strong><br/>The applicant must provide correct Aadhaar/PAN details, valid mobile number and email ID, required documents on time, and accurate business information. Any issue caused due to incorrect or incomplete information from the client side will not be eligible for refund or compensation.</p><p><strong>6. Service Warranty</strong><br/>We assure professional assistance, secure handling of documents, proper application guidance, and dedicated customer support during working hours. However, we do not guarantee approval from any government authority or third-party portal.</p><p><strong>7. Contact Information</strong><br/>For any service-related queries, please contact:<br/>📞 Phone: +91-92048-34510<br/>✉️ Email: sarkarikagaz@gmail.com<br/>🌐 Website: gem-registration consultancy page</p>`},
+    dispute:{title:'Customer Dispute Policy',text:'Our Customer Dispute Policy explains how to raise a complaint if you are not satisfied. Contact our support team by phone or email, and we will resolve the issue promptly.'},
+    disclaimer:{title:'Disclaimer',text:'This website is an independent private consultancy service for GeM assistance. We are not affiliated with or endorsed by the Government of India or the official Government e-Marketplace portal (gem.gov.in).'},
+    about:{title:'About Us',text:'GeM Online Portal is an independent private consultancy offering GeM registration, catalogue upload, and related support services. We guide businesses with documentation and application support for the official GeM portal.'},
+    contact:{title:'Contact Us',text:'For help, call +91 92048 34510 or email sarkarikagaz@gmail.com. You can also submit the enquiry form on the website for a callback from our executive team.'}
+  };
+  const item=info[type]||{title:'Information',text:'Details are not available at the moment.'};
+  const el=document.getElementById('footer-info');
+  el.innerHTML='<strong style="font-size:12px;display:block;margin-bottom:6px;">'+item.title+'</strong><span>'+item.text+'</span>';
+  el.style.display='block';
+  el.scrollIntoView({behavior:'smooth',block:'center'});
   return false;
 }
 function sub(e,name){
