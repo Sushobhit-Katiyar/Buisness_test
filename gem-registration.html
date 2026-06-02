@@ -207,7 +207,7 @@ textarea{resize:vertical;min-height:68px;}
     <!-- <div class="offer">🎉 Get ₹500 OFF on your first booking! Limited time offer — Book now and save big!</div> -->
     <h2>GeM Registration Portal – <em>Apply for Your GeM Certificate Online</em></h2>
     <p>सरकारी ई-मार्केटप्लेस पंजीकरण पोर्टल · Comprehensive documentation and registration support for Indian businesses</p>
-    <div class="tags"><span class="tag">✅ Trusted by Sellers Across India</span><span class="tag">🏅 ISO 9001:2015 Certified</span><span class="tag">🔒 Secure &amp; Confidential</span><span class="tag">📋 Documentation Support</span></div>
+    <div class="tags"><span class="tag">✅ Trusted by Sellers Across India</span><span class="tag">🏅 Secure and Confidential </span><span class="tag">🔒 Secure &amp; Confidential</span><span class="tag">📋 Documentation Support</span></div>
   </div>
   <div class="wrap">
     <div>
@@ -222,55 +222,63 @@ textarea{resize:vertical;min-height:68px;}
         <div class="cb">
           <form onsubmit="sub(event,'GeM Registration')">
             <div class="fsec">
-              <div class="st">Authorized Person &amp; Business Details</div>
+              <div class="st">Personal & Business Information</div>
               <div class="g2">
-                <div class="f"><label class="lb">Full Name* / नाम <span class="rq">*</span></label><input type="text" placeholder="As per Aadhaar / PAN Card" required/></div>
-                <div class="f"><label class="lb">Email* / ईमेल <span class="rq">*</span></label><input type="email" placeholder="Valid email address" required/></div>
-                <div class="f"><label class="lb">Mobile* / मोबाइल <span class="rq">*</span></label><input type="tel" placeholder="10-digit mobile number" maxlength="10" required/></div>
-                <div class="f"><label class="lb">Business Name* / व्यवसाय का नाम <span class="rq">*</span></label><input type="text" placeholder="As per PAN Card" required/></div>
-                <div class="f"><label class="lb">Business Type* / प्रकार <span class="rq">*</span></label><select required><option value="">Select Type</option><option>Sole Proprietor</option><option>Partnership Firm</option><option>Private Limited</option><option>Public Limited</option><option>One Person Company</option><option>Limited Liability Partnership</option><option>Others</option></select></div>
+                <div class="f"><label class="lb">Full Name* <span class="rq">*</span></label><input type="text" placeholder="As per Aadhaar or PAN Card" required/></div>
+                <div class="f"><label class="lb">Company / Business Name* <span class="rq">*</span></label><input type="text" placeholder="Registered business name" required/></div>
+                <div class="f"><label class="lb">Mobile Number* <span class="rq">*</span></label><input type="tel" placeholder="10-digit mobile number" maxlength="10" required/></div>
+                <div class="f"><label class="lb">Email ID* <span class="rq">*</span></label><input type="email" placeholder="Valid email address" required/></div>
+                <div class="f"><label class="lb">GST Number (Optional)</label><input type="text" placeholder="GSTIN if available"/></div>
+                <div class="f"><label class="lb">PAN Card Number* <span class="rq">*</span></label><input type="text" placeholder="PAN number" required/></div>
+                <div class="f"><label class="lb">Business Type* <span class="rq">*</span></label><select required><option value="">Select Business Type</option><option>Sole Proprietor</option><option>Partnership Firm</option><option>Private Limited</option><option>Public Limited</option><option>One Person Company</option><option>Limited Liability Partnership</option><option>Proprietorship</option><option>Others</option></select></div>
+                <div class="f"><label class="lb">UDYAM Registration Number (Optional)</label><input type="text" placeholder="UDYAM registration number"/></div>
               </div>
             </div>
             <div class="fsec">
-              <div class="st">Office Address / पता</div>
+              <div class="st">Address & Bank Details</div>
               <div class="g2">
-                <div class="f s2"><label class="lb">Office Address* / पता <span class="rq">*</span></label><input type="text" placeholder="Complete business address as per registration proof" required/></div>
-                <div class="f"><label class="lb">State* / राज्य <span class="rq">*</span></label><select required><option value="">Select State</option><option>Andhra Pradesh</option><option>Assam</option><option>Bihar</option><option>Chhattisgarh</option><option>Delhi</option><option>Goa</option><option>Gujarat</option><option>Haryana</option><option>Himachal Pradesh</option><option>Jharkhand</option><option>Karnataka</option><option>Kerala</option><option>Madhya Pradesh</option><option>Maharashtra</option><option>Manipur</option><option>Meghalaya</option><option>Odisha</option><option>Punjab</option><option>Rajasthan</option><option>Tamil Nadu</option><option>Telangana</option><option>Uttar Pradesh</option><option>Uttarakhand</option><option>West Bengal</option><option>Other UT</option></select></div>
-                <div class="f"><label class="lb">District* / जिला <span class="rq">*</span></label><select required><option value="">Select</option></select></div>
-                <div class="f"><label class="lb">Pin Code* / पिन कोड <span class="rq">*</span></label><input type="text" placeholder="6-digit pin code" maxlength="6" required/></div>
+                <div class="f s2"><label class="lb">Complete Address <span class="rq">*</span></label><textarea placeholder="Business address, street, landmark, etc." required></textarea></div>
+                <div class="f"><label class="lb">State <span class="rq">*</span></label><select required><option value="">Select State</option><option>Andhra Pradesh</option><option>Arunachal Pradesh</option><option>Assam</option><option>Bihar</option><option>Chhattisgarh</option><option>Goa</option><option>Gujarat</option><option>Haryana</option><option>Himachal Pradesh</option><option>Jharkhand</option><option>Karnataka</option><option>Kerala</option><option>Madhya Pradesh</option><option>Maharashtra</option><option>Manipur</option><option>Meghalaya</option><option>Mizoram</option><option>Nagaland</option><option>Odisha</option><option>Punjab</option><option>Rajasthan</option><option>Sikkim</option><option>Tamil Nadu</option><option>Telangana</option><option>Tripura</option><option>Uttar Pradesh</option><option>Uttarakhand</option><option>West Bengal</option><option>Andaman &amp; Nicobar Islands</option><option>Chandigarh</option><option>Dadra &amp; Nagar Haveli and Daman &amp; Diu</option><option>Delhi</option><option>Jammu &amp; Kashmir</option><option>Ladakh</option><option>Lakshadweep</option><option>Puducherry</option></select></div>
+                <div class="f"><label class="lb">City <span class="rq">*</span></label><input type="text" placeholder="City / Town" required/></div>
+                <div class="f"><label class="lb">Pincode <span class="rq">*</span></label><input type="text" placeholder="6-digit pin code" maxlength="6" required/></div>
+                <div class="f"><label class="lb">Bank Account Number <span class="rq">*</span></label><input type="text" placeholder="Account number" required/></div>
+                <div class="f"><label class="lb">Account Holder Name <span class="rq">*</span></label><input type="text" placeholder="Name as per bank account" required/></div>
+                <div class="f"><label class="lb">IFSC Code <span class="rq">*</span></label><input type="text" placeholder="Bank IFSC code" required/></div>
               </div>
             </div>
             <div class="fsec">
-              <div class="st">Interested Tender Range* / इच्छुक निविदा राशि सीमा <span class="rq">*</span></div>
-              <div style="background:#e8f5e9;border:1px solid #a5d6a7;border-radius:5px;padding:10px 12px;margin-bottom:10px;font-size:12px;color:#1b5e20;">
-                <strong>What Kind of Tenders Are Available on GeM?</strong><br/>
-                1. Direct Purchase: ₹0–₹25,000 (without bidding) &nbsp;|&nbsp; 2. L1 Purchase: ₹25,001–₹5,00,000 &nbsp;|&nbsp; 3. Open Bidding: ₹5 Lakh–₹2 Crore &nbsp;|&nbsp; 4. Custom Bid &amp; Projects: ₹10 Lakh+
+              <div class="st">Upload Documents</div>
+              <div class="g2">
+                <div class="f"><label class="lb">Upload PAN Card <span class="rq">*</span></label><input type="file" accept=".jpg,.jpeg,.png,.pdf" required/></div>
+                <div class="f"><label class="lb">Upload Aadhaar Card <span class="rq">*</span></label><input type="file" accept=".jpg,.jpeg,.png,.pdf" required/></div>
+                <div class="f s2"><label class="lb">Additional Requirements / Message</label><textarea placeholder="Any extra details, requests or messages"></textarea></div>
               </div>
+            </div>
+            <div class="fsec">
+              <div style="background:#e4f1ff;border:1px solid #8ebff0;border-radius:8px;padding:16px;margin-bottom:14px;color:#092d57;font-size:13px;line-height:1.6;">
+                <strong style="display:block;margin-bottom:10px;font-size:13.5px;">📌 What Kind of Tenders Are Available on GeM? / जेम पर कौन-कौन सी निविदाएं होती हैं?</strong>
+                <div style="margin-bottom:12px;">
+                  <div>◆ 1. Direct Purchase / डायरेक्ट खरीद: ₹0 – ₹25,000 तक की खरीद, बिना बोली के</div>
+                  <div>◆ 2. L1 Purchase / न्यूनतम मूल्य खरीद: ₹25,001 – ₹5,00,000 तक, सबसे कम रेट वाला विक्रेता चुना जाता है</div>
+                  <div>◆ 3. Open Bidding / ओपन बिडिंग: ₹5 लाख से ₹2 करोड़ तक के टेंडर, बोली प्रक्रिया होती है</div>
+                  <div>◆ 4. Custom Bid &amp; Projects / कस्टम प्रोजेक्ट्स: ₹10 लाख से अधिक, विशेष सेवाएं (जैसे: सुरक्षा, मेनटेनेंस, IT सेवाएं)</div>
+                </div>
+                <div style="background:#def7e8;border:1px solid #9ed7b2;border-radius:6px;padding:10px 12px;color:#085b2c;font-size:12.5px;">
+                  ✅ Choose your tender range below so we can guide you to suitable bids. कृपया नीचे दिए गए विकल्प से निविदा राशि चुनें ताकि हम उसी अनुसार आपकी सहायता कर सकें।
+                </div>
+              </div>
+              <div class="st">Interested Tender Amount Range / इच्छुक निविदा राशि सीमा <span class="rq">*</span></div>
               <div class="radio-row">
-                <label class="rcard"><input type="radio" name="tr" value="1to5" required/> ₹1–5 Lakh / 1 से 5 लाख</label>
-                <label class="rcard"><input type="radio" name="tr" value="5to10"/> ₹5–10 Lakh / 5 से 10 लाख</label>
-                <label class="rcard"><input type="radio" name="tr" value="10to20"/> ₹10–20 Lakh / 10 से 20 लाख</label>
-                <label class="rcard"><input type="radio" name="tr" value="20plus"/> ₹20+ Lakh / 20 लाख से अधिक</label>
+                <label class="rcard"><input type="radio" name="tr" value="1to5" required/> ₹1 TO 5 LAKH / 1 से 5 लाख</label>
+                <label class="rcard"><input type="radio" name="tr" value="5to10"/> ₹5 TO 10 LAKH / 5 से 10 लाख</label>
+                <label class="rcard"><input type="radio" name="tr" value="10to20"/> ₹10 TO 20 LAKH / 10 से 20 लाख</label>
+                <label class="rcard"><input type="radio" name="tr" value="20plus"/> MORE THAN 20 LAKH / 20 लाख से अधिक</label>
               </div>
             </div>
             <div class="fsec">
-              <div class="st">Documents Required for GeM Registration / आवश्यक दस्तावेज़</div>
-              <div class="docs-grid">
-                <div class="doc-item"><div class="di">💳</div><strong>PAN Card</strong>Business / Proprietor</div>
-                <div class="doc-item"><div class="di">🪪</div><strong>Aadhaar Card</strong>Authorized Person</div>
-                <div class="doc-item"><div class="di">🏦</div><strong>Bank Account</strong>Cancelled Cheque</div>
-                <div class="doc-item"><div class="di">📄</div><strong>GST Certificate</strong>If applicable</div>
-                <div class="doc-item"><div class="di">🏢</div><strong>Business Registration</strong>Incorporation / Deed</div>
-                <div class="doc-item"><div class="di">📍</div><strong>Address Proof</strong>Business / Office</div>
-                <div class="doc-item"><div class="di">📱</div><strong>Mobile &amp; Email</strong>Linked to PAN/Aadhaar</div>
-                <div class="doc-item"><div class="di">🏭</div><strong>MSME/Udyam</strong>Registration (optional)</div>
-              </div>
-              <p style="font-size:11px;color:#666;margin-top:6px;"><strong>You don't need documents now.</strong> Submit the form first — exact requirements depend on your business type and will be confirmed during registration.</p>
+              <div class="ck"><input type="checkbox" required/><span>I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>.</span></div>
             </div>
-            <div class="fsec">
-              <div class="ck"><input type="checkbox" required/><span>I agree to the <a href="#">Terms</a> and <a href="#">Privacy Policy</a>, and acknowledge that this is a private consultancy not affiliated with the Government.</span></div>
-            </div>
-            <button type="submit" class="sub s-bl">🚀 Apply for Certificate / प्रमाणपत्र के लिए आवेदन करें</button>
+            <button type="submit" class="sub s-bl">🚀 Submit GeM Registration</button>
           </form>
         </div>
       </div>
