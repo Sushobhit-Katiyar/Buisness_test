@@ -146,6 +146,18 @@ textarea{resize:vertical;min-height:68px;}
 .flinks{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:8px;}
 @media(max-width:900px){.wrap{grid-template-columns:1fr;}.g2,.g3{grid-template-columns:1fr 1fr;}.radio-row{grid-template-columns:1fr;}.hdr-inner{flex-direction:column;align-items:flex-start;}.fcols{grid-template-columns:1fr;}.step-cards{grid-template-columns:1fr;}.docs-grid{grid-template-columns:1fr 1fr;}.blog-grid{grid-template-columns:1fr;}.stat-grid{grid-template-columns:1fr 1fr;}}
 @media(max-width:560px){.g2,.g3{grid-template-columns:1fr;}}
+
+.faq-container{max-width:900px;margin:26px auto 0;padding:0 10px;}
+.faq-container .section-title{font-size:1.05rem;font-weight:700;color:#003087;margin-bottom:14px;}
+.faq-item{background:#fff;border:1px solid rgba(107,76,237,.12);border-radius:14px;overflow:hidden;box-shadow:0 14px 32px rgba(15,32,82,.08);margin-bottom:14px;}
+.faq-question{width:100%;display:flex;justify-content:space-between;align-items:center;padding:16px 18px;font-size:0.98rem;font-weight:700;color:#222;background:#fff;border:none;cursor:pointer;outline:none;border-left:6px solid #6b4ced;transition:background .25s,color .25s;}
+.faq-question .faq-icon{display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;border-radius:50%;background:rgba(107,76,237,.12);color:#6b4ced;font-size:1rem;transition:transform .25s,background .25s,color .25s;}
+.faq-answer{max-height:0;overflow:hidden;transition:max-height .32s ease,padding .32s ease;box-sizing:border-box;padding:0 18px;background:#f9fbff;}
+.faq-answer p{margin:0;padding:16px 0 18px;color:#444;line-height:1.75;font-size:0.95rem;}
+.faq-item.active .faq-question{background:#6b4ced;color:#fff;border-left-color:transparent;}
+.faq-item.active .faq-question .faq-icon{background:rgba(255,255,255,.22);color:#fff;transform:rotate(45deg);}
+.faq-item.active .faq-answer{padding:0 18px 18px;}
+@media(max-width:760px){.faq-container{margin:20px auto 0;padding:0 8px;}.faq-question{padding:14px 16px;}.faq-answer{padding:0 16px;}}
 </style>
 </head>
 <body>
@@ -318,6 +330,44 @@ textarea{resize:vertical;min-height:68px;}
       </div>
     </aside>
   </div>
+  <div class="faq-container">
+    <div class="section-title">GeM Registration FAQs - English</div>
+    <div class="faq-item">
+      <button type="button" class="faq-question">What is GeM registration?<span class="faq-icon">+</span></button>
+      <div class="faq-answer"><p>GeM registration is the process of enrolling sellers, service providers, manufacturers, and businesses on the Government e-Marketplace (GeM) portal to sell products and services to government departments online.</p></div>
+    </div>
+    <div class="faq-item">
+      <button type="button" class="faq-question">How can I register on the GeM portal?<span class="faq-icon">+</span></button>
+      <div class="faq-answer"><p>You can register on the GeM portal by submitting business details, GST information, Aadhaar verification, PAN card details, and bank account information. Our experts help complete the GeM registration process smoothly and quickly.</p></div>
+    </div>
+    <div class="faq-item">
+      <button type="button" class="faq-question">What documents are required for GeM registration?<span class="faq-icon">+</span></button>
+      <div class="faq-answer"><p>Documents required for GeM registration generally include GST certificate, PAN card, Aadhaar card, business registration proof, bank account details, email ID, and mobile number.</p></div>
+    </div>
+    <div class="faq-item">
+      <button type="button" class="faq-question">Who can apply for GeM registration?<span class="faq-icon">+</span></button>
+      <div class="faq-answer"><p>Manufacturers, traders, startups, MSMEs, service providers, private limited companies, proprietorship firms, and other businesses can apply for GeM registration.</p></div>
+    </div>
+  </div>
+  <div class="faq-container">
+    <div class="section-title">GeM Registration FAQs - हिंदी</div>
+    <div class="faq-item">
+      <button type="button" class="faq-question">GeM रजिस्ट्रेशन क्या है?<span class="faq-icon">+</span></button>
+      <div class="faq-answer"><p>GeM रजिस्ट्रेशन Government e-Marketplace (GeM) पोर्टल पर विक्रेताओं, सेवा प्रदाताओं और व्यवसायों का पंजीकरण करने की प्रक्रिया है, जिसके माध्यम से वे सरकारी विभागों को ऑनलाइन उत्पाद और सेवाएं बेच सकते हैं।</p></div>
+    </div>
+    <div class="faq-item">
+      <button type="button" class="faq-question">मैं GeM पोर्टल पर कैसे रजिस्टर कर सकता हूँ?<span class="faq-icon">+</span></button>
+      <div class="faq-answer"><p>आप अपने व्यवसाय का विवरण, GST जानकारी, आधार सत्यापन, PAN कार्ड विवरण, और बैंक खाता जानकारी जमा करके GeM पोर्टल पर रजिस्टर कर सकते हैं। हमारे विशेषज्ञ GeM रजिस्ट्रेशन प्रक्रिया को तेज़ी से और आसानी से पूरा करने में मदद करते हैं।</p></div>
+    </div>
+    <div class="faq-item">
+      <button type="button" class="faq-question">GeM रजिस्ट्रेशन के लिए किन दस्तावेजों की आवश्यकता होती है?<span class="faq-icon">+</span></button>
+      <div class="faq-answer"><p>GeM रजिस्ट्रेशन के लिए आवश्यक दस्तावेजों में आमतौर पर GST प्रमाणपत्र, PAN कार्ड, आधार कार्ड, व्यवसाय पंजीकरण प्रमाण, बैंक खाता विवरण, ईमेल आईडी और मोबाइल नंबर शामिल हैं।</p></div>
+    </div>
+    <div class="faq-item">
+      <button type="button" class="faq-question">कौन GeM रजिस्ट्रेशन के लिए आवेदन कर सकता है?<span class="faq-icon">+</span></button>
+      <div class="faq-answer"><p>निर्माता, व्यापारी, स्टार्टअप, MSME, सेवा प्रदाता, प्राइवेट लिमिटेड कंपनी, एकलमालिक फर्म और अन्य व्यवसाय GeM रजिस्ट्रेशन के लिए आवेदन कर सकते हैं। प्रोफेशनल GeM रजिस्ट्रेशन सेवा लेने से गलतियाँ कम होती हैं, अकाउंट अप्रूवल तेज़ी से होता है और seller profile तथा catalogue सही तरीके से तैयार किए जाते हैं।</p></div>
+    </div>
+  </div>
 </div>
 
 <!-- ===== CATALOGUE ===== -->
@@ -349,6 +399,36 @@ textarea{resize:vertical;min-height:68px;}
             <button type="submit" class="sub s-gr">📦 Submit Catalogue Request</button>
           </form>
         </div>
+      </div>
+    </div>
+    <div class="faq-container">
+      <div class="section-title">Catalogue FAQ - English</div>
+      <div class="faq-item">
+        <button type="button" class="faq-question">What is GeM catalogue service?<span class="faq-icon">+</span></button>
+        <div class="faq-answer"><p>GeM catalogue service helps sellers upload, manage, and optimize their product or service catalogues on the Government e-Marketplace (GeM) portal to increase visibility and sales opportunities.</p></div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-question">How can I upload products on the GeM portal?<span class="faq-icon">+</span></button>
+        <div class="faq-answer"><p>You can upload products on the GeM portal by providing product details, specifications, pricing, images, and required documents. Our GeM catalogue experts assist in creating accurate and SEO-friendly product listings.</p></div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-question">What documents are required for GeM catalogue upload?<span class="faq-icon">+</span></button>
+        <div class="faq-answer"><p>The required documents for GeM catalogue upload may include GST certificate, PAN card, brand authorization, product images, technical specifications, and business registration details.</p></div>
+      </div>
+    </div>
+    <div class="faq-container">
+      <div class="section-title">Catalogue FAQ - हिंदी</div>
+      <div class="faq-item">
+        <button type="button" class="faq-question">GeM कैटलॉग सेवा क्या है?<span class="faq-icon">+</span></button>
+        <div class="faq-answer"><p>GeM कैटलॉग सेवा के माध्यम से विक्रेता अपने उत्पाद या सेवाओं को Government e-Marketplace (GeM) पोर्टल पर अपलोड, प्रबंधित और अनुकूलित कर सकते हैं ताकि अधिक खरीदारों तक पहुंच बनाई जा सके।</p></div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-question">सही GeM कैटलॉग बनाना क्यों ज़रूरी है?<span class="faq-icon">+</span></button>
+        <div class="faq-answer"><p>एक सही और प्रोफेशनल GeM कैटलॉग आपके प्रोडक्ट की दृश्यता बढ़ाता है, सरकारी खरीदारों को आकर्षित करता है और ऑर्डर मिलने की संभावना को बढ़ाता है।</p></div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-question">प्रोफेशनल GeM कैटलॉग सेवा क्यों चुनें?<span class="faq-icon">+</span></button>
+        <div class="faq-answer"><p>प्रोफेशनल GeM कैटलॉग सेवा लेने से गलतियों की संभावना कम होती है, कैटलॉग अप्रूवल तेजी से होता है और आपके उत्पादों की लिस्टिंग बेहतर तरीके से मैनेज होती है।</p></div>
       </div>
     </div>
     <aside class="sbar">
@@ -440,6 +520,44 @@ textarea{resize:vertical;min-height:68px;}
           </div>
           <p style="font-size:12px;color:#d32f2f;font-weight:700;line-height:1.6;">Submit your request by filling the form and our team will contact you shortly regarding your GeM order cancellation assistance.</p>
           <p style="font-size:12px;color:#d32f2f;line-height:1.6;">🔴 Quick Support Available&nbsp;&nbsp;🔴 Limited Assistance Slots</p>
+        </div>
+      </div>
+      <div class="faq-container">
+        <div class="section-title">GeM Cancellation FAQs - English</div>
+        <div class="faq-item">
+          <button type="button" class="faq-question">What is GeM cancellation service?<span class="faq-icon">+</span></button>
+          <div class="faq-answer"><p>GeM cancellation service helps sellers, buyers, and businesses cancel or close their registration, order, bid, or account process on the Government e-Marketplace (GeM) portal with proper guidance and documentation support.</p></div>
+        </div>
+        <div class="faq-item">
+          <button type="button" class="faq-question">How can I cancel my GeM registration online?<span class="faq-icon">+</span></button>
+          <div class="faq-answer"><p>You can cancel your GeM registration online by submitting the required documents, account details, and cancellation request on the GeM portal. Our experts help simplify the complete GeM cancellation process quickly and accurately.</p></div>
+        </div>
+        <div class="faq-item">
+          <button type="button" class="faq-question">What documents are required for GeM cancellation?<span class="faq-icon">+</span></button>
+          <div class="faq-answer"><p>Common documents required for GeM cancellation include GST certificate, Aadhaar card, PAN card, GeM registered email ID, mobile number, and business details. Additional documents may be required depending on the cancellation type.</p></div>
+        </div>
+        <div class="faq-item">
+          <button type="button" class="faq-question">How much time does GeM cancellation take?<span class="faq-icon">+</span></button>
+          <div class="faq-answer"><p>The GeM cancellation process usually takes a few working days depending on document verification and portal approval. Proper submission of details helps avoid delays in GeM account cancellation.</p></div>
+        </div>
+      </div>
+      <div class="faq-container">
+        <div class="section-title">GeM Cancellation FAQs - हिंदी</div>
+        <div class="faq-item">
+          <button type="button" class="faq-question">GeM कैंसिलेशन सेवा क्या है?<span class="faq-icon">+</span></button>
+          <div class="faq-answer"><p>GeM कैंसिलेशन सेवा के माध्यम से विक्रेता, खरीदार और व्यवसाय अपने Government e-Marketplace (GeM) अकाउंट, ऑर्डर, बिड या रजिस्ट्रेशन को सही प्रक्रिया के साथ बंद या कैंसिल कर सकते हैं।</p></div>
+        </div>
+        <div class="faq-item">
+          <button type="button" class="faq-question">मैं अपना GeM रजिस्ट्रेशन ऑनलाइन कैसे कैंसिल कर सकता हूँ?<span class="faq-icon">+</span></button>
+          <div class="faq-answer"><p>आप आवश्यक दस्तावेज, खाता विवरण और कैंसिलेशन अनुरोध GeM पोर्टल पर जमा करके अपना GeM रजिस्ट्रेशन ऑनलाइन कैंसिल कर सकते हैं। हमारे विशेषज्ञ पूरी GeM कैंसिलेशन प्रक्रिया को जल्दी और सही तरीके से सरल बनाने में मदद करते हैं।</p></div>
+        </div>
+        <div class="faq-item">
+          <button type="button" class="faq-question">GeM कैंसिलेशन के लिए किन दस्तावेजों की आवश्यकता होती है?<span class="faq-icon">+</span></button>
+          <div class="faq-answer"><p>GeM कैंसिलेशन के लिए सामान्यतः GST प्रमाणपत्र, आधार कार्ड, PAN कार्ड, GeM रजिस्टर्ड मोबाइल नंबर, ईमेल आईडी और व्यवसाय से संबंधित जानकारी की आवश्यकता होती है।</p></div>
+        </div>
+        <div class="faq-item">
+          <button type="button" class="faq-question">GeM कैंसिलेशन में कितना समय लगता है?<span class="faq-icon">+</span></button>
+          <div class="faq-answer"><p>GeM अकाउंट कैंसिलेशन में आमतौर पर कुछ कार्य दिवस लग सकते हैं। सही दस्तावेज और उचित प्रक्रिया अपनाने से GeM कैंसिलेशन जल्दी पूरा हो सकता है।</p></div>
         </div>
       </div>
       <div class="card" style="margin-top:16px;">
@@ -668,6 +786,24 @@ function sub(e,name){
   e.preventDefault();
   alert('\\u2705 Your '+name+' application has been submitted successfully!\\n\\nOur executive will contact you on your registered mobile number within 15 minutes to verify details and process your application.');
 }
-</script>
+(function(){
+  document.querySelectorAll('.faq-container').forEach((container)=>{
+    container.querySelectorAll('.faq-question').forEach((button)=>{
+      button.addEventListener('click',()=>{
+        const item=button.closest('.faq-item');
+        const answer=item.querySelector('.faq-answer');
+        const isOpening=!item.classList.contains('active');
+        container.querySelectorAll('.faq-item').forEach((other)=>{
+          if(other!==item){
+            other.classList.remove('active');
+            other.querySelector('.faq-answer').style.maxHeight='0';
+          }
+        });
+        item.classList.toggle('active',isOpening);
+        answer.style.maxHeight=isOpening? answer.scrollHeight+'px' : '0';
+      });
+    });
+  });
+})();</script>
 </body>
 </html>

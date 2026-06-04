@@ -153,6 +153,18 @@ textarea{resize:vertical;min-height:68px;}
 .blog-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;max-width:900px;margin:0 auto;}
 @media(max-width:900px){.wrap{grid-template-columns:1fr;}.g2,.g3,.g4{grid-template-columns:1fr 1fr;}.hdr-inner{flex-direction:column;align-items:flex-start;}.fcols{grid-template-columns:1fr;}.blog-grid{grid-template-columns:1fr;}}
 @media(max-width:560px){.g2,.g3,.g4{grid-template-columns:1fr;}}
+
+.faq-container{max-width:900px;margin:26px auto 0;padding:0 10px;}
+.faq-container .section-title{font-size:1.05rem;font-weight:700;color:#003366;margin-bottom:14px;}
+.faq-item{background:#fff;border:1px solid rgba(0,51,102,.12);border-radius:14px;overflow:hidden;box-shadow:0 14px 32px rgba(15,32,82,.08);margin-bottom:14px;}
+.faq-question{width:100%;display:flex;justify-content:space-between;align-items:center;padding:16px 18px;font-size:0.98rem;font-weight:700;color:#222;background:#fff;border:none;cursor:pointer;outline:none;border-left:6px solid #003366;transition:background .25s,color .25s;}
+.faq-question .faq-icon{display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;border-radius:50%;background:rgba(0,51,102,.12);color:#003366;font-size:1rem;transition:transform .25s,background .25s,color .25s;}
+.faq-answer{max-height:0;overflow:hidden;transition:max-height .32s ease,padding .32s ease;box-sizing:border-box;padding:0 18px;background:#f9fbff;}
+.faq-answer p{margin:0;padding:16px 0 18px;color:#444;line-height:1.75;font-size:0.95rem;}
+.faq-item.active .faq-question{background:#003366;color:#fff;border-left-color:transparent;}
+.faq-item.active .faq-question .faq-icon{background:rgba(255,255,255,.22);color:#fff;transform:rotate(45deg);}
+.faq-item.active .faq-answer{padding:0 18px 18px;}
+@media(max-width:760px){.faq-container{margin:20px auto 0;padding:0 8px;}.faq-question{padding:14px 16px;}.faq-answer{padding:0 16px;}}
 </style>
 </head>
 <body>
@@ -300,6 +312,40 @@ textarea{resize:vertical;min-height:68px;}
         </div>
       </div>
     </div>
+    <div class="faq-container">
+      <div class="section-title">Udyam Registration FAQs - English</div>
+      <div class="faq-item">
+        <button type="button" class="faq-question">What is Udyam Registration?<span class="faq-icon">+</span></button>
+        <div class="faq-answer"><p>Udyam Registration is an online registration process for MSMEs introduced by the Ministry of Micro, Small and Medium Enterprises to provide official recognition and benefits to small businesses in India.</p></div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-question">Who can apply for Udyam Registration?<span class="faq-icon">+</span></button>
+        <div class="faq-answer"><p>Manufacturers, traders, service providers, startups, proprietorship firms, partnership firms, LLPs, and private limited companies can apply for Udyam Registration online.</p></div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-question">Is GST mandatory for Udyam Registration?<span class="faq-icon">+</span></button>
+        <div class="faq-answer"><p>GST may be required depending on the type and turnover of the business. Businesses registered under GST can easily complete the Udyam Registration process online.</p></div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-question">Why choose professional Udyam Registration services?<span class="faq-icon">+</span></button>
+        <div class="faq-answer"><p>Professional Udyam Registration services help avoid errors, ensure smooth documentation, speed up the registration process, and assist businesses in getting MSME benefits quickly.</p></div>
+      </div>
+    </div>
+    <div class="faq-container">
+      <div class="section-title">Udyam Registration FAQs - हिंदी</div>
+      <div class="faq-item">
+        <button type="button" class="faq-question">Udyam Registration के क्या फायदे हैं?<span class="faq-icon">+</span></button>
+        <div class="faq-answer"><p>Udyam Registration कराने से MSME लोन, सरकारी योजनाओं का लाभ, सब्सिडी, टेंडर में छूट और व्यवसाय के लिए सरकारी मान्यता प्राप्त होती है।</p></div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-question">Udyam Registration के लिए कौन-कौन से दस्तावेज चाहिए?<span class="faq-icon">+</span></button>
+        <div class="faq-answer"><p>Udyam Registration के लिए सामान्यतः आधार कार्ड, PAN कार्ड, GST नंबर, व्यवसाय की जानकारी और मोबाइल नंबर की आवश्यकता होती है।</p></div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-question">Udyam Registration कितने समय में पूरा होता है?<span class="faq-icon">+</span></button>
+        <div class="faq-answer"><p>सही जानकारी और दस्तावेज जमा करने पर Udyam Registration प्रक्रिया सामान्यतः कम समय में पूरी हो जाती है और प्रमाणपत्रออนไลน์ जारी किया जाता है।</p></div>
+      </div>
+    </div>
     <aside class="sbar">
       <div class="hl"><p style="font-size:11px;opacity:.9;margin-bottom:4px;">📞 Helpline / सहायता</p><div class="hlnum">+91 92048 34510</div><p>Mon–Sat &nbsp;9:30 AM – 9:30 PM</p></div>
       <div class="sc">
@@ -411,6 +457,40 @@ textarea{resize:vertical;min-height:68px;}
         </div>
       </div>
     </div>
+    <div class="faq-container">
+      <div class="section-title">Re-Registration FAQs - English</div>
+      <div class="faq-item">
+        <button type="button" class="faq-question">What is Udyam Re-Registration?<span class="faq-icon">+</span></button>
+        <div class="faq-answer"><p>Udyam Re-Registration is the process of updating or renewing MSME business details on the Udyam portal to maintain valid MSME registration and continue receiving government benefits.</p></div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-question">Who can apply for Udyam Re-Registration?<span class="faq-icon">+</span></button>
+        <div class="faq-answer"><p>Businesses already registered under MSME or Udyam, including proprietorship firms, LLPs, startups, partnership firms, and private limited companies, can apply for Udyam Re-Registration online.</p></div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-question">How can I complete Udyam Re-Registration online?<span class="faq-icon">+</span></button>
+        <div class="faq-answer"><p>You can complete Udyam Re-Registration online by submitting updated business details, Aadhaar verification, GST information, and required documents through the Udyam registration portal.</p></div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-question">Why choose professional Udyam Re-Registration services?<span class="faq-icon">+</span></button>
+        <div class="faq-answer"><p>Professional Udyam Re-Registration services help businesses avoid errors, complete verification smoothly, update MSME details correctly, and maintain uninterrupted government registration benefits.</p></div>
+      </div>
+    </div>
+    <div class="faq-container">
+      <div class="section-title">Re-Registration FAQs - हिंदी</div>
+      <div class="faq-item">
+        <button type="button" class="faq-question">Udyam Re-Registration क्यों जरूरी है?<span class="faq-icon">+</span></button>
+        <div class="faq-answer"><p>Udyam Re-Registration कराने से MSME प्रमाणन सक्रिय रहता है और व्यवसाय को सरकारी योजनाओं, लोन, सब्सिडी और टेंडर लाभ प्राप्त करने में आसानी होती है।</p></div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-question">Udyam Re-Registration के लिए कौन-कौन से दस्तावेज चाहिए?<span class="faq-icon">+</span></button>
+        <div class="faq-answer"><p>Udyam Re-Registration के लिए आधार कार्ड, PAN कार्ड, GST नंबर, पुराना MSME/Udyam प्रमाणपत्र, मोबाइल नंबर और व्यवसाय की जानकारी की आवश्यकता हो सकती है।</p></div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-question">Udyam Re-Registration में कितना समय लगता है?<span class="faq-icon">+</span></button>
+        <div class="faq-answer"><p>सही दस्तावेज और जानकारी जमा करने पर Udyam Re-Registration प्रक्रिया सामान्यतः कम समय में पूरी हो जाती है और अपडेटेड प्रमाणपत्र जारी किया जाता है।</p></div>
+      </div>
+    </div>
     <aside class="sbar">
       <div class="hl"><p style="font-size:11px;opacity:.9;margin-bottom:4px;">📞 Helpline / सहायता</p><div class="hlnum">+91 92048 34510</div><p>Mon–Sat &nbsp;9:30 AM – 9:30 PM</p></div>
       <div class="sc">
@@ -489,6 +569,40 @@ textarea{resize:vertical;min-height:68px;}
         </div>
       </div>
     </div>
+    <div class="faq-container">
+      <div class="section-title">Udyam Update FAQs - English</div>
+      <div class="faq-item">
+        <button type="button" class="faq-question">What is Udyam Update service?<span class="faq-icon">+</span></button>
+        <div class="faq-answer"><p>Udyam Update service helps MSME businesses update their business details, GST information, address, mobile number, email ID, and other registration details on the Udyam portal.</p></div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-question">What details can be updated in Udyam Registration?<span class="faq-icon">+</span></button>
+        <div class="faq-answer"><p>Business owners can update company name, address, mobile number, email ID, bank details, business activity, GST details, and other MSME information in Udyam Registration.</p></div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-question">How can I update my Udyam Registration online?<span class="faq-icon">+</span></button>
+        <div class="faq-answer"><p>You can update your Udyam Registration online by submitting updated business information and required verification details through the official Udyam portal.</p></div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-question">Why choose professional Udyam Update services?<span class="faq-icon">+</span></button>
+        <div class="faq-answer"><p>Professional Udyam Update services help businesses avoid errors, complete updates smoothly, maintain accurate MSME records, and ensure uninterrupted government scheme benefits.</p></div>
+      </div>
+    </div>
+    <div class="faq-container">
+      <div class="section-title">Udyam Update FAQs - हिंदी</div>
+      <div class="faq-item">
+        <button type="button" class="faq-question">Udyam Registration अपडेट क्यों जरूरी है?<span class="faq-icon">+</span></button>
+        <div class="faq-answer"><p>Udyam Registration अपडेट कराने से व्यवसाय की जानकारी सही रहती है और MSME लाभ, सरकारी योजनाओं तथा टेंडर सुविधाओं का लाभ बिना किसी समस्या के मिलता रहता है।</p></div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-question">Udyam Update के लिए कौन-कौन से दस्तावेज चाहिए?<span class="faq-icon">+</span></button>
+        <div class="faq-answer"><p>Udyam Update के लिए आधार कार्ड, PAN कार्ड, GST नंबर, Udyam Registration Number और अपडेट की जाने वाली जानकारी से संबंधित दस्तावेजों की आवश्यकता हो सकती है।</p></div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-question">Udyam Update प्रक्रिया में कितना समय लगता है?<span class="faq-icon">+</span></button>
+        <div class="faq-answer"><p>सही दस्तावेज और जानकारी जमा करने पर Udyam Update प्रक्रिया सामान्यतः कम समय में पूरी हो जाती है और अपडेटेड विवरण ऑनलाइन उपलब्ध हो जाते हैं।</p></div>
+      </div>
+    </div>
     <aside class="sbar">
       <div class="hl"><p style="font-size:11px;opacity:.9;margin-bottom:4px;">📞 Helpline</p><div class="hlnum">+91 92048 34510</div><p>Mon–Sat &nbsp;9:30 AM – 9:30 PM</p></div>
       <div class="sc">
@@ -535,6 +649,68 @@ textarea{resize:vertical;min-height:68px;}
       </div>
     </div>
   </div>
+  <div class="faq-container">
+    <div class="section-title">Udyam Certificate Print FAQs - English</div>
+    <div class="faq-item">
+      <button type="button" class="faq-question">What is Udyam Certificate Print service?<span class="faq-icon">+</span></button>
+      <div class="faq-answer"><p>Udyam Certificate Print service helps MSME businesses download, print, and access their Udyam Registration Certificate online for official and business use.</p></div>
+    </div>
+    <div class="faq-item">
+      <button type="button" class="faq-question">How can I print my Udyam Certificate online?<span class="faq-icon">+</span></button>
+      <div class="faq-answer"><p>You can print your Udyam Certificate online by using your Udyam Registration Number, registered mobile number, and verification details on the Udyam portal.</p></div>
+    </div>
+    <div class="faq-item">
+      <button type="button" class="faq-question">What documents are required to print Udyam Certificate?<span class="faq-icon">+</span></button>
+      <div class="faq-answer"><p>Generally, Udyam Registration Number, Aadhaar-linked mobile number, and business verification details are required to print the Udyam Certificate.</p></div>
+    </div>
+    <div class="faq-item">
+      <button type="button" class="faq-question">Why is Udyam Certificate important for businesses?<span class="faq-icon">+</span></button>
+      <div class="faq-answer"><p>Udyam Certificate helps MSMEs avail government schemes, business loans, tender benefits, subsidy programs, and official MSME recognition.</p></div>
+    </div>
+    <div class="faq-item">
+      <button type="button" class="faq-question">Can I download and print Udyam Certificate multiple times?<span class="faq-icon">+</span></button>
+      <div class="faq-answer"><p>Yes, eligible businesses can download and print their Udyam Certificate online whenever required for official or business purposes.</p></div>
+    </div>
+    <div class="faq-item">
+      <button type="button" class="faq-question">How much time does it take to print Udyam Certificate?<span class="faq-icon">+</span></button>
+      <div class="faq-answer"><p>The Udyam Certificate print process is generally completed quickly after successful verification of registration details.</p></div>
+    </div>
+    <div class="faq-item">
+      <button type="button" class="faq-question">Why choose professional Udyam Certificate Print services?<span class="faq-icon">+</span></button>
+      <div class="faq-answer"><p>Professional Udyam Certificate Print services help businesses avoid errors, access certificates easily, complete verification smoothly, and obtain printed MSME certificates quickly.</p></div>
+    </div>
+  </div>
+  <div class="faq-container">
+    <div class="section-title">Udyam Certificate Print FAQs - हिंदी</div>
+    <div class="faq-item">
+      <button type="button" class="faq-question">Udyam Certificate Print सेवा क्या है?<span class="faq-icon">+</span></button>
+      <div class="faq-answer"><p>Udyam Certificate Print सेवा के माध्यम से MSME व्यवसाय अपना Udyam Registration Certificate ऑनलाइन डाउनलोड और प्रिंट कर सकते हैं।</p></div>
+    </div>
+    <div class="faq-item">
+      <button type="button" class="faq-question">Udyam Certificate ऑनलाइन कैसे प्रिंट करें?<span class="faq-icon">+</span></button>
+      <div class="faq-answer"><p>आप अपने Udyam Registration Number, रजिस्टर्ड मोबाइल नंबर और सत्यापन विवरण की सहायता से Udyam Certificate ऑनलाइन प्रिंट कर सकते हैं।</p></div>
+    </div>
+    <div class="faq-item">
+      <button type="button" class="faq-question">Udyam Certificate प्रिंट करने के लिए कौन-कौन से दस्तावेज चाहिए?<span class="faq-icon">+</span></button>
+      <div class="faq-answer"><p>Udyam Certificate प्रिंट करने के लिए सामान्यतः Udyam Registration Number, आधार से लिंक मोबाइल नंबर और व्यवसाय सत्यापन विवरण की आवश्यकता होती है।</p></div>
+    </div>
+    <div class="faq-item">
+      <button type="button" class="faq-question">Udyam Certificate व्यवसाय के लिए क्यों महत्वपूर्ण है?<span class="faq-icon">+</span></button>
+      <div class="faq-answer"><p>Udyam Certificate MSME व्यवसायों को सरकारी योजनाओं, बिजनेस लोन, टेंडर लाभ, सब्सिडी और आधिकारिक MSME मान्यता प्राप्त करने में सहायता करता है।</p></div>
+    </div>
+    <div class="faq-item">
+      <button type="button" class="faq-question">क्या Udyam Certificate को कई बार डाउनलोड और प्रिंट किया जा सकता है?<span class="faq-icon">+</span></button>
+      <div class="faq-answer"><p>हाँ, व्यवसाय आवश्यकता अनुसार अपने Udyam Certificate को कई बार ऑनलाइन डाउनलोड और प्रिंट कर सकते हैं।</p></div>
+    </div>
+    <div class="faq-item">
+      <button type="button" class="faq-question">Udyam Certificate प्रिंट होने में कितना समय लगता है?<span class="faq-icon">+</span></button>
+      <div class="faq-answer"><p>सफल सत्यापन के बाद Udyam Certificate प्रिंट प्रक्रिया सामान्यतः कम समय में पूरी हो जाती है।</p></div>
+    </div>
+    <div class="faq-item">
+      <button type="button" class="faq-question">प्रोफेशनल Udyam Certificate Print सेवा क्यों चुनें?<span class="faq-icon">+</span></button>
+      <div class="faq-answer"><p>प्रोफेशनल Udyam Certificate Print सेवा लेने से गलतियों की संभावना कम होती है, प्रमाणपत्र आसानी से प्राप्त होता है और पूरी प्रक्रिया तेज व सरल बनती है।</p></div>
+    </div>
+  </div>
 </div>
 
 <!-- ===== CANCEL REGISTRATION ===== -->
@@ -579,6 +755,68 @@ textarea{resize:vertical;min-height:68px;}
             <button type="submit" class="sub s-rd">❌ Submit Application</button>
           </form>
         </div>
+      </div>
+    </div>
+    <div class="faq-container">
+      <div class="section-title">Udyam Cancellation FAQs - English</div>
+      <div class="faq-item">
+        <button type="button" class="faq-question">What is Udyam Cancellation service?<span class="faq-icon">+</span></button>
+        <div class="faq-answer"><p>Udyam Cancellation service helps MSME businesses cancel or close their Udyam Registration online due to business closure, duplicate registration, incorrect details, or other official reasons.</p></div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-question">How can I cancel my Udyam Registration online?<span class="faq-icon">+</span></button>
+        <div class="faq-answer"><p>You can cancel your Udyam Registration online by submitting your Udyam Registration Number, Aadhaar verification details, and required business information through the cancellation process.</p></div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-question">What documents are required for Udyam Cancellation?<span class="faq-icon">+</span></button>
+        <div class="faq-answer"><p>Documents required for Udyam Cancellation may include Aadhaar Card, PAN Card, Udyam Registration Number, GST details, and business-related verification documents.</p></div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-question">Why do businesses apply for Udyam Cancellation?<span class="faq-icon">+</span></button>
+        <div class="faq-answer"><p>Businesses may apply for Udyam Cancellation due to company closure, duplicate MSME registration, incorrect registration details, change in business structure, or inactive business operations.</p></div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-question">How much time does the Udyam Cancellation process take?<span class="faq-icon">+</span></button>
+        <div class="faq-answer"><p>The Udyam Cancellation process is generally completed within a short period after successful document verification and submission of correct details.</p></div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-question">Can I apply for a new Udyam Registration after cancellation?<span class="faq-icon">+</span></button>
+        <div class="faq-answer"><p>Yes, businesses may apply for a new Udyam Registration if they meet the eligibility requirements and need a fresh MSME registration for a new business setup.</p></div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-question">Why choose professional Udyam Cancellation services?<span class="faq-icon">+</span></button>
+        <div class="faq-answer"><p>Professional Udyam Cancellation services help businesses avoid mistakes, complete the cancellation process smoothly, manage documentation properly, and ensure accurate MSME record closure.</p></div>
+      </div>
+    </div>
+    <div class="faq-container">
+      <div class="section-title">Udyam Cancellation FAQs - हिंदी</div>
+      <div class="faq-item">
+        <button type="button" class="faq-question">Udyam Cancellation सेवा क्या है?<span class="faq-icon">+</span></button>
+        <div class="faq-answer"><p>Udyam Cancellation सेवा के माध्यम से MSME व्यवसाय अपने Udyam Registration को व्यवसाय बंद होने, डुप्लिकेट रजिस्ट्रेशन या गलत जानकारी जैसी स्थितियों में ऑनलाइन कैंसिल कर सकते हैं।</p></div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-question">Udyam Registration ऑनलाइन कैसे कैंसिल करें?<span class="faq-icon">+</span></button>
+        <div class="faq-answer"><p>आप Udyam Registration Number, आधार सत्यापन विवरण और आवश्यक व्यवसायिक जानकारी जमा करके अपना Udyam Registration ऑनलाइन कैंसिल कर सकते हैं।</p></div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-question">Udyam Cancellation के लिए कौन-कौन से दस्तावेज चाहिए?<span class="faq-icon">+</span></button>
+        <div class="faq-answer"><p>Udyam Cancellation के लिए आधार कार्ड, PAN कार्ड, Udyam Registration Number, GST विवरण और व्यवसाय से संबंधित दस्तावेजों की आवश्यकता हो सकती है।</p></div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-question">व्यवसाय Udyam Cancellation क्यों करवाते हैं?<span class="faq-icon">+</span></button>
+        <div class="faq-answer"><p>व्यवसाय कंपनी बंद होने, डुप्लिकेट MSME रजिस्ट्रेशन, गलत जानकारी, व्यवसाय संरचना में बदलाव या व्यवसाय बंद होने की स्थिति में Udyam Cancellation करवाते हैं।</p></div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-question">Udyam Cancellation प्रक्रिया में कितना समय लगता है?<span class="faq-icon">+</span></button>
+        <div class="faq-answer"><p>सही दस्तावेज और सत्यापन पूरा होने के बाद Udyam Cancellation प्रक्रिया सामान्यतः कम समय में पूरी हो जाती है।</p></div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-question">क्या Udyam Cancellation के बाद नया रजिस्ट्रेशन कराया जा सकता है?<span class="faq-icon">+</span></button>
+        <div class="faq-answer"><p>हाँ, पात्र व्यवसाय आवश्यकता अनुसार नया Udyam Registration फिर से प्राप्त कर सकते हैं।</p></div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-question">प्रोफेशनल Udyam Cancellation सेवा क्यों चुनें?<span class="faq-icon">+</span></button>
+        <div class="faq-answer"><p>प्रोफेशनल Udyam Cancellation सेवा लेने से गलतियों की संभावना कम होती है, दस्तावेज सही तरीके से जमा होते हैं और पूरी प्रक्रिया आसान व तेज बनती है।</p></div>
       </div>
     </div>
     <aside class="sbar">
@@ -833,6 +1071,24 @@ function sub(e, name) {
   e.preventDefault();
   alert('\\u2705 Your '+name+' application has been submitted successfully!\\n\\nYou will receive a confirmation on your registered email and mobile number.\\n\\nOur expert will contact you within 15 minutes.');
 }
-</script>
+(function(){
+  document.querySelectorAll('.faq-container').forEach((container)=>{
+    container.querySelectorAll('.faq-question').forEach((button)=>{
+      button.addEventListener('click',()=>{
+        const item = button.closest('.faq-item');
+        const answer = item.querySelector('.faq-answer');
+        const isOpening = !item.classList.contains('active');
+        container.querySelectorAll('.faq-item').forEach((other)=>{
+          if(other !== item){
+            other.classList.remove('active');
+            other.querySelector('.faq-answer').style.maxHeight = '0';
+          }
+        });
+        item.classList.toggle('active', isOpening);
+        answer.style.maxHeight = isOpening ? answer.scrollHeight + 'px' : '0';
+      });
+    });
+  });
+})();</script>
 </body>
 </html>
